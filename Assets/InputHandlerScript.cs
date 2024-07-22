@@ -1,21 +1,32 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Diagnostics;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
 public class InputHandlerScript : MonoBehaviour
 {
     public GameObject narrativeController;
+    public NarrativeControllerScript narrativeControllerScript;
     // Start is called before the first frame update
     void Start()
     {
-        
+        narrativeControllerScript = narrativeController.GetComponent<NarrativeControllerScript>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+        if (Input.GetKeyDown(KeyCode.LeftArrow)){
+            narrativeControllerScript.LeftArrowSelected();
+        }
+        if (Input.GetKeyDown(KeyCode.RightArrow)){
+            narrativeControllerScript.RightArrowSelected();
+        }
+        if (Input.GetKeyDown(KeyCode.UpArrow)){
+            narrativeControllerScript.UpArrowSelected();
+        }
     }
 
     private Camera _mainCamera;
@@ -32,6 +43,23 @@ public class InputHandlerScript : MonoBehaviour
         var rayHit = Physics2D.GetRayIntersection(_mainCamera.ScreenPointToRay(Mouse.current.position.ReadValue()));
         if (!rayHit.collider) return;
 
-        Debug.Log(rayHit.collider.gameObject.name);
+
+        switch(rayHit.collider.gameObject.name)
+        {
+            case "LeftArrow":
+            narrativeControllerScript.LeftArrowSelected();
+            break;
+
+            case "RightArrow":
+            narrativeControllerScript.RightArrowSelected();
+            break;
+
+            case "UpArrow":
+            narrativeControllerScript.UpArrowSelected();
+            break;
+
+            default:
+            break;
+        }
     }
 }

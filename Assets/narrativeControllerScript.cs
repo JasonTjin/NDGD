@@ -18,4 +18,16 @@ public class NarrativeControllerScript : MonoBehaviour
     {
         
     }
+
+    public void LeftArrowSelected(){
+        Debug.Log("Left Arrow Selected");
+    }
+
+    public void RightArrowSelected(){
+        Debug.Log("Right Arrow Selected");
+    }
+
+    public void UpArrowSelected(){
+        Debug.Log("Up Arrow Selected");
+    }
 }
