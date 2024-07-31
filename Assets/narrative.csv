@@ -1,0 +1,10 @@
+﻿Prompt,Option,NextPrompt,FinanceEffect,MoralEffect
+"I need the project done this week, I don’t care about the quality assurance, just get it done.  ","Yes sir, I will get it done. Quality assurance wont get in the way of the deadline",5,0,0
+,Sure thing. (You plan to do the quality assurance anyway),5,0,0
+,You must reconsider it is extremely important that the quality assurance is done right,5,0,0
+Millions of dollars are at stake here this project needs to be completed as soon as possible.,"You are right, I will get to work and get it done.",8,0,0
+,"Without quality assurance the product could cause a catastrophe, just give us one more week to do some basic QA",8,0,0
+,Quality assurance is integral to the project and to do it right we need another month.,8,0,0
+"Very Well, one week and not a second longer.",Thank you!,11,0,0
+,I won’t let you down,11,0,0
+,You will thank me in the long run,11,0,0
