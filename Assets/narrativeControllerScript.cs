@@ -9,9 +9,11 @@ public class NarrativeControllerScript : MonoBehaviour
     public string leftArrowText = "";
     public string rightArrowText = "";
     public string upArrowText = "";
+    public string promptText = "";
     public TMP_Text leftArrowTextComponent;
     public TMP_Text rightArrowTextComponent;
     public TMP_Text upArrowTextComponent;
+    public TMP_Text promptTextComponent;
 
     public void LeftArrowSelected(){
         Debug.Log("Left Arrow Selected");
