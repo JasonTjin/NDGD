@@ -11,6 +11,8 @@ public class DialogueManager : MonoBehaviour
     public TextAsset csvFile;
     private Dictionary<int, Dialogue> dialogueNodes;
 
+    public Animator animator;
+
     public TMP_Text dialogueText; // Uncomment if using TextMeshPro
     public TMP_Text speakerText;
 
@@ -71,13 +73,23 @@ public class DialogueManager : MonoBehaviour
 
     void StartDialogue(int startNodeId)
     {
+        animator.SetBool("isOpen", true);
         DisplayNode(dialogueNodes[startNodeId]);
     }
 
     void DisplayNode(Dialogue dialogue)
     {
         speakerText.text = dialogue.name;
-        dialogueText.text = dialogue.text;
+        StopAllCoroutines();
+        StartCoroutine(TypeSentence(dialogue.text));
+    }
+
+    IEnumerator TypeSentence (String s) {
+        dialogueText.text = "";
+        foreach (char letter in s.ToCharArray()){
+            dialogueText.text += letter;
+            yield return null;
+        }
     }
     public void DisplayNextNode()
     {
@@ -88,7 +100,7 @@ public class DialogueManager : MonoBehaviour
         }
         else
         {
-            // End of dialogue
+            animator.SetBool("isOpen", false);
             dialogueText.text = "";
             speakerText.text = "";
         }
