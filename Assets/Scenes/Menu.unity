@@ -260,10 +260,10 @@ RectTransform:
   m_Father: {fileID: 1756221501}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 106.94678}
-  m_SizeDelta: {x: 708.1703, y: 132.6084}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 0}
+  m_AnchoredPosition: {x: 0, y: 324.30402}
+  m_SizeDelta: {x: 75.95862, y: 301.1206}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &732742408
 MonoBehaviour:
@@ -285,7 +285,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: GameName
+  m_text: Information and Techknowledgey
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: a02bc47cdb09607418510918a8419f4b, type: 2}
   m_sharedMaterial: {fileID: -298188474589726577, guid: a02bc47cdb09607418510918a8419f4b, type: 2}
@@ -312,8 +312,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 100
-  m_fontSizeBase: 100
+  m_fontSize: 70
+  m_fontSizeBase: 70
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -465,7 +465,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 7.8, y: -6.2}
+  m_AnchoredPosition: {x: 9, y: -13}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1152610623
@@ -598,10 +598,10 @@ RectTransform:
   m_Father: {fileID: 1756221501}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 12.4, y: 94.6}
-  m_SizeDelta: {x: 708.1703, y: 132.6084}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 0}
+  m_AnchoredPosition: {x: 12.399994, y: 311.678}
+  m_SizeDelta: {x: 78.5116, y: 219.4177}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1172727036
 MonoBehaviour:
@@ -623,7 +623,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: GameName
+  m_text: Information and Techknowledgey
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: a02bc47cdb09607418510918a8419f4b, type: 2}
   m_sharedMaterial: {fileID: -298188474589726577, guid: a02bc47cdb09607418510918a8419f4b, type: 2}
@@ -650,8 +650,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 100
-  m_fontSizeBase: 100
+  m_fontSize: 70
+  m_fontSizeBase: 70
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -1168,10 +1168,10 @@ RectTransform:
   m_Father: {fileID: 1756221501}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchorMin: {x: 0, y: 0.5}
+  m_AnchorMax: {x: 1, y: 0.5}
   m_AnchoredPosition: {x: 0, y: -134}
-  m_SizeDelta: {x: 393.0383, y: 155.9382}
+  m_SizeDelta: {x: -348.9617, y: 155.9382}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1825754038
 MonoBehaviour:

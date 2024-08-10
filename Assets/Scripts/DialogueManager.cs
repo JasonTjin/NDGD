@@ -4,6 +4,8 @@ using UnityEngine;
 using System.IO;
 using System;
 using TMPro;
+using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 using System.Linq;
 
 public class DialogueManager : MonoBehaviour
@@ -11,6 +13,7 @@ public class DialogueManager : MonoBehaviour
     public TextAsset csvFile;
     private Dictionary<int, Dialogue> dialogueNodes;
 
+    public ButtonManager buttonManager;
     public Animator animator;
 
     public TMP_Text dialogueText; // Uncomment if using TextMeshPro
@@ -101,6 +104,7 @@ public class DialogueManager : MonoBehaviour
         else
         {
             animator.SetBool("isOpen", false);
+            buttonManager.DialogueOver();
             dialogueText.text = "";
             speakerText.text = "";
         }
