@@ -57,6 +57,7 @@ public class DialogueManager : MonoBehaviour
             }
             else
             {
+                Debug.Log(values[3]);
                 nextNodeId = int.Parse(values[3]);
             }
 
