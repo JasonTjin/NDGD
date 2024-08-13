@@ -23,4 +23,15 @@
 22,Jess,And that's the team.  Day to day you'll be required to make decisions on how things are run.  ,23,N,,,,,,
 23,Jess,ITS4 is not in the greatest shape right now so just do your best to help the company and the team succeed.,24,N,,,,,,
 24,Jess,You got this! You'll do great!,25,N,,,,,,
-24,Jess,"Alrighty, I'll leave you to it.",,N,,,,,,
+25,Jess,"Alrighty, I'll leave you to it.",26,N,,,,,,
+26,???,*Your desk phone is ringing*,27,N,Hello?,Who is this?,ITS4 here how can I help you?,27,27,27
+27,John Bossman,Hello| this is John Bossman. You must be the new manager| I am the CEO of ITS4 and you'll be reporting to me directly.,28,N,"Hi John, nice to hear from you",Understood.,Couldn't meet me in person?,28,31,30
+28,John Bossman,Call me Sir or Mr. Bossman.,29,N,Sorry Sir.,Understood Mr. Bossman,Come on John| you're my collegue not my father.,31,31,29
+29,John Bossman,We are not collegues| I am your boss and you will do as I say.,31,N,,,,,,
+30,John Bossman,Some things are not worth my time| if you prove to me that you are I will visit in person.,31,N,,,,,,
+31,John Bossman,Let me be straight with you.  Your job is to make money.  The bottom line is what matters.,32,N,,,,,,
+32,John Bossman,If you make the company money| you make me happy and when I'm happy you get to continue making that absurd salary we pay you.,33,N,I think we are both going to be very happy by the end of this.,That means of course to do it ethically?,Yes Mr. Bossman,33,34,35
+33,John Bossman,I hope so.,36,N,,,,,,
+34,John Bossman,As long as it helps the bottom line.,36,N,,,,,,
+35,John Bossman,Very Good.,36,N,,,,,,
+36,John Bossman,*Hangs Up*,,N,,,,,,
