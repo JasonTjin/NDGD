@@ -1,0 +1,26 @@
+﻿Node ID,Speaker,Text,Next Node ID,Tag ,Option1,Option2,Option3,NextNode1,NextNode2,NextNode3
+1,Jess,Hey| welcome to Information and Technology Secure Support System Solutions! ,2,N,"Wow, what a name…",Glad to be here,Ok let's get started,2,3,3
+2,Jess,…Yeah| I know… it's bit of a touchy subject with the higher ups so maybe don’t mention it.,3,N,,,,,,
+3,Jess,For brevity  we call ourselves ITS4.,4,N,,,,,,
+4,Jess,Let's get you aquainted with the team.,5,N,,,,,,
+5,Jess,You already know me| I'm one of the senior project officers.,6,N,,,,,,
+6,Jess,This here is Evan Fisher| he'll be your number two for anything managirial.,7,N,,,,,,
+7,Evan,It's a pleasure to meet you|I've heard all about your record and I am very excited to be working under you!,8,N,I'm looking forward to working with you too.,Nice to meet you Evan.,If you've heard about me| then you should know I don't like suck ups.,8,8,7
+8,Evan,"Oh ok, I was just trying to be polite.",9,N,,,,,,
+9,Jess,"Next, this is Olivia Finch| she's one of the best technical minds I've ever met.",10,N,,,,,,
+10,Olivia,"Ha, Thanks Jess.",11,N,,,,,,
+11,Olivia,"Stay out of my work and I'll get anything done for you, got it?",12,N,Sounds good to me.,What's with the attitude?,As your manager I can't make such a promise.,13,11,12
+12,Olivia,You're not the first manager I've had and you certainly won't be the last.,14,N,,,,,,
+13,Olivia,"Fine, just don't try to micro manage me.",14,N,,,,,,
+14,Jess,"Moving along… we have Wilson Shumer, he runs operational support.",15,N,,,,,,
+15,Wilson,Hi.  *Wilson nervously avoids eye contact*,16,N,Hi Wilson.,"No need to be shy, I don't bite.",Opperational Support? How do you find that?,16,16,15
+16,Wilson,It's fine.,17,N,,,,,,
+17,Wilson,*Wilson has already focused back into his work*,18,N,,,,,,
+18,Jess,Lastly we have …,19,N,,,,,,
+19,Frank,Frank Waters| senior project officer.  It's a pleasure to make your aquantance.,20,N,It's good to meet you Frank.,That's quite an introduction…,Please don't interupt| Jess was already doing a good job introducing us.,21,21,19
+20,Frank,Oh it was not my intention to offend| my deepest appologies Jess,21,N,,,,,,
+21,Jess,That's alright Frank,22,N,,,,,,
+22,Jess,And that's the team.  Day to day you'll be required to make decisions on how things are run.  ,23,N,,,,,,
+23,Jess,ITS4 is not in the greatest shape right now so just do your best to help the company and the team succeed.,24,N,,,,,,
+24,Jess,You got this! You'll do great!,25,N,,,,,,
+24,Jess,"Alrighty, I'll leave you to it.",,N,,,,,,
