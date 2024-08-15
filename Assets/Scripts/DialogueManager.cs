@@ -14,9 +14,11 @@ public class DialogueManager : MonoBehaviour
     private Dictionary<int, Dialogue> dialogueNodes;
 
     public ButtonManager buttonManager;
-    public Animator animator;
-
-    public TMP_Text dialogueText; // Uncomment if using TextMeshPro
+    public Animator dialogueAnimator;
+    #nullable enable
+    public Animator? charAnimator;
+    #nullable disable
+    public TMP_Text dialogueText;
     public TMP_Text speakerText;
 
     private int currentNodeId = 1;
@@ -48,8 +50,9 @@ public class DialogueManager : MonoBehaviour
             //Assign values of each dialogue line
             int nodeId = int.Parse(values[0]);
             string speaker = values[1];
+            Debug.Log(values[0]);
             string text = values[2].Replace('|', ',');
-            
+
             int? nextNodeId;
             if (string.IsNullOrEmpty(values[3]))
             {
@@ -57,7 +60,6 @@ public class DialogueManager : MonoBehaviour
             }
             else
             {
-                Debug.Log(values[3]);
                 nextNodeId = int.Parse(values[3]);
             }
 
@@ -77,7 +79,11 @@ public class DialogueManager : MonoBehaviour
 
     void StartDialogue(int startNodeId)
     {
-        animator.SetBool("isOpen", true);
+        dialogueAnimator.SetBool("isOpen", true);
+        if (charAnimator != null)
+        {
+            charAnimator.SetBool("isOpen", true);
+        }
         DisplayNode(dialogueNodes[startNodeId]);
     }
 
@@ -88,9 +94,11 @@ public class DialogueManager : MonoBehaviour
         StartCoroutine(TypeSentence(dialogue.text));
     }
 
-    IEnumerator TypeSentence (String s) {
+    IEnumerator TypeSentence(String s)
+    {
         dialogueText.text = "";
-        foreach (char letter in s.ToCharArray()){
+        foreach (char letter in s.ToCharArray())
+        {
             dialogueText.text += letter;
             yield return null;
         }
@@ -104,7 +112,11 @@ public class DialogueManager : MonoBehaviour
         }
         else
         {
-            animator.SetBool("isOpen", false);
+            dialogueAnimator.SetBool("isOpen", false);
+            if (charAnimator != null)
+            {
+                charAnimator.SetBool("isOpen", false);
+            }
             buttonManager.DialogueOver();
             dialogueText.text = "";
             speakerText.text = "";

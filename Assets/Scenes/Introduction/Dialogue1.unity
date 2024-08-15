@@ -435,7 +435,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   csvFile: {fileID: 4900000, guid: 5398729ed6c781342995fd9c31a9fdba, type: 3}
   buttonManager: {fileID: 108098744}
-  animator: {fileID: 279328109}
+  dialogueAnimator: {fileID: 279328109}
+  charAnimator: {fileID: 0}
   dialogueText: {fileID: 1160913851}
   speakerText: {fileID: 1060985168}
 --- !u!4 &321936842
