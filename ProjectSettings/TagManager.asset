@@ -3,7 +3,16 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - GameManager
+  - Choice1
+  - Choice2
+  - Choice3
+  - Prompt
+  - Dialogue
+  - ChoiceManager
+  - DialogueManager
+  - Speaker
   layers:
   - Default
   - TransparentFX

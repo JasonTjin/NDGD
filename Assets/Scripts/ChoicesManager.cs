@@ -7,11 +7,11 @@ using UnityEngine;
 
 public class ChoiceManager : MonoBehaviour
 {
-    public TMP_Text option1Text;
-    public TMP_Text option2Text;
-    public TMP_Text option3Text;
-    public TMP_Text promptText;
-    public gameManagerScript gameManager;
+    public TMP_Text choice1TextObject;
+    public TMP_Text choice2TextObject;
+    public TMP_Text choice3TextObject;
+    public TMP_Text promptTextObject;
+    private gameManagerScript gameManager;
     private int previousNode = 1;
     private int currentNode = 1;
     private List<int> nodes = new();
@@ -31,6 +31,10 @@ public class ChoiceManager : MonoBehaviour
     private List<int> MoralityScore5Changes = new();
     private List<int> MoralityScore6Changes = new();
     private int resultsStart;
+
+    private void Start(){
+        gameManager = GameObject.FindGameObjectWithTag("GameManager").GetComponent<gameManagerScript>();
+    }
     public void HandleChoiceSelection(int selectedOption){
         previousNode = currentNode;
         switch (selectedOption){
@@ -46,7 +50,7 @@ public class ChoiceManager : MonoBehaviour
             default:
                 break;
         }
-        if (currentNode == 0){
+        if (choice1NextNode[currentNode - 1] == 0){
             ResolveChoiceResults();
         }
         else{
@@ -86,10 +90,10 @@ public class ChoiceManager : MonoBehaviour
     }
 
     private void UpdateChoices(){
-        promptText.text = prompts[currentNode - 1];
-        option1Text.text = choice1Text[currentNode - 1];
-        option2Text.text = choice2Text[currentNode - 1];
-        option3Text.text = choice3Text[currentNode - 1];
+        promptTextObject.text = prompts[currentNode - 1];
+        choice1TextObject.text = choice1Text[currentNode - 1];
+        choice2TextObject.text = choice2Text[currentNode - 1];
+        choice3TextObject.text = choice3Text[currentNode - 1];
     }
 
     private void ResolveChoiceResults(){

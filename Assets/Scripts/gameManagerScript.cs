@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Diagnostics;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -10,29 +11,28 @@ public class gameManagerScript : MonoBehaviour
     const string CHOICES_FILE_PATH = "./assets/CSVs/Choices/Choices";
     const string RESULTS_FILE_PATH = "./assets/CSVs/Results/Results";
     const string FILE_EXTENSION = ".csv";
-    public GameObject gameManagerObject;
-    public ChoiceManager choiceManager;
-    public string currentDialogue;
-    public string currentChoice;
-    public int FinancialScore;
-    public int TeamMoralScore;
-    public int MoralityScore1;
-    public int MoralityScore2;
-    public int MoralityScore3;
-    public int MoralityScore4;
-    public int MoralityScore5;
-    public int MoralityScore6;
-    public string resultsCSVName;
+    private ChoiceManager choiceManager;
+    private DialogueManager2 dialogueManager;
+    private int currentDialogue;
+    private int currentChoice;
+    private int FinancialScore;
+    private int TeamMoralScore;
+    private int MoralityScore1;
+    private int MoralityScore2;
+    private int MoralityScore3;
+    private int MoralityScore4;
+    private int MoralityScore5;
+    private int MoralityScore6;
 
     void Awake()
     {
-        DontDestroyOnLoad(gameManagerObject);
-        currentDialogue = "Intro";
-        currentChoice = "0";
+        currentDialogue = 0;
+        currentChoice = 0;
     }
     void Start()
     {
-        GoToChoices();
+        DontDestroyOnLoad(GameObject.FindGameObjectWithTag("GameManager"));
+        GoToDialogue();
     }
 
     public void UpdateScores(int FinancialChange, int TeamMoralChange, int MoralityScore1Change, int MoralityScore2Change, int MoralityScore3Change, int MoralityScore4Change, int MoralityScore5Change, int MoralityScore6Change){
@@ -47,13 +47,20 @@ public class gameManagerScript : MonoBehaviour
     }
 
     public void GoToDialogue(){
-
+        SceneManager.LoadScene("ContextTest");
+        dialogueManager = GameObject.FindGameObjectWithTag("DialogueManager").GetComponent<DialogueManager2>();
+        currentDialogue += 1;
+        dialogueManager.SetUpDialogue(DIALOGUE_FILE_PATH + currentDialogue.ToString() + FILE_EXTENSION, true);
     }
     public void GoToChoices(){
-        //SceneManager.LoadScene();
-        choiceManager.SetUpChoices(CHOICES_FILE_PATH + (Convert.ToInt32(currentChoice) + 1).ToString() + FILE_EXTENSION);
+        SceneManager.LoadScene("OptionTest");
+        choiceManager = GameObject.FindGameObjectWithTag("ChoiceManager").GetComponent<ChoiceManager>();
+        currentChoice += 1;
+        choiceManager.SetUpChoices(CHOICES_FILE_PATH + currentChoice.ToString() + FILE_EXTENSION);
     }
     public void GoToResults(int resultNumber){
-        
+        SceneManager.LoadScene("ContextTest");
+        dialogueManager = GameObject.FindGameObjectWithTag("DialogueManager").GetComponent<DialogueManager2>();
+        dialogueManager.SetUpDialogue(RESULTS_FILE_PATH + currentChoice.ToString() + "-" + resultNumber.ToString() + FILE_EXTENSION, false);
     }
 }
