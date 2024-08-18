@@ -12,6 +12,7 @@ public class ChoiceManager : MonoBehaviour
     private TMP_Text choice3TextObject;
     private TMP_Text promptTextObject;
     private gameManagerScript gameManager;
+    private int typingDelay;
     private int currentNode;
     private List<int> nodes = new();
     private List<string> prompts = new();
@@ -30,6 +31,24 @@ public class ChoiceManager : MonoBehaviour
     private List<int> MoralityScore5Changes = new();
     private List<int> MoralityScore6Changes = new();
     private int resultsStart;
+    private bool typingPrompt;
+    private int promptTextIndex;
+    private int promptTextLength;
+    private string promptTextTyping;
+    private bool typingChoice1;
+    private int choice1TextIndex;
+    private int choice1TextLength;
+    private string choice1TextTyping;
+    private bool typingChoice2;
+    private int choice2TextIndex;
+    private int choice2TextLength;
+    private string choice2TextTyping;
+    private bool typingChoice3;
+    private int choice3TextIndex;
+    private int choice3TextLength;
+    private string choice3TextTyping;
+    private bool initialUpdate;
+    private int typingDelayCounter;
 
     private void Start(){
         gameManager = GameObject.FindGameObjectWithTag("GameManager").GetComponent<gameManagerScript>();
@@ -37,25 +56,64 @@ public class ChoiceManager : MonoBehaviour
         choice2TextObject = GameObject.FindGameObjectWithTag("Choice2").GetComponent<TMP_Text>();
         choice3TextObject = GameObject.FindGameObjectWithTag("Choice3").GetComponent<TMP_Text>();
         promptTextObject = GameObject.FindGameObjectWithTag("Prompt").GetComponent<TMP_Text>();
+        initialUpdate = false;
+        typingDelayCounter = 0;
     }
     private void Update(){
-        if (currentNode == 1 && prompts != null){
+        if (currentNode == 1 && prompts != null && !initialUpdate){
             UpdateChoices();
+            initialUpdate = true;
+        }
+        typingDelayCounter++;
+        if (typingPrompt && typingDelayCounter >= typingDelay){
+            promptTextTyping = promptTextTyping + prompts[currentNode-1][promptTextIndex];
+            promptTextObject.text = promptTextTyping;
+            promptTextIndex++;
+            if (promptTextIndex == promptTextLength){
+                typingPrompt = false;
+            }
+        }
+        if (typingChoice1 && typingDelayCounter >= typingDelay){
+            choice1TextTyping = choice1TextTyping + choice1Text[currentNode-1][choice1TextIndex];
+            choice1TextObject.text = choice1TextTyping;
+            choice1TextIndex++;
+            if (choice1TextIndex == choice1TextLength){
+                typingChoice1 = false;
+            }
+        }
+        if (typingChoice2 && typingDelayCounter >= typingDelay){
+            choice2TextTyping = choice2TextTyping + choice2Text[currentNode-1][choice2TextIndex];
+            choice2TextObject.text = choice2TextTyping;
+            choice2TextIndex++;
+            if (choice2TextIndex == choice2TextLength){
+                typingChoice2 = false;
+            }
+        }
+        if (typingChoice3 && typingDelayCounter >= typingDelay){
+            choice3TextTyping = choice3TextTyping + choice3Text[currentNode-1][choice3TextIndex];
+            choice3TextObject.text = choice3TextTyping;
+            choice3TextIndex++;
+            typingDelayCounter = 0;
+            if (choice3TextIndex == choice3TextLength){
+                typingChoice3 = false;
+            }
         }
     }
     public void HandleChoiceSelection(int selectedOption){
-        switch (selectedOption){
-            case 0:
-                currentNode = choice1NextNode[currentNode - 1];
-                break;
-            case 1:
-                currentNode = choice2NextNode[currentNode - 1];
-                break;
-            case 2:
-                currentNode = choice3NextNode[currentNode - 1];
-                break;
-            default:
-                break;
+        if (!(typingPrompt || typingChoice1 || typingChoice2 || typingChoice3)){
+            switch (selectedOption){
+                case 0:
+                    currentNode = choice1NextNode[currentNode - 1];
+                    break;
+                case 1:
+                    currentNode = choice2NextNode[currentNode - 1];
+                    break;
+                case 2:
+                    currentNode = choice3NextNode[currentNode - 1];
+                    break;
+                default:
+                    break;
+            }
         }
         if (choice1NextNode[currentNode - 1] == 0){
             ResolveChoiceResults();
@@ -65,8 +123,9 @@ public class ChoiceManager : MonoBehaviour
         }
     }
 
-    public void SetUpChoices(string csvFilePath){
+    public void SetUpChoices(string csvFilePath, int setTypingDelay){
         currentNode = 1;
+        typingDelay = setTypingDelay;
         var reader = new StreamReader(csvFilePath);
         reader.ReadLine(); //skip the titles
         while (!reader.EndOfStream)
@@ -89,7 +148,6 @@ public class ChoiceManager : MonoBehaviour
             MoralityScore5Changes.Add(Convert.ToInt32(values[14]));
             MoralityScore6Changes.Add(Convert.ToInt32(values[15]));
         }
-        UpdateChoices();
         resultsStart = 0;
         while (prompts[resultsStart] != ""){
             resultsStart += 1;
@@ -98,6 +156,35 @@ public class ChoiceManager : MonoBehaviour
     }
 
     private void UpdateChoices(){
+        if (typingPrompt || typingChoice1 || typingChoice2 || typingChoice3){
+            typingPrompt = false;
+            typingChoice1 = false;
+            typingChoice2 = false;
+            typingChoice3 = false;
+            promptTextObject.text = prompts[currentNode-1];
+            choice1TextObject.text = choice1Text[currentNode-1];
+            choice2TextObject.text = choice2Text[currentNode-1];
+            choice3TextObject.text = choice3Text[currentNode-1];
+        }
+        else{
+            promptTextIndex = 0;
+            promptTextLength = prompts[currentNode-1].Length;
+            promptTextTyping = "";
+            typingPrompt = true;
+            choice1TextIndex = 0;
+            choice1TextLength = choice1Text[currentNode-1].Length;
+            choice1TextTyping = "";
+            typingChoice1 = true;
+            choice2TextIndex = 0;
+            choice2TextLength = choice2Text[currentNode-1].Length;
+            choice2TextTyping = "";
+            typingChoice2 = true;
+            choice3TextIndex = 0;
+            choice3TextLength = choice3Text[currentNode-1].Length;
+            choice3TextTyping = "";
+            typingChoice3 = true;
+            typingDelayCounter = 10000;
+        }
         promptTextObject.text = prompts[currentNode - 1];
         choice1TextObject.text = choice1Text[currentNode - 1];
         choice2TextObject.text = choice2Text[currentNode - 1];

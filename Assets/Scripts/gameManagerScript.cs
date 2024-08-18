@@ -12,6 +12,7 @@ public class gameManagerScript : MonoBehaviour
     const string CHOICES_FILE_PATH = "./assets/CSVs/Choices/Choices";
     const string RESULTS_FILE_PATH = "./assets/CSVs/Results/Results";
     const string FILE_EXTENSION = ".csv";
+    const int TYPING_DELAY = 50;
     public ChoiceManager choiceManager;
     public DialogueManager2 dialogueManager;
     public GameObject thisObject;
@@ -41,7 +42,7 @@ public class gameManagerScript : MonoBehaviour
                 if (!choiceManager){
                     try{
                         choiceManager = GameObject.FindGameObjectWithTag("ChoiceManager").GetComponent<ChoiceManager>();
-                        choiceManager.SetUpChoices(CHOICES_FILE_PATH + currentChoice.ToString() + FILE_EXTENSION);
+                        choiceManager.SetUpChoices(CHOICES_FILE_PATH + currentChoice.ToString() + FILE_EXTENSION, TYPING_DELAY);
                     }
                     catch{}
                 }
@@ -50,7 +51,7 @@ public class gameManagerScript : MonoBehaviour
                 if (!dialogueManager){
                     try{
                         dialogueManager = GameObject.FindGameObjectWithTag("DialogueManager").GetComponent<DialogueManager2>();
-                        dialogueManager.SetUpDialogue(DIALOGUE_FILE_PATH + currentDialogue.ToString() + FILE_EXTENSION, true);
+                        dialogueManager.SetUpDialogue(DIALOGUE_FILE_PATH + currentDialogue.ToString() + FILE_EXTENSION, true, TYPING_DELAY);
                     }
                     catch{}
                 }
@@ -59,7 +60,7 @@ public class gameManagerScript : MonoBehaviour
                 if (!dialogueManager){
                     try{
                         dialogueManager = GameObject.FindGameObjectWithTag("DialogueManager").GetComponent<DialogueManager2>();
-                        dialogueManager.SetUpDialogue(RESULTS_FILE_PATH + currentChoice.ToString() + "-" + currentResult.ToString() + FILE_EXTENSION, false);
+                        dialogueManager.SetUpDialogue(RESULTS_FILE_PATH + currentChoice.ToString() + "-" + currentResult.ToString() + FILE_EXTENSION, false, TYPING_DELAY);
                     }
                     catch{}
                 }
@@ -82,12 +83,12 @@ public class gameManagerScript : MonoBehaviour
 
     public void GoToDialogue(){
         SceneManager.LoadScene("ContextTest");
-        currentDialogue += 1;
+        currentDialogue ++;
         currentScene = "Dialogue";
     }
     public void GoToChoices(){
         SceneManager.LoadScene("OptionTest");
-        currentChoice += 1;
+        currentChoice ++;
         currentScene = "Choices";
     }
     public void GoToResults(int resultNumber){
