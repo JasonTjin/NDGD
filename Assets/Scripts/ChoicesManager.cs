@@ -7,13 +7,13 @@ using UnityEngine;
 
 public class ChoiceManager : MonoBehaviour
 {
-    private TMP_Text choice1TextObject;
+    private TMP_Text choice1TextObject; 
     private TMP_Text choice2TextObject;
     private TMP_Text choice3TextObject;
     private TMP_Text promptTextObject;
     private gameManagerScript gameManager;
-    private int typingDelay;
-    private int currentNode;
+    private int typingDelay; //This is set by the game manager and controls the typing animation delay
+    private int currentNode; 
     private List<int> nodes = new();
     private List<string> prompts = new();
     private List<string> choice1Text = new();
@@ -30,11 +30,12 @@ public class ChoiceManager : MonoBehaviour
     private List<int> MoralityScore4Changes = new();
     private List<int> MoralityScore5Changes = new();
     private List<int> MoralityScore6Changes = new();
-    private int resultsStart;
-    private bool typingPrompt;
-    private int promptTextIndex;
-    private int promptTextLength;
-    private string promptTextTyping;
+    private int resultsStart; //Marks where the choices end and the results nodes start
+    //The following are all for the typing animation speed
+    private bool typingPrompt; //A boolean that is true when the prompt is being animated and false otherwise
+    private int promptTextIndex; //The index of which letter the animation is up to in the prompt
+    private int promptTextLength; //The length of the prompt, which is used to stop the animation when it is complete
+    private string promptTextTyping; //The string that is being added to for the animation
     private bool typingChoice1;
     private int choice1TextIndex;
     private int choice1TextLength;
@@ -47,10 +48,11 @@ public class ChoiceManager : MonoBehaviour
     private int choice3TextIndex;
     private int choice3TextLength;
     private string choice3TextTyping;
-    private bool initialUpdate;
-    private int typingDelayCounter;
+    private bool initialUpdate; //A flag that is true if the initial text update has been started
+    private int typingDelayCounter; //Keeps track of how many frames it has been since a typing animation update
 
     private void Start(){
+        //Updates all the text feilds and the manager
         gameManager = GameObject.FindGameObjectWithTag("GameManager").GetComponent<gameManagerScript>();
         choice1TextObject = GameObject.FindGameObjectWithTag("Choice1").GetComponent<TMP_Text>();
         choice2TextObject = GameObject.FindGameObjectWithTag("Choice2").GetComponent<TMP_Text>();
@@ -60,10 +62,13 @@ public class ChoiceManager : MonoBehaviour
         typingDelayCounter = 0;
     }
     private void Update(){
+        //Does an initial update when first loaded
         if (currentNode == 1 && prompts != null && !initialUpdate){
             UpdateChoices();
             initialUpdate = true;
         }
+
+        //Iterate through all the text to animate them on select frames based on the delay
         typingDelayCounter++;
         if (typingPrompt && typingDelayCounter >= typingDelay){
             promptTextTyping = promptTextTyping + prompts[currentNode-1][promptTextIndex];
@@ -93,13 +98,16 @@ public class ChoiceManager : MonoBehaviour
             choice3TextTyping = choice3TextTyping + choice3Text[currentNode-1][choice3TextIndex];
             choice3TextObject.text = choice3TextTyping;
             choice3TextIndex++;
-            typingDelayCounter = 0;
             if (choice3TextIndex == choice3TextLength){
                 typingChoice3 = false;
             }
         }
+        if (typingDelayCounter >= typingDelay){
+            typingDelayCounter = 0;
+        }
     }
     public void HandleChoiceSelection(int selectedOption){
+        //This is called when a choice is selected and it update the current node or tells the game manager to change scene when the end is reached
         if (!(typingPrompt || typingChoice1 || typingChoice2 || typingChoice3)){
             switch (selectedOption){
                 case 0:
@@ -124,6 +132,7 @@ public class ChoiceManager : MonoBehaviour
     }
 
     public void SetUpChoices(string csvFilePath, int setTypingDelay){
+        //Takes in the data from the csv and puts them in the relevant arrays
         currentNode = 1;
         typingDelay = setTypingDelay;
         var reader = new StreamReader(csvFilePath);
@@ -148,6 +157,7 @@ public class ChoiceManager : MonoBehaviour
             MoralityScore5Changes.Add(Convert.ToInt32(values[14]));
             MoralityScore6Changes.Add(Convert.ToInt32(values[15]));
         }
+        //Sets the results start
         resultsStart = 0;
         while (prompts[resultsStart] != ""){
             resultsStart += 1;
@@ -156,6 +166,7 @@ public class ChoiceManager : MonoBehaviour
     }
 
     private void UpdateChoices(){
+        //Starts the animation if it has not already started otherwise skips the animation to the end
         if (typingPrompt || typingChoice1 || typingChoice2 || typingChoice3){
             typingPrompt = false;
             typingChoice1 = false;
@@ -185,13 +196,10 @@ public class ChoiceManager : MonoBehaviour
             typingChoice3 = true;
             typingDelayCounter = 10000;
         }
-        promptTextObject.text = prompts[currentNode - 1];
-        choice1TextObject.text = choice1Text[currentNode - 1];
-        choice2TextObject.text = choice2Text[currentNode - 1];
-        choice3TextObject.text = choice3Text[currentNode - 1];
     }
 
     private void ResolveChoiceResults(){
+        //Updates the score and tells the game manager to go to the results
         gameManager.UpdateScores(FinancialChanges[currentNode - 1], TeamMoralChanges[currentNode - 1], MoralityScore1Changes[currentNode - 1], MoralityScore2Changes[currentNode - 1], MoralityScore3Changes[currentNode - 1], MoralityScore4Changes[currentNode - 1], MoralityScore5Changes[currentNode - 1], MoralityScore6Changes[currentNode - 1]);
         gameManager.GoToResults(currentNode - resultsStart);
     }

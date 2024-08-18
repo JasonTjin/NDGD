@@ -10,28 +10,30 @@ using System.Linq;
 
 public class DialogueManager2 : MonoBehaviour
 {
-    private int typingDelay;
     private TMP_Text dialogueText;
     private TMP_Text speakerText;
     private gameManagerScript gameManager;
+    private int typingDelay;//This is set by the game manager and controls the typing animation delay
     private List<int> nodes;
     private List<string> speakers;
     private List<string> prompts;
     private List<int> nextNodes;
-    private int currentNode;
-    private bool inDialogue;
-    private bool typingSpeaker;
-    private int speakerTextIndex;
-    private int speakerTextLength;
-    private string speakerTextTyping;
+    private int currentNode; 
+    private bool inDialogue; //True if it is a context scene and false if it is a results scene
+    //The following are all for the typing animation speed
+    private bool typingSpeaker; //A boolean that is true when the dialogue is being animated and false otherwise
+    private int speakerTextIndex; //The index of which letter the animation is up to in the dialogue
+    private int speakerTextLength; //The length of the dialogue, which is used to stop the animation when it is complete
+    private string speakerTextTyping; //The string that is being added to for the animation
     private bool typingDialogue;
     private int dialogueTextIndex;
     private int dialogueTextLength;
     private string dialogueTextTyping;
-    private bool initialUpdate;
-    private int typingDelayCounter;
+    private bool initialUpdate; //A flag that is true if the initial text update has been started
+    private int typingDelayCounter; //Keeps track of how many frames it has been since a typing animation update
 
     private void Start(){
+        //Updates all the text feilds and the manager
         gameManager = GameObject.FindGameObjectWithTag("GameManager").GetComponent<gameManagerScript>();
         dialogueText = GameObject.FindGameObjectWithTag("Dialogue").GetComponent<TMP_Text>();
         speakerText = GameObject.FindGameObjectWithTag("Speaker").GetComponent<TMP_Text>();
@@ -41,10 +43,13 @@ public class DialogueManager2 : MonoBehaviour
     }
 
     private void Update(){
+        //Does an initial update when first loaded
         if (currentNode == 1 && prompts != null && !initialUpdate){
             UpdateDialogue();
             initialUpdate = true;
         }
+
+        //Iterate through all the text to animate them on select frames based on the delay
         typingDelayCounter++;
         if (typingSpeaker && typingDelayCounter >= typingDelay){
             speakerTextTyping = speakerTextTyping + speakers[currentNode-1][speakerTextIndex];
@@ -58,15 +63,18 @@ public class DialogueManager2 : MonoBehaviour
             dialogueTextTyping = dialogueTextTyping + prompts[currentNode-1][dialogueTextIndex];
             dialogueText.text = dialogueTextTyping;
             dialogueTextIndex++;
-            typingDelayCounter = 0;
             if (dialogueTextIndex == dialogueTextLength){
                 typingDialogue = false;
             }
+        }
+        if (typingDelayCounter >= typingDelay){
+            typingDelayCounter = 0;
         }
     }
 
     public void SetUpDialogue(string csvFilePath, bool setInDialogue, int setTypingDelay)
     {
+        //Takes in the data from the csv and puts them in the relevant arrays
         currentNode = 1;
         nodes = new();
         speakers = new();
@@ -87,6 +95,7 @@ public class DialogueManager2 : MonoBehaviour
     }
 
     private void UpdateDialogue(){
+        //Starts the animation if it has not already started otherwise skips the animation to the end
         if (typingDialogue || typingSpeaker){
             typingDialogue = false;
             typingSpeaker = false;
@@ -107,6 +116,7 @@ public class DialogueManager2 : MonoBehaviour
     }
 
     public void GoToNextDialogue(){
+        // Updates the current node and tells the game manager to go to the next scene when at the end
         if (!(typingDialogue || typingSpeaker)){
             currentNode = nextNodes[currentNode-1];
         }

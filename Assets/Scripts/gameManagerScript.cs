@@ -12,14 +12,14 @@ public class gameManagerScript : MonoBehaviour
     const string CHOICES_FILE_PATH = "./assets/CSVs/Choices/Choices";
     const string RESULTS_FILE_PATH = "./assets/CSVs/Results/Results";
     const string FILE_EXTENSION = ".csv";
-    const int TYPING_DELAY = 50;
+    const int TYPING_DELAY = 50; //Controlls the delay between each letter showing up
     public ChoiceManager choiceManager;
     public DialogueManager2 dialogueManager;
-    public GameObject thisObject;
-    private int currentDialogue;
-    private int currentChoice;
-    private int currentResult;
-    private int FinancialScore;
+    public GameObject thisObject; //Used to make this object not destroy on load
+    private int currentDialogue; //The number of the current dialogue file
+    private int currentChoice; //The number of the current choice file
+    private int currentResult; //The number of the current result from the current choice
+    private int FinancialScore; 
     private int TeamMoralScore;
     private int MoralityScore1;
     private int MoralityScore2;
@@ -27,16 +27,17 @@ public class gameManagerScript : MonoBehaviour
     private int MoralityScore4;
     private int MoralityScore5;
     private int MoralityScore6;
-    private string currentScene;
+    private string currentScene; //The name of the current scene
 
     void Awake()
     {
         currentDialogue = 0;
         currentChoice = 0;
-        DontDestroyOnLoad(thisObject);
+        DontDestroyOnLoad(thisObject); //Stops this object from being unloaded 
     }
 
-    void Update(){
+    void Update(){ 
+        //This makes sure that the choice manager or dialogue manager are correctly stored, then sets them up for when a scene change happens
         switch (currentScene){
             case "Choices":
                 if (!choiceManager){
@@ -71,6 +72,7 @@ public class gameManagerScript : MonoBehaviour
     }
 
     public void UpdateScores(int FinancialChange, int TeamMoralChange, int MoralityScore1Change, int MoralityScore2Change, int MoralityScore3Change, int MoralityScore4Change, int MoralityScore5Change, int MoralityScore6Change){
+        //Updates all the scores
         FinancialScore += FinancialChange;
         TeamMoralScore += TeamMoralChange;
         MoralityScore1 += MoralityScore1Change;
@@ -82,16 +84,19 @@ public class gameManagerScript : MonoBehaviour
     }
 
     public void GoToDialogue(){
-        SceneManager.LoadScene("ContextTest");
+        //Changes the scene, updates the dialogue
+        SceneManager.LoadScene("ContextTest"); 
         currentDialogue ++;
         currentScene = "Dialogue";
     }
     public void GoToChoices(){
+        //Changes the scene, updates the dialogue
         SceneManager.LoadScene("OptionTest");
         currentChoice ++;
         currentScene = "Choices";
     }
     public void GoToResults(int resultNumber){
+        //Changes the scene, updates the dialogue
         SceneManager.LoadScene("ContextTest");
         currentResult = resultNumber;
         currentScene = "Results";
