@@ -7,13 +7,12 @@ using UnityEngine;
 
 public class ChoiceManager : MonoBehaviour
 {
-    public TMP_Text choice1TextObject;
-    public TMP_Text choice2TextObject;
-    public TMP_Text choice3TextObject;
-    public TMP_Text promptTextObject;
+    private TMP_Text choice1TextObject;
+    private TMP_Text choice2TextObject;
+    private TMP_Text choice3TextObject;
+    private TMP_Text promptTextObject;
     private gameManagerScript gameManager;
-    private int previousNode = 1;
-    private int currentNode = 1;
+    private int currentNode;
     private List<int> nodes = new();
     private List<string> prompts = new();
     private List<string> choice1Text = new();
@@ -34,9 +33,17 @@ public class ChoiceManager : MonoBehaviour
 
     private void Start(){
         gameManager = GameObject.FindGameObjectWithTag("GameManager").GetComponent<gameManagerScript>();
+        choice1TextObject = GameObject.FindGameObjectWithTag("Choice1").GetComponent<TMP_Text>();
+        choice2TextObject = GameObject.FindGameObjectWithTag("Choice2").GetComponent<TMP_Text>();
+        choice3TextObject = GameObject.FindGameObjectWithTag("Choice3").GetComponent<TMP_Text>();
+        promptTextObject = GameObject.FindGameObjectWithTag("Prompt").GetComponent<TMP_Text>();
+    }
+    private void Update(){
+        if (currentNode == 1 && prompts != null){
+            UpdateChoices();
+        }
     }
     public void HandleChoiceSelection(int selectedOption){
-        previousNode = currentNode;
         switch (selectedOption){
             case 0:
                 currentNode = choice1NextNode[currentNode - 1];
@@ -59,6 +66,7 @@ public class ChoiceManager : MonoBehaviour
     }
 
     public void SetUpChoices(string csvFilePath){
+        currentNode = 1;
         var reader = new StreamReader(csvFilePath);
         reader.ReadLine(); //skip the titles
         while (!reader.EndOfStream)
@@ -97,7 +105,7 @@ public class ChoiceManager : MonoBehaviour
     }
 
     private void ResolveChoiceResults(){
-        gameManager.UpdateScores(FinancialChanges[previousNode - 1], TeamMoralChanges[previousNode - 1], MoralityScore1Changes[previousNode - 1], MoralityScore2Changes[previousNode - 1], MoralityScore3Changes[previousNode - 1], MoralityScore4Changes[previousNode - 1], MoralityScore5Changes[previousNode - 1], MoralityScore6Changes[previousNode - 1]);
-        gameManager.GoToResults(previousNode - resultsStart);
+        gameManager.UpdateScores(FinancialChanges[currentNode - 1], TeamMoralChanges[currentNode - 1], MoralityScore1Changes[currentNode - 1], MoralityScore2Changes[currentNode - 1], MoralityScore3Changes[currentNode - 1], MoralityScore4Changes[currentNode - 1], MoralityScore5Changes[currentNode - 1], MoralityScore6Changes[currentNode - 1]);
+        gameManager.GoToResults(currentNode - resultsStart);
     }
 }

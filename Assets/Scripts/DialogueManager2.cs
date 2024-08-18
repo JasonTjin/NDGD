@@ -10,22 +10,35 @@ using System.Linq;
 
 public class DialogueManager2 : MonoBehaviour
 {
-    public TMP_Text dialogueText;
-    public TMP_Text speakerText;
+    private TMP_Text dialogueText;
+    private TMP_Text speakerText;
     private gameManagerScript gameManager;
-    private List<int> nodes = new();
-    private List<string> speakers = new();
-    private List<string> prompts = new();
-    private List<int> nextNodes = new();
-    private int currentNode = 1;
-    private bool inDialogue;
+    public List<int> nodes;
+    public List<string> speakers;
+    public List<string> prompts;
+    public List<int> nextNodes;
+    public int currentNode;
+    public bool inDialogue;
 
     private void Start(){
         gameManager = GameObject.FindGameObjectWithTag("GameManager").GetComponent<gameManagerScript>();
+        dialogueText = GameObject.FindGameObjectWithTag("Dialogue").GetComponent<TMP_Text>();
+        speakerText = GameObject.FindGameObjectWithTag("Speaker").GetComponent<TMP_Text>();
+    }
+
+    private void Update(){
+        if (currentNode == 1 && prompts != null){
+            UpdateDialogue();
+        }
     }
 
     public void SetUpDialogue(string csvFilePath, bool setInDialogue)
     {
+        currentNode = 1;
+        nodes = new();
+        speakers = new();
+        prompts = new();
+        nextNodes = new();
         inDialogue = setInDialogue;
         var reader = new StreamReader(csvFilePath);
         reader.ReadLine(); //skip the titles
