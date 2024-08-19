@@ -12,7 +12,7 @@ public class gameManagerScript : MonoBehaviour
     const string CHOICES_FILE_PATH = "./assets/CSVs/Choices/Choices";
     const string RESULTS_FILE_PATH = "./assets/CSVs/Results/Results";
     const string FILE_EXTENSION = ".csv";
-    const int TYPING_DELAY = 50; //Controlls the delay between each letter showing up
+    const int TYPING_DELAY = 10; //Controlls the delay between each letter showing up
     public ChoiceManager choiceManager;
     public DialogueManager2 dialogueManager;
     public GameObject thisObject; //Used to make this object not destroy on load
