@@ -18,7 +18,7 @@ public class DialogueManager2 : MonoBehaviour
     private List<string> speakers;
     private List<string> prompts;
     private List<int> nextNodes;
-    private int currentNode; 
+    private int currentNode;
     private bool inDialogue; //True if it is a context scene and false if it is a results scene
     //The following are all for the typing animation speed
     private bool typingSpeaker; //A boolean that is true when the dialogue is being animated and false otherwise
@@ -32,7 +32,12 @@ public class DialogueManager2 : MonoBehaviour
     private bool initialUpdate; //A flag that is true if the initial text update has been started
     private int typingDelayCounter; //Keeps track of how many frames it has been since a typing animation update
 
-    private void Start(){
+    public Animator dialogueAnimator;
+#nullable enable
+    public Animator? charAnimator;
+
+    private void Start()
+    {
         //Updates all the text feilds and the manager
         gameManager = GameObject.FindGameObjectWithTag("GameManager").GetComponent<gameManagerScript>();
         dialogueText = GameObject.FindGameObjectWithTag("Dialogue").GetComponent<TMP_Text>();
@@ -40,34 +45,42 @@ public class DialogueManager2 : MonoBehaviour
         typingSpeaker = false;
         initialUpdate = false;
         typingDelayCounter = 0;
+        OpenUI(); // Animates Character and dialogue box on screen
     }
 
-    private void Update(){
+    private void Update()
+    {
         //Does an initial update when first loaded
-        if (currentNode == 1 && prompts != null && !initialUpdate){
+        if (currentNode == 1 && prompts != null && !initialUpdate)
+        {
             UpdateDialogue();
             initialUpdate = true;
         }
 
         //Iterate through all the text to animate them on select frames based on the delay
         typingDelayCounter++;
-        if (typingSpeaker && typingDelayCounter >= typingDelay){
-            speakerTextTyping = speakerTextTyping + speakers[currentNode-1][speakerTextIndex];
+        if (typingSpeaker && typingDelayCounter >= typingDelay)
+        {
+            speakerTextTyping = speakerTextTyping + speakers[currentNode - 1][speakerTextIndex];
             speakerText.text = speakerTextTyping;
             speakerTextIndex++;
-            if (speakerTextIndex == speakerTextLength){
+            if (speakerTextIndex == speakerTextLength)
+            {
                 typingSpeaker = false;
             }
         }
-        if (typingDialogue && typingDelayCounter >= typingDelay){
-            dialogueTextTyping = dialogueTextTyping + prompts[currentNode-1][dialogueTextIndex];
+        if (typingDialogue && typingDelayCounter >= typingDelay)
+        {
+            dialogueTextTyping = dialogueTextTyping + prompts[currentNode - 1][dialogueTextIndex];
             dialogueText.text = dialogueTextTyping;
             dialogueTextIndex++;
-            if (dialogueTextIndex == dialogueTextLength){
+            if (dialogueTextIndex == dialogueTextLength)
+            {
                 typingDialogue = false;
             }
         }
-        if (typingDelayCounter >= typingDelay){
+        if (typingDelayCounter >= typingDelay)
+        {
             typingDelayCounter = 0;
         }
     }
@@ -94,42 +107,68 @@ public class DialogueManager2 : MonoBehaviour
         }
     }
 
-    private void UpdateDialogue(){
+    private void UpdateDialogue()
+    {
         //Starts the animation if it has not already started otherwise skips the animation to the end
-        if (typingDialogue || typingSpeaker){
+        if (typingDialogue || typingSpeaker)
+        {
             typingDialogue = false;
             typingSpeaker = false;
-            speakerText.text = speakers[currentNode-1];
-            dialogueText.text = prompts[currentNode-1];
+            speakerText.text = speakers[currentNode - 1];
+            dialogueText.text = prompts[currentNode - 1];
         }
-        else{
+        else
+        {
             speakerTextIndex = 0;
-            speakerTextLength = speakers[currentNode-1].Length;
+            speakerTextLength = speakers[currentNode - 1].Length;
             speakerTextTyping = "";
             typingSpeaker = true;
             dialogueTextIndex = 0;
-            dialogueTextLength = prompts[currentNode-1].Length;
+            dialogueTextLength = prompts[currentNode - 1].Length;
             dialogueTextTyping = "";
             typingDialogue = true;
             typingDelayCounter = 10000;
         }
     }
 
-    public void GoToNextDialogue(){
+    public void GoToNextDialogue()
+    {
         // Updates the current node and tells the game manager to go to the next scene when at the end
-        if (!(typingDialogue || typingSpeaker)){
-            currentNode = nextNodes[currentNode-1];
+        if (!(typingDialogue || typingSpeaker))
+        {
+            currentNode = nextNodes[currentNode - 1];
         }
-        if (currentNode != 0){
+        if (currentNode != 0)
+        {
             UpdateDialogue();
         }
-        else{
-            if(inDialogue){
+        else
+        {   CloseUI();
+            if (inDialogue)
+            {
                 gameManager.GoToChoices();
             }
-            else{
+            else
+            {
                 gameManager.GoToDialogue();
             }
         }
-    }    
+    }
+    public void OpenUI()
+    {
+        dialogueAnimator.SetBool("isOpen", true);
+        if (charAnimator != null)
+        {
+            charAnimator.SetBool("isOpen", true);
+        }
+    }
+
+    public void CloseUI()
+    {
+        dialogueAnimator.SetBool("isOpen", false);
+        if (charAnimator != null)
+        {
+            charAnimator.SetBool("isOpen", false);
+        }
+    }
 }
