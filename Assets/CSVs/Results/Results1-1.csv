@@ -1,9 +1,3 @@
 ﻿Node ID,Speaker,Text,Next Node ID
-1,You ,I trust you're judgmenet| so if you say you can do it then I believe you.,2
-2,Jess,Thanks! I won't let you down.,0
-,,,
-,,,
-,,,
-,,,
-,,,
-,,,
+1,You ,I trust you're judgmenet| but I will just check in now and then to see how you're progressing.,2
+2,Jess,Well okay| if you feel you have to.,0

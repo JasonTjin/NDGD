@@ -1,0 +1,5 @@
+﻿Node ID,Speaker,Text,Next Node ID
+1,You ,You've done a good job| but I want Olivia to finish the project.,2
+2,Jess,Don't you believe I can do it?,3
+3,You ,I believe you| but this is too important to take a chance.,4
+4,Jess,If that's what you think is right…,0
