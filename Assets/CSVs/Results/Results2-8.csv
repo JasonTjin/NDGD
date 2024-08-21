@@ -1,0 +1,6 @@
+﻿Node ID,Speaker,Text,Next Node ID
+1,You,Evan| you absolutely cannot start fights in the office.,2
+2,You,I have zero tollerance for that sort of behaviour.,3
+3,You,However| since I'm new you'll get a warning.,4
+4,Evan,I'm so sorry| it won't happen again.,5
+5,You,Good| now both of you get back to work.,6

@@ -1,0 +1,7 @@
+﻿Node ID,Speaker,Text,Next Node ID
+1,You,Evan| you can't start arguments.,2
+2,You,You need to apologise to Frank.,3
+3,Evan,But he…,4
+4,You,No buts| you need to apologise.,5
+5,Evan,I'm sorry Frank,6
+6,You,Good| now get back to work.,0

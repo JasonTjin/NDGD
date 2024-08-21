@@ -1,0 +1,10 @@
+﻿Node ID,Speaker,Text,Next Node ID
+1,You,Frank| what you offered to the client is unethical and goes against our company values.,2
+2,Frank,I was just trying to help the company make money.,3
+3,You,There is no excuse for that behaviour.  If I ever see you do something like this again I won't be so forgiving.,4
+4,You,Now appologise to Evan.,5
+5,Frank,Sorry Evan,6
+6,Evan,Just don't pull something like that again.,7
+7,You ,You need to apologise too Evan.  Even though you doing the right thing| you can't raise your voice in the office.,8
+8,Evan,I'm sorry boss I refrain from doing it again.,9
+9,You,Good| now get back to work.,0

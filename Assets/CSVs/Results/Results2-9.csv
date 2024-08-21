@@ -1,0 +1,7 @@
+﻿Node ID,Speaker,Text,Next Node ID
+1,You,Evan| you absolutely cannot start fights in the office.,2
+2,You,From the sound of it Frank was just doing what's best for the company.,3
+3,Evan,But…,4
+4,You,No buts| he was looking out for our bottom line and you need to apologise now.,5
+5,Evan,I really sorry for starting a fight.,6
+6,You,Good| now get back to work.,0

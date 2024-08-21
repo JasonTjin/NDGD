@@ -1,0 +1,7 @@
+﻿Node ID,Speaker,Text,Next Node ID
+1,You,Frank| you have done something that is seriously wrong.,2
+2,You,I am willing to show forgiveness today| but if I see a pattern I will fire you.,3
+3,Frank,I was just trying to make the company money.,4
+4,You,You jepordised our integrity and reputation.,5
+5,You,Thank you for calling him out Evan.,6
+6,Evan,It is my duty and my pleasure.,0

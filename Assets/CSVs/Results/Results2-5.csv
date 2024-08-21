@@ -1,0 +1,10 @@
+﻿Node ID,Speaker,Text,Next Node ID
+1,You,Evan| there is no excuse for starting office conflict.,2
+2,You,You need to appologise.,3
+3,Evan,but…,4
+4,You,No buts| just an appology,5
+5,Evan,I'm sorry for starting an office conflict.,6
+6,You,If it happens again I won't be so lenient and there will be serious consequences.,7
+7,You,Good| now Frank it takes two to fight so you need to appologise to Evan.,8
+8,Frank,Sorry Evan.,9
+9,You,Now get back to work.,0

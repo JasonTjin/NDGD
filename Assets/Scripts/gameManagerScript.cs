@@ -21,12 +21,12 @@ public class gameManagerScript : MonoBehaviour
     private int currentResult; //The number of the current result from the current choice
     private int FinancialScore; 
     private int TeamMoralScore;
-    private int MoralityScore1;
-    private int MoralityScore2;
-    private int MoralityScore3;
-    private int MoralityScore4;
-    private int MoralityScore5;
-    private int MoralityScore6;
+    private int MoralityScore1; //The primacy of the public interest
+    private int MoralityScore2; //The enhancement of quality of life
+    private int MoralityScore3; //Honesty
+    private int MoralityScore4; //Compentancy
+    private int MoralityScore5; //Professional development
+    private int MoralityScore6; //Professionalism
     private string currentScene; //The name of the current scene
 
     void Awake()
