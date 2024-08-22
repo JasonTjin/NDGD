@@ -1,0 +1,5 @@
+﻿Node ID,Speaker,Text,Next Node ID
+1,You ,It's just too risky with the current projects that we have.,2
+2,Jess,Oh okay| if you think so.,3
+3,You ,Sorry Jess| now is just not the right time to be taking risks.,4
+4,Jess,It's alright I get it.,0

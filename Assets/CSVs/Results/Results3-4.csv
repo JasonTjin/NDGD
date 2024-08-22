@@ -1,0 +1,6 @@
+﻿Node ID,Speaker,Text,Next Node ID
+1,You ,I think it's a great idea.,2
+2,Jess,You do?,3
+3,You ,Yeah absolutely| but I think that everyone should decide for themselves if they want to go.,4
+4,Jess,That makes sense.,5
+5,Jess,This is going to be great for the team| you won't regret it.,0
