@@ -1,0 +1,5 @@
+﻿Node ID,Speaker,Text,Next Node ID
+1,You,It's not a good idea.,2
+2,Frank,Huh? Why not?,3
+3,You,I just don't think it's a good idea.,4
+4,Jess,Oh ok| very well.,0

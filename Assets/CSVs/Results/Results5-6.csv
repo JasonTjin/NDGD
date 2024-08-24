@@ -1,0 +1,10 @@
+﻿Node ID,Speaker,Text,Next Node ID
+1,You,I will let Bossman know.,2
+2,You,*Ring* *Ring*,3
+3,John Bossman,What is it?,4
+4,You,CivCorp is on the fence about giving us their business| do you have any advice?,5
+5,John Bossman,Sure| just give them some to … pursuade them.,6
+6,John Bossman,Secure business however you can.,7
+7,,*Click* the line drops,8
+8,,After giving the bribe| CivCorp were appauled that we thought that would work.,9
+9,,ITS4 was not awarded the project.,0
