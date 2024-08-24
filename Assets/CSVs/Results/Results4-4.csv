@@ -1,0 +1,5 @@
+﻿Node ID,Speaker,Text,Next Node ID
+1,You,It sounds like Frank is taking advantage of your kindness.,2
+2,You,You need to stand up for yourself more to maintain a balanced work load.,3
+3,Wilson,Oh ok| I will try to do that.,4
+4,Wilson,Thanks for the advice.,0

@@ -1,0 +1,5 @@
+﻿Node ID,Speaker,Text,Next Node ID
+1,You,I want to try and help you get the work done.,2
+2,Wilson,Really?,3
+3,You,It's important that the project is done and also I don't want you to do all this extra work alone.,4
+4,Wilson,I really appreciate that.,0
