@@ -1,0 +1,6 @@
+﻿Node ID,Speaker,Text,Next Node ID
+1,You,We will accept the project| but we will require one condition.,2
+2,You,The condition is at any point we can stop the project if it appears the client is doing something unethical.,3
+3,Olivia,Ok I will let the client know.,4
+4,,Later that day Olivia lets clients know the terms.,5
+5,,They decide the terms aren't acceptable and decline.,0

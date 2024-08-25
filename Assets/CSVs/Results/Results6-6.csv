@@ -1,0 +1,6 @@
+﻿Node ID,Speaker,Text,Next Node ID
+1,You,We will accept the project| but we will require one condition.,2
+2,You,ITS4 will assume no liability for any harm caused by the product.,3
+3,Olivia,Ok I will let the client know.,4
+4,,Later that day Olivia lets clients know the terms.,5
+5,,They decide the terms are fine and accept.,0
