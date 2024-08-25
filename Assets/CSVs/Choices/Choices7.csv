@@ -1,0 +1,14 @@
+﻿Node ID,Text,Option1,Option2,Option3,NextNode1,NextNode2,NextNode3,FinancialChange,TeamMoralChange,MoralityScore1,MoralityScore2,MoralityScore3,MoralityScore4,MoralityScore5,MoralityScore6
+1,Should I let Jess take the data home.,No.,Yes| but with certain restrictions,Yes,2,3,4,0,0,0,0,0,0,0,0
+2,What should I do about the report.,Open up the office on the weekend for Jess to work.,Speak to the client to let them know the report is going to be late.,I will take the database home| since I know I won't mishandle the data.,5,6,7,0,0,0,0,0,0,0,0
+3,What restrictions,All the data will by anonymised removing all identifying information.,I will take the database home| since I know I won't mishandle the data.,Jess needs to promise to be extremely careful.,8,7,4,0,0,0,0,0,0,0,0
+4,,,,,0,0,0,10,5,-4,0,-3,0,0,0
+5,,,,,0,0,0,10,-5,4,0,4,0,0,0
+6,,,,,0,0,0,-10,0,3,0,4,0,0,0
+7,,,,,0,0,0,10,0,-3,0,-2,0,0,0
+8,,,,,0,0,0,10,10,-2,0,-1,0,0,0
+,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,

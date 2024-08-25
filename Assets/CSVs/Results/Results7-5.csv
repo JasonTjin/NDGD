@@ -1,0 +1,4 @@
+﻿Node ID,Speaker,Text,Next Node ID
+1,You,Ok| you can take it home.,2
+2,You,But all the data will be anonymised to protect the data.,3
+3,Jess,Thank you! You've really helped me out here.,0
