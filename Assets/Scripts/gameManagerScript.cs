@@ -85,8 +85,8 @@ public class gameManagerScript : MonoBehaviour
 
     public void GoToDialogue(){
         //Changes the scene, updates the dialogue
-        SceneManager.LoadScene("Assets/Scenes/Introduction/Dialogue1.unity"); 
         currentDialogue ++;
+        SceneManager.LoadScene("Assets/Scenes/Chapters/Dialogue"+ currentDialogue.ToString() + ".unity"); 
         currentScene = "Dialogue";
     }
     public void GoToChoices(){
@@ -97,7 +97,7 @@ public class gameManagerScript : MonoBehaviour
     }
     public void GoToResults(int resultNumber){
         //Changes the scene, updates the dialogue
-        SceneManager.LoadScene("ContextTest");
+        SceneManager.LoadScene("Assets/Scenes/Chapters/Dialogue"+ currentDialogue.ToString() + ".unity");
         currentResult = resultNumber;
         currentScene = "Results";
     }
