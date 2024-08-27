@@ -1,0 +1,8 @@
+﻿Node Id,Speaker,Text,Next Node ID
+1,Frank,Hey boss! You see the report I gave you on the project?,2
+2,,I did see the results Frank| nice work. But I did notice something on the report.,3
+3,,Oh? What's that?,4
+4,,"You've taken full credit of the project but last I thought, Olivia and Wilson were responsible for a majority of it.",5
+5,,Well you know me| I make a lot of decisions and| as much as you do| guide the team to great results.,6
+6,,In short| they followed my lead.,7
+7,,Come on| you should get it at least right? Their work is my work| and I got them to this point| we're a team after all.,0

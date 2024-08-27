@@ -1,0 +1,11 @@
+﻿Node Id,Speaker,Text,Next Node ID
+1,You,Someone's left the light one| no one should be staying back since we're set to release tomorrow.,2
+2,You,Olivia? What are you staying back for?,3
+3,Olivia,I found something… a critical flaw in the software| releasing it as is could result in severe complications.,4
+4,You,What kind of flaw? Surely it would have been noticed earlier if it was this large of an problem.,5
+5,Olivia,Its in the security module. Under very specific conditions| the system could expose sensitive user data.,6
+6,Olivia,It's rare but if it happens… it would be catastrophic.,7
+7,Olivia,Bad enough that the trust and reputation we've built could all collapse.,8
+8,You,How long do you think it would take to fix?,9
+9,Olivia,At least a week| maybe two. It means missing the deadline and delaying the entire release.,10
+10,You,This is tough| the client's been pushing hard for this release. We have a lot riding on meeting the deadline.,0

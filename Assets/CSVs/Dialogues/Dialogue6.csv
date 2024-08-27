@@ -1,9 +1,8 @@
 ﻿Node ID,Speaker,Text,Next Node ID
-1,,Olivia has let you know she has found huge new client| but she has some concerns.,2
-2,You,What are your concerns about this new client?,3
-3,Oliva,They have a dubious background.  They are under investigation for defrauding the shareholders.,4
-4,You,Have they been charged for anything?,5
-5,Olivia,Two years ago they were fined for having planned obsilecense in their product.,6
-6,Olivia,But the current investigation is still ongoing.,7
-7,You,So you're worried that we'd be helping an amoral company?,8
-8,Olivia,Exactly| but they are offering a massive amount of new business.,0
+1,,Jess walks into your office looking like she's got something on her mind.,2
+2,You,What's up Jess?,3
+3,Jess,"I've been looking at trends in the industry and I think the team would benefit from learning an up and coming tech stack called ""Paper"".",4
+4,Jess,The best part is that there is a Paper stack workshop that runs over next week.,5
+5,You,Won't this impact our deadlines?,6
+6,Jess,Yes| but the skills gain from something like this will more than make up for the lost time.,7
+7,Jess,What do you think?,0

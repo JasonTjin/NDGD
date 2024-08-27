@@ -1,12 +1,22 @@
-﻿Node ID,Speaker,Text,Next Node ID
-1,,You hear some raised voices and it sounds like Frank and Evan.,2
-2,Evan,You are a disgrace to ITS4,3
-3,Frank,How do you move around with that stick so far up your arse?,4
-4,Evan,Just wait until he finds out what you did.,5
-5,Frank,He will thank me for what I did.,6
-6,You,What is going on here?,7
-7,Evan,I'm so glad you're here| this man has besmirched the good name of ITS4.,8
-8,Frank,All I did was tell them what they wanted to hear.,9
-9,Evan,You told a client that we would happily add in a backdoor bypass into their gambling software.,10
-10,Frank,It's their product| we just follow what they tell us to do.,11
-11,You,I think I understand what's going on,0
+﻿Node Id,Speaker,Text,Next Node Id
+1,Two weeks later…,… … … … …,2
+2,You,*Sigh* … … … Where is she? She was the one who planned to meet up…,3
+3,You,These places depress me| why call it a business park?  The only park here are where people put their cars.,4
+4,Phone,*Ring ring* *Ring ring*,5
+5,You,… … .. Hello?,6
+6,???,SORRYYYYYY,7
+7,You, … Jess? What's up? Where are you?,8
+8,Jess,I'm so sorry something came up| I can't make it.,9
+9,Jess,But there's good news.  They want you! No interview necessary.,10
+10,You,That's great| but why tell me that now that I'm here?,11
+11,Jess,Well… they have heard about you and know your record.,12
+12,Jess, … and recent circumstances have made the position available earlier than expected.,13
+13,Jess,They are so keen in fact they want you to start tomorrow!,14
+14,You,Oh?,15
+15,Jess,Yep|  just come back tomorrow and we'll get you up to speed.,16
+16,You,I'm starting to get a bit suspicious… What exactly happened to the last guy?,17
+17,Jess,Let's just say you won't be earning the big bucks for nothing.,18
+18,Jess,But! … As long as you do better than the last guy| I don't see how anything could go wrong!,19
+19,Jess,Anyway! Lots of work to pick up on| I'll talk to you later 'kay? Byyyye,20
+20,You,Wait maybe I should thi- *Call cuts* -ink about it first…,21
+21,You,Maybe I should have stayed on holiday...,0

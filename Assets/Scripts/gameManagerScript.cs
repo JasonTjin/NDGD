@@ -52,7 +52,7 @@ public class gameManagerScript : MonoBehaviour
                 if (!dialogueManager){
                     try{
                         dialogueManager = GameObject.FindGameObjectWithTag("DialogueManager").GetComponent<DialogueManager2>();
-                        dialogueManager.SetUpDialogue(DIALOGUE_FILE_PATH + currentDialogue.ToString() + FILE_EXTENSION, true, TYPING_DELAY);
+                        dialogueManager.SetUpDialogue(DIALOGUE_FILE_PATH + currentDialogue.ToString() + FILE_EXTENSION, false, TYPING_DELAY);
                     }
                     catch{}
                 }
@@ -85,13 +85,13 @@ public class gameManagerScript : MonoBehaviour
 
     public void GoToDialogue(){
         //Changes the scene, updates the dialogue
-        SceneManager.LoadScene("ContextTest"); 
+        SceneManager.LoadScene("Assets/Scenes/Introduction/Dialogue1.unity"); 
         currentDialogue ++;
         currentScene = "Dialogue";
     }
     public void GoToChoices(){
         //Changes the scene, updates the dialogue
-        SceneManager.LoadScene("OptionTest");
+        SceneManager.LoadScene("OptionScene");
         currentChoice ++;
         currentScene = "Choices";
     }

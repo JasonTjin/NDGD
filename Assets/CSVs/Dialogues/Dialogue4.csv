@@ -1,10 +1,9 @@
 ﻿Node ID,Speaker,Text,Next Node ID
-1,,After a few days working you notice someone consistently working late.,2
-2,You,Wilson| I've seen you staying late quite a bit recently.  Is everything okay.,3
-3,Wilson,I've just got a lot of work to do on the CivCorp project.,4
-4,You,I assigned that project to Frank| why are you working on it?,5
-5,Wilson,He said he needed some help.,6
-6,You,Does  he ask for help often?,7
-7,Wilson,Sometimes.,8
-8,You,Do you ever tell Frank you can't help?,9
-9,Wilson,No| I can usually manage and it seems to really help Frank out.,0
+1,,Jess has been looking a bit troubled.,2
+2,You ,Hey Jess| how is your work going?,3
+3,Jess,It's going well| why do you ask? Is something wrong?,4
+4,You ,No| nothing is wrong.  It's just that you are looking a bit troubled.,5
+5,Jess,Well I just sometimes struggle to understand the reinforcement learning algorithms that HelpCare has asked for.,6
+6,Jess,Olivia made it look so easy on the Melrail project,7
+7,You ,Is it a task you'd want me to reassign?,8
+8,Jess,No.  I just need to keep working and it'll eventually click|don’t worry about me.,0

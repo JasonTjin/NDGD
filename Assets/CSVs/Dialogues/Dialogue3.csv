@@ -1,8 +1,35 @@
 ﻿Node ID,Speaker,Text,Next Node ID
-1,,Jess walks into your office looking like she's got something on her mind.,2
-2,You,What's up Jess?,3
-3,Jess,"I've been looking at trends in the industry and I think the team would benefit from learning an up and coming tech stack called ""Paper"".",4
-4,Jess,The best part is that there is a Paper stack workshop that runs over next week.,5
-5,You,Won't this impact our deadlines?,6
-6,Jess,Yes| but the skills gain from something like this will more than make up for the lost time.,7
-7,Jess,What do you think?,0
+1,Jess,Hey| welcome to Information and Technology Secure Support System Solutions! ,2
+2,You,"Wow, what a name…",3
+3,Jess,…Yeah| I know… it's bit of a touchy subject with the higher ups so maybe don’t mention it.,4
+4,Jess,For brevity  we call ourselves ITS4.,5
+5,Jess,Let's get you aquainted with the team.,6
+6,Jess,You already know me| I'm one of the senior project officers.,7
+7,Jess,This here is Evan Fisher| he'll be your number two for anything managirial.,8
+8,Evan,It's a pleasure to meet you|I've heard all about your record and I am very excited to be working under you!,9
+9,You,I'm looking forward to working with you too.,10
+10,Evan,"Oh ok, I was just trying to be polite.",11
+11,Jess,"Next, this is Olivia Finch| she's one of the best technical minds I've ever met.",12
+12,Olivia,"Ha, Thanks Jess.",13
+13,Olivia,"Stay out of my work and I'll get anything done for you, got it?",14
+14,You,As your manager I can't make such a promise.,15
+15,Olivia,"Fine, just don't try to micro-manage me.",16
+16,Jess,"Moving along… we have Wilson Shumer, he runs operational support.",17
+17,Wilson,Hi.  *Wilson nervously avoids eye contact*,18
+18,You,"No need to be shy, I don't bite.",19
+19,Wilson,*Wilson has already focused back into his work*,20
+20,Jess,Lastly we have …,21
+21,Frank,Frank Waters| senior project officer.  It's a pleasure to make your aquantance.,22
+22,Frank,Oh it was not my intention to offend| my deepest appologies Jess,23
+23,Jess,That's alright Frank,24
+24,Jess,And that's the team.  Day to day you'll be required to make decisions on how things are run.  ,25
+25,Jess,ITS4 is not in the greatest shape right now so just do your best to help the company and the team succeed.,26
+26,Jess,You got this! You'll do great!,27
+27,Jess,"Alrighty, I'll leave you to it.",28
+28,???,*Your desk phone is ringing*,29
+29,John Bossman,Hello| this is John Bossman. You must be the new manager| I am the CEO of ITS4 and you'll be reporting to me directly.,30
+30,You,Good to meet you John.,31
+31,John Bossman,Let's get down to business| this branch is losing money and I don’t like losing money.,32
+32,John Bossman,You have two months to turn this around otherwise we're shutting you down. So get to it.,33
+33,You,What? That's not enough… *click the line drops* … time,34
+34,You,Well I guess I better get to it.,0

@@ -1,10 +1,10 @@
 ﻿Node ID,Speaker,Text,Next Node ID
-1,,Near the end of a Friday| Jess has come up to you looking worried.,2
-2,Jess,The Medsurance report isn't going to be ready by the end of the day.,3
-3,You,It's due by Monday morning isn't it?,4
-4,Jess,Yes.,5
-5,Jess,I need to the weekend to work on this.,6
-6,You,But the only way to access the database is here in the office.,7
-7,Jess,If I can copy the database onto a drive| I can finish the report at home.,8
-8,You,There is sensitive medical data on the databse.,9
-9,Jess,I will be extremely careful I promise.,0
+1,,After a few days working you notice someone consistently working late.,2
+2,You,Wilson| I've seen you staying late quite a bit recently.  Is everything okay.,3
+3,Wilson,I've just got a lot of work to do on the CivCorp project.,4
+4,You,I assigned that project to Frank| why are you working on it?,5
+5,Wilson,He said he needed some help.,6
+6,You,Does  he ask for help often?,7
+7,Wilson,Sometimes.,8
+8,You,Do you ever tell Frank you can't help?,9
+9,Wilson,No| I can usually manage and it seems to really help Frank out.,0

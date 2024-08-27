@@ -1,8 +1,9 @@
-﻿Node Id,Speaker,Text,Next Node ID
-1,Frank,Hey boss! You see the report I gave you on the project?,2
-2,,I did see the results Frank| nice work. But I did notice something on the report.,3
-3,,Oh? What's that?,4
-4,,"You've taken full credit of the project but last I thought, Olivia and Wilson were responsible for a majority of it.",5
-5,,Well you know me| I make a lot of decisions and| as much as you do| guide the team to great results.,6
-6,,In short| they followed my lead.,7
-7,,Come on| you should get it at least right? Their work is my work| and I got them to this point| we're a team after all.,0
+﻿Node ID,Speaker,Text,Next Node ID
+1,,Olivia has let you know she has found huge new client| but she has some concerns.,2
+2,You,What are your concerns about this new client?,3
+3,Oliva,They have a dubious background.  They are under investigation for defrauding the shareholders.,4
+4,You,Have they been charged for anything?,5
+5,Olivia,Two years ago they were fined for having planned obsilecense in their product.,6
+6,Olivia,But the current investigation is still ongoing.,7
+7,You,So you're worried that we'd be helping an amoral company?,8
+8,Olivia,Exactly| but they are offering a massive amount of new business.,0
