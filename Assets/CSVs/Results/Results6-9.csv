@@ -1,4 +1,4 @@
 ﻿Node ID,Speaker,Text,Next Node ID
 1,You,We will accept the project.,2
 2,You,It's what Bossman would want.,3
-3,Olivia,Ok I will let the client know.,4
+3,Olivia,Ok I will let the client know.,-1

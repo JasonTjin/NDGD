@@ -52,7 +52,7 @@ public class gameManagerScript : MonoBehaviour
                 if (!dialogueManager){
                     try{
                         dialogueManager = GameObject.FindGameObjectWithTag("DialogueManager").GetComponent<DialogueManager2>();
-                        dialogueManager.SetUpDialogue(DIALOGUE_FILE_PATH + currentDialogue.ToString() + FILE_EXTENSION, false, TYPING_DELAY);
+                        dialogueManager.SetUpDialogue(DIALOGUE_FILE_PATH + currentDialogue.ToString() + FILE_EXTENSION, TYPING_DELAY);
                     }
                     catch{}
                 }
@@ -61,7 +61,7 @@ public class gameManagerScript : MonoBehaviour
                 if (!dialogueManager){
                     try{
                         dialogueManager = GameObject.FindGameObjectWithTag("DialogueManager").GetComponent<DialogueManager2>();
-                        dialogueManager.SetUpDialogue(RESULTS_FILE_PATH + currentChoice.ToString() + "-" + currentResult.ToString() + FILE_EXTENSION, false, TYPING_DELAY);
+                        dialogueManager.SetUpDialogue(RESULTS_FILE_PATH + currentChoice.ToString() + "-" + currentResult.ToString() + FILE_EXTENSION, TYPING_DELAY);
                     }
                     catch{}
                 }
