@@ -19,7 +19,6 @@ public class DialogueManager2 : MonoBehaviour
     private List<string> prompts;
     private List<int> nextNodes;
     private int currentNode;
-    private bool inDialogue; //True if it is a context scene and false if it is a results scene
     //The following are all for the typing animation speed
     private bool typingSpeaker; //A boolean that is true when the dialogue is being animated and false otherwise
     private int speakerTextIndex; //The index of which letter the animation is up to in the dialogue
@@ -85,7 +84,7 @@ public class DialogueManager2 : MonoBehaviour
         }
     }
 
-    public void SetUpDialogue(string csvFilePath, bool setInDialogue, int setTypingDelay)
+    public void SetUpDialogue(string csvFilePath, int setTypingDelay)
     {
         //Takes in the data from the csv and puts them in the relevant arrays
         currentNode = 1;
@@ -93,7 +92,6 @@ public class DialogueManager2 : MonoBehaviour
         speakers = new();
         prompts = new();
         nextNodes = new();
-        inDialogue = setInDialogue;
         typingDelay = setTypingDelay;
         var reader = new StreamReader(csvFilePath);
         reader.ReadLine(); //skip the titles
@@ -138,19 +136,19 @@ public class DialogueManager2 : MonoBehaviour
         {
             currentNode = nextNodes[currentNode - 1];
         }
-        if (currentNode != 0)
+        if (currentNode < 1)
         {
             UpdateDialogue();
         }
         else
         {   CloseUI();
-            if (inDialogue)
-            {
-                gameManager.GoToChoices();
-            }
-            else
-            {
-                gameManager.GoToDialogue();
+            switch (currentNode){
+                case 0:
+                    gameManager.GoToChoices();
+                    break;
+                case -1:
+                    gameManager.GoToDialogue();
+                    break;
             }
         }
     }

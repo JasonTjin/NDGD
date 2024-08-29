@@ -1,4 +1,4 @@
 ﻿Node ID,Speaker,Text,Next Node ID
 1,You,Ok| you can take it home.,2
 2,You,But you have to be extremely careful.,3
-3,Jess,Thank you! I won't let you donw.,0
+3,Jess,Thank you! I won't let you donw.,-1
