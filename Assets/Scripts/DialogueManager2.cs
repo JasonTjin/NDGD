@@ -136,7 +136,7 @@ public class DialogueManager2 : MonoBehaviour
         {
             currentNode = nextNodes[currentNode - 1];
         }
-        if (currentNode > 1)
+        if (currentNode > 0)
         {
             UpdateDialogue();
         }
