@@ -13,4 +13,8 @@ public class MainMenu : MonoBehaviour
     public void PlayGame () {
         gameManager.GoToDialogue();
     }
+
+    public void GoToAcknowledgements () {
+        gameManager.GoToAcknowledgements();
+    }
 }

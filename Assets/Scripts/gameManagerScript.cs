@@ -101,4 +101,12 @@ public class gameManagerScript : MonoBehaviour
         currentResult = resultNumber;
         currentScene = "Results";
     }
+
+    public void goToMainMenu(){
+        SceneManager.LoadScene("Menu");
+    }
+
+    public void GoToAcknowledgements () {
+        SceneManager.LoadScene("Acknowledgements");
+    }
 }
