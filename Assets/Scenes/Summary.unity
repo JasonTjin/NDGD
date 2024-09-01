@@ -564,7 +564,7 @@ GameObject:
   - component: {fileID: 575029555}
   m_Layer: 5
   m_Name: Score
-  m_TagString: Untagged
+  m_TagString: TeamMorale
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -699,7 +699,7 @@ GameObject:
   - component: {fileID: 887475569}
   m_Layer: 5
   m_Name: Score
-  m_TagString: Untagged
+  m_TagString: FinanceScore
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1595,9 +1595,10 @@ GameObject:
   - component: {fileID: 1640203887}
   - component: {fileID: 1640203886}
   - component: {fileID: 1640203885}
+  - component: {fileID: 1640203889}
   m_Layer: 5
-  m_Name: Canvas
-  m_TagString: Untagged
+  m_Name: Summary
+  m_TagString: Summary
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1692,6 +1693,18 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
+--- !u!114 &1640203889
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1640203884}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cf0349a1a552446bda453dc8b2bbad2d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1647284505
 GameObject:
   m_ObjectHideFlags: 0
@@ -1995,7 +2008,7 @@ GameObject:
   - component: {fileID: 1770337690}
   m_Layer: 5
   m_Name: Score
-  m_TagString: Untagged
+  m_TagString: MoralityScore
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

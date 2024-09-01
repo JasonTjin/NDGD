@@ -21,6 +21,9 @@ EditorBuildSettings:
     path: Assets/Scenes/OptionScene.unity
     guid: c457a2998be9e4b68a919c8c89b72738
   - enabled: 1
-    path: Assets/Scenes/acknowledgements.unity
+    path: Assets/Scenes/Acknowledgements.unity
     guid: e0989052164bf421896d609b8ac5b854
+  - enabled: 1
+    path: Assets/Scenes/Summary.unity
+    guid: fe5760b16575c714581acb3a4d57d465
   m_configObjects: {}

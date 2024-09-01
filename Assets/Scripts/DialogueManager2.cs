@@ -149,6 +149,9 @@ public class DialogueManager2 : MonoBehaviour
                 case -1:
                     gameManager.GoToDialogue();
                     break;
+                case -2:
+                    gameManager.GoToSumary();
+                    break;
             }
         }
     }

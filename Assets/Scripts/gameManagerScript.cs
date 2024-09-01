@@ -16,17 +16,18 @@ public class gameManagerScript : MonoBehaviour
     public ChoiceManager choiceManager;
     public DialogueManager2 dialogueManager;
     public GameObject thisObject; //Used to make this object not destroy on load
-    private int currentDialogue; //The number of the current dialogue file
+    private summaryScript summaryManager;
+    public int currentDialogue; //The number of the current dialogue file
     private int currentChoice; //The number of the current choice file
     private int currentResult; //The number of the current result from the current choice
-    private int FinancialScore; 
-    private int TeamMoralScore;
-    private int MoralityScore1; //The primacy of the public interest
-    private int MoralityScore2; //The enhancement of quality of life
-    private int MoralityScore3; //Honesty
-    private int MoralityScore4; //Compentancy
-    private int MoralityScore5; //Professional development
-    private int MoralityScore6; //Professionalism
+    private int FinancialScore = 0; 
+    private int TeamMoralScore = 0;
+    private int MoralityScore1 = 0; //The primacy of the public interest
+    private int MoralityScore2 = 0; //The enhancement of quality of life
+    private int MoralityScore3 = 0; //Honesty
+    private int MoralityScore4 = 0; //Compentancy
+    private int MoralityScore5 = 0; //Professional development
+    private int MoralityScore6 = 0; //Professionalism
     private string currentScene; //The name of the current scene
 
     void Awake()
@@ -66,6 +67,15 @@ public class gameManagerScript : MonoBehaviour
                     catch{}
                 }
                 break;
+            case "Summary":
+                if (!summaryManager){
+                    try{
+                        summaryManager = GameObject.FindGameObjectWithTag("Summary").GetComponent<summaryScript>();
+                        summaryManager.UpdateScores(FinancialScore, TeamMoralScore * 25, ((MoralityScore1 + MoralityScore2 + MoralityScore3 + MoralityScore4 + MoralityScore5 + MoralityScore6)/6) * 25);
+                    }
+                    catch{}
+                }
+                break;
             default:
                 break;
         }
@@ -100,6 +110,12 @@ public class gameManagerScript : MonoBehaviour
         SceneManager.LoadScene("Assets/Scenes/Chapters/Dialogue"+ currentDialogue.ToString() + ".unity");
         currentResult = resultNumber;
         currentScene = "Results";
+    }
+
+    public void GoToSumary(){
+        //Changes the scene, updates the score
+        SceneManager.LoadScene("Summary");
+        currentScene = "Summary";
     }
 
     public void goToMainMenu(){
