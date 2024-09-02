@@ -1681,9 +1681,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: DialogueManager, Assembly-CSharp
-        m_MethodName: DisplayNextNode
+      - m_Target: {fileID: 2068133145}
+        m_TargetAssemblyTypeName: DialogueManager2, Assembly-CSharp
+        m_MethodName: GoToNextDialogue
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
