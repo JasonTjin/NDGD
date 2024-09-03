@@ -1,9 +1,9 @@
 ﻿Node Id,Speaker,Text,Next Node ID
-1,…,"You're sitting in you're office ready to sign off, but someone confidently swings open the door.",2
+1,…,You're sitting in you're office ready to sign off| but someone confidently swings open the door.,2
 2,Frank,Hey boss! You see the report I gave you on the project?,3
 3,You,I did see the results Frank| nice work. But I did notice something on the report.,4
 4,Frank,Oh? What's that?,5
-5,You,"You've taken full credit of the project but last I thought, Olivia and Wilson were responsible for a majority of it.",6
+5,You,You've taken full credit of the project but last I thought| Olivia and Wilson were responsible for a majority of it.,6
 6,Frank,Well you know me| I make a lot of decisions and| as much as you do| guide the team to great results.,7
 7,Frank,In short| they followed my lead.,8
 8,Frank,Come on| you should get it at least right? Their work is my work| and I got them to this point| we're a team after all.,0
