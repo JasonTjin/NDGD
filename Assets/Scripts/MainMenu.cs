@@ -8,7 +8,7 @@ public class MainMenu : MonoBehaviour
     public gameManagerScript gameManager;
 
     private void Start(){
-        //gameManager = GameObject.FindGameObjectWithTag("GameManager").GetComponent<gameManagerScript>();
+        gameManager = GameObject.FindGameObjectWithTag("GameManager").GetComponent<gameManagerScript>();
     }
     public void PlayGame () {
         gameManager.GoToDialogue();

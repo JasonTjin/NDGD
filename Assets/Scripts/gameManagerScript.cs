@@ -35,6 +35,7 @@ public class gameManagerScript : MonoBehaviour
         currentDialogue = 0;
         currentChoice = 0;
         DontDestroyOnLoad(thisObject); //Stops this object from being unloaded 
+        SceneManager.LoadScene("Menu");
     }
 
     void Update(){ 
