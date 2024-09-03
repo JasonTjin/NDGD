@@ -1,0 +1,12 @@
+﻿Node ID ,Speaker,Text,Next Node Id
+1,…,The higher ups have been asking for reports on the performance of the team recently…,2
+2,You,Hmmm…,3
+3,Evan,What are you working on?,4
+4,You,Oh. I'm just organising a report on the team's progress and performance the past few weeks.,5
+5,You,I'm just worried we didn't meet expectations.,6
+6,Evan,How about you inflate how much we actually did a lil' bit. ,7
+7,Evan,Y'know| fluff it up| make us look better.,8
+8,You,I'm not su-,9
+9,Evan,We'd probably get a pay raise as well with how 'well' we're doing.,10
+10,Evan,The other's would be happy about getting that raise too! ,11
+11,Evan,Or at least make me look better than the others heh.,0

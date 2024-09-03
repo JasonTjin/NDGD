@@ -1,0 +1,7 @@
+﻿Node Id,Speaker,Text,Next Node ID
+1,You,I don't think we should do that.,2
+2,Evan,??? What? Why not?,3
+3,You,We don't wanna set higher expectations than we can handle for the future.,4
+4,You,It would end up slowing us down trying to keep up with those expectations.,5
+5,Evan,I guess I can see that way…,6
+6,You,Don't worry| we'll improve and earn our benefits honestly eventually.,-1

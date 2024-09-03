@@ -24,26 +24,17 @@ EditorBuildSettings:
     path: Assets/Scenes/Chapters/Dialogue5.unity
     guid: 37ba1dd64603b6542af618c0fa8656eb
   - enabled: 1
-    path: Assets/Scenes/OptionScene.unity
-    guid: c457a2998be9e4b68a919c8c89b72738
-  - enabled: 1
-    path: Assets/Scenes/Acknowledgements.unity
-    guid: e0989052164bf421896d609b8ac5b854
-  - enabled: 1
-    path: Assets/Scenes/Summary.unity
-    guid: fe5760b16575c714581acb3a4d57d465
-  - enabled: 1
     path: Assets/Scenes/Chapters/Dialogue6.unity
     guid: 5b687fd50920d054b9d94c13c1177333
   - enabled: 1
     path: Assets/Scenes/Chapters/Dialogue7.unity
     guid: 477633861b8a8ac4f927602214483537
   - enabled: 1
-    path: Assets/Scenes/Chapters/Dialogue8.unity
-    guid: f1919f8d6d3d54641b79b95ab910b86d
-  - enabled: 1
     path: Assets/Scenes/Chapters/Dialogue9.unity
     guid: a4f43b86938a5e44c92f06b7bedaf94d
+  - enabled: 1
+    path: Assets/Scenes/Chapters/Dialogue8.unity
+    guid: f1919f8d6d3d54641b79b95ab910b86d
   - enabled: 1
     path: Assets/Scenes/Chapters/Dialogue10.unity
     guid: 29af8885aa423ae4881dfec7077bebca
@@ -59,4 +50,13 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Chapters/Dialogue14.unity
     guid: dee9b5215f4c53d40a824f4363beadc3
+  - enabled: 1
+    path: Assets/Scenes/OptionScene.unity
+    guid: c457a2998be9e4b68a919c8c89b72738
+  - enabled: 1
+    path: Assets/Scenes/Acknowledgements.unity
+    guid: e0989052164bf421896d609b8ac5b854
+  - enabled: 1
+    path: Assets/Scenes/Summary.unity
+    guid: fe5760b16575c714581acb3a4d57d465
   m_configObjects: {}

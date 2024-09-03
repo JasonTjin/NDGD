@@ -1,0 +1,6 @@
+﻿Node Id,Speaker,Text,Next Node ID
+1,You,Olivia… how fast do you think you can work on a bandage fix for the issue?,2
+2,Olivia,Well… it depends| if I'm able to limit or remove features that can potentially reach the flaw.,3
+3,Olivia,I'll be able to have it done by release.,4
+4,You,You have full permission to do what you need. I'll take the backlash this will have.,5
+5,You,I'll get the team to start working on a permanent fix tomorrow| good work Olivia.,-1

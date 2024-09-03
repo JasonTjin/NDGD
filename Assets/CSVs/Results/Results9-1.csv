@@ -1,0 +1,5 @@
+﻿Node Id,Speaker,Text,Next Node ID
+1,You,*Sigh* Yep| sure Frank. Good work as usual I guess.,2
+2,Frank,No problem at all sir| just doing and trying my hardest.,3
+3,You,Sure| see you tomorrow Frank.,4
+4,Frank,Have a good night boss.,-1
