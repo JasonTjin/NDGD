@@ -9,34 +9,34 @@ using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-    [Table("RESULTS")]
-    public class Results : BaseModel
-        {
-            public Results() { } // Parameterless constructor
-            [Column("Decision1")]
-            public int Decision1 { get; set; }
+[Table("RESULTS")]
+public class Results : BaseModel
+{
+    public Results() { } // Parameterless constructor
+    [Column("Decision1")]
+    public int Decision1 { get; set; }
 
-            [Column("Decision2")]
-            public int Decision2 { get; set; }
-            [Column("Decision3")]
-            public int Decision3 { get; set; }
-            [Column("Decision4")]
-            public int Decision4 { get; set; }
-            [Column("Decision5")]
-            public int Decision5 { get; set; }
-            [Column("Decision6")]
-            public int Decision6 { get; set; }
-            [Column("Decision7")]
-            public int Decision7 { get; set; }
-            [Column("Decision8")]
-            public int Decision8 { get; set; }
-            [Column("Decision9")]
-            public int Decision9 { get; set; }
-            [Column("Decision10")]
-            public int Decision10 { get; set; }
-            [Column("Decision11")]
-            public int Decision11 { get; set; }
-        }
+    [Column("Decision2")]
+    public int Decision2 { get; set; }
+    [Column("Decision3")]
+    public int Decision3 { get; set; }
+    [Column("Decision4")]
+    public int Decision4 { get; set; }
+    [Column("Decision5")]
+    public int Decision5 { get; set; }
+    [Column("Decision6")]
+    public int Decision6 { get; set; }
+    [Column("Decision7")]
+    public int Decision7 { get; set; }
+    [Column("Decision8")]
+    public int Decision8 { get; set; }
+    [Column("Decision9")]
+    public int Decision9 { get; set; }
+    [Column("Decision10")]
+    public int Decision10 { get; set; }
+    [Column("Decision11")]
+    public int Decision11 { get; set; }
+}
 public class gameManagerScript : MonoBehaviour
 {
     const string DIALOGUE_FILE_PATH = "./assets/CSVs/Dialogues/Dialogue";
@@ -69,15 +69,13 @@ public class gameManagerScript : MonoBehaviour
         currentChoice = 0;
         DontDestroyOnLoad(thisObject); //Stops this object from being unloaded 
         SceneManager.LoadScene("Menu");
-        var url = Environment.GetEnvironmentVariable("https://okzgvpnnqwecacqrppgn.supabase.co");
-        var key = Environment.GetEnvironmentVariable("eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im9remd2cG5ucXdlY2FjcXJwcGduIiwicm9sZSI6ImFub24iLCJpYXQiOjE3MjU0Mzc1MzYsImV4cCI6MjA0MTAxMzUzNn0.gwTxDDZnFrdIOljsdaDbeKxx9xJqAtQGflZvhWD_syQ");
 
         var options = new Supabase.SupabaseOptions
         {
             AutoConnectRealtime = true
         };
 
-        supabase = new Supabase.Client(url, key, options);
+        supabase = new Supabase.Client("https://okzgvpnnqwecacqrppgn.supabase.co", "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im9remd2cG5ucXdlY2FjcXJwcGduIiwicm9sZSI6ImFub24iLCJpYXQiOjE3MjU0Mzc1MzYsImV4cCI6MjA0MTAxMzUzNn0.gwTxDDZnFrdIOljsdaDbeKxx9xJqAtQGflZvhWD_syQ", options);
         await supabase.InitializeAsync();
     }
 
@@ -170,20 +168,21 @@ public class gameManagerScript : MonoBehaviour
         SceneManager.LoadScene("Acknowledgements");
     }
 
-    public async void test(){
+    public async void test()
+    {
         var model = new Results
         {
-        Decision1 = Decisions[0],
-        Decision2 = Decisions[1],
-        Decision3 = Decisions[2],
-        Decision4 = Decisions[3],
-        Decision5 = Decisions[4],
-        Decision6 = Decisions[5],
-        Decision7 = Decisions[6],
-        Decision8 = Decisions[7],
-        Decision9 = Decisions[8],
-        Decision10 = Decisions[9],
-        Decision11 = Decisions[10]
+            Decision1 = Decisions[0],
+            Decision2 = Decisions[1],
+            Decision3 = Decisions[2],
+            Decision4 = Decisions[3],
+            Decision5 = Decisions[4],
+            Decision6 = Decisions[5],
+            Decision7 = Decisions[6],
+            Decision8 = Decisions[7],
+            Decision9 = Decisions[8],
+            Decision10 = Decisions[9],
+            Decision11 = Decisions[10]
         };
         await supabase.From<Results>().Insert(model);
     }
