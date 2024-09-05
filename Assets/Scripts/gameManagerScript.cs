@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Diagnostics;
+using Supabase;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -29,13 +30,25 @@ public class gameManagerScript : MonoBehaviour
     private int MoralityScore5 = 0; //Professional development
     private int MoralityScore6 = 0; //Professionalism
     private string currentScene; //The name of the current scene
+    private int[] Decisions = {1,2,3,4,5,6,7,8,9,10,11};
+    private Supabase.Client  supabase;
 
-    void Awake()
+    async void Awake()
     {
         currentDialogue = 0;
         currentChoice = 0;
         DontDestroyOnLoad(thisObject); //Stops this object from being unloaded 
         SceneManager.LoadScene("Menu");
+        var url = Environment.GetEnvironmentVariable("https://okzgvpnnqwecacqrppgn.supabase.co");
+        var key = Environment.GetEnvironmentVariable("eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im9remd2cG5ucXdlY2FjcXJwcGduIiwicm9sZSI6ImFub24iLCJpYXQiOjE3MjU0Mzc1MzYsImV4cCI6MjA0MTAxMzUzNn0.gwTxDDZnFrdIOljsdaDbeKxx9xJqAtQGflZvhWD_syQ");
+
+        var options = new Supabase.SupabaseOptions
+        {
+            AutoConnectRealtime = true
+        };
+
+        supabase = new Supabase.Client(url, key, options);
+        await supabase.InitializeAsync();
     }
 
     void Update(){ 
@@ -126,4 +139,52 @@ public class gameManagerScript : MonoBehaviour
     public void GoToAcknowledgements () {
         SceneManager.LoadScene("Acknowledgements");
     }
+
+    public void test(){
+        var model = new Results
+        {
+        Decision1 = Decisions[0],
+        Decision2 = Decisions[1],
+        Decision3 = Decisions[2],
+        Decision4 = Decisions[3],
+        Decision5 = Decisions[4],
+        Decision6 = Decisions[5],
+        Decision7 = Decisions[6],
+        Decision8 = Decisions[7],
+        Decision9 = Decisions[8],
+        Decision10 = Decisions[9],
+        Decision11 = Decisions[10]
+        };
+
+        supabase.From<Results>().Insert(model);
+
+
+    }
+    [Table("RESULTS")]
+        class Results : BaseModel
+        {
+            [Column("Decision1")]
+            public int Decision1 { get; set; }
+
+            [Column("Decision2")]
+            public int Decision2 { get; set; }
+            [Column("Decision3")]
+            public int Decision3 { get; set; }
+            [Column("Decision4")]
+            public int Decision4 { get; set; }
+            [Column("Decision5")]
+            public int Decision5 { get; set; }
+            [Column("Decision6")]
+            public int Decision6 { get; set; }
+            [Column("Decision7")]
+            public int Decision7 { get; set; }
+            [Column("Decision8")]
+            public int Decision8 { get; set; }
+            [Column("Decision9")]
+            public int Decision9 { get; set; }
+            [Column("Decision10")]
+            public int Decision10 { get; set; }
+            [Column("Decision11")]
+            public int Decision11 { get; set; }
+        }
 }
