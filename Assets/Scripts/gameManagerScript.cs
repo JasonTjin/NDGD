@@ -2,11 +2,41 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Diagnostics;
-using Supabase;
+using Supabase.Postgrest.Requests;
+using Supabase.Postgrest.Attributes;
+using Supabase.Postgrest.Models;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
+    [Table("RESULTS")]
+    public class Results : BaseModel
+        {
+            public Results() { } // Parameterless constructor
+            [Column("Decision1")]
+            public int Decision1 { get; set; }
+
+            [Column("Decision2")]
+            public int Decision2 { get; set; }
+            [Column("Decision3")]
+            public int Decision3 { get; set; }
+            [Column("Decision4")]
+            public int Decision4 { get; set; }
+            [Column("Decision5")]
+            public int Decision5 { get; set; }
+            [Column("Decision6")]
+            public int Decision6 { get; set; }
+            [Column("Decision7")]
+            public int Decision7 { get; set; }
+            [Column("Decision8")]
+            public int Decision8 { get; set; }
+            [Column("Decision9")]
+            public int Decision9 { get; set; }
+            [Column("Decision10")]
+            public int Decision10 { get; set; }
+            [Column("Decision11")]
+            public int Decision11 { get; set; }
+        }
 public class gameManagerScript : MonoBehaviour
 {
     const string DIALOGUE_FILE_PATH = "./assets/CSVs/Dialogues/Dialogue";
@@ -140,7 +170,7 @@ public class gameManagerScript : MonoBehaviour
         SceneManager.LoadScene("Acknowledgements");
     }
 
-    public void test(){
+    public async void test(){
         var model = new Results
         {
         Decision1 = Decisions[0],
@@ -155,36 +185,6 @@ public class gameManagerScript : MonoBehaviour
         Decision10 = Decisions[9],
         Decision11 = Decisions[10]
         };
-
-        supabase.From<Results>().Insert(model);
-
-
+        await supabase.From<Results>().Insert(model);
     }
-    [Table("RESULTS")]
-        class Results : BaseModel
-        {
-            [Column("Decision1")]
-            public int Decision1 { get; set; }
-
-            [Column("Decision2")]
-            public int Decision2 { get; set; }
-            [Column("Decision3")]
-            public int Decision3 { get; set; }
-            [Column("Decision4")]
-            public int Decision4 { get; set; }
-            [Column("Decision5")]
-            public int Decision5 { get; set; }
-            [Column("Decision6")]
-            public int Decision6 { get; set; }
-            [Column("Decision7")]
-            public int Decision7 { get; set; }
-            [Column("Decision8")]
-            public int Decision8 { get; set; }
-            [Column("Decision9")]
-            public int Decision9 { get; set; }
-            [Column("Decision10")]
-            public int Decision10 { get; set; }
-            [Column("Decision11")]
-            public int Decision11 { get; set; }
-        }
 }
