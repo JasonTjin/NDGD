@@ -60,7 +60,8 @@ public class gameManagerScript : MonoBehaviour
     private int MoralityScore5 = 0; //Professional development
     private int MoralityScore6 = 0; //Professionalism
     private string currentScene; //The name of the current scene
-    private int[] Decisions = {1,2,3,4,5,6,7,8,9,10,11};
+    private int[] Decisions = new int[11];
+    private int decisionIndex = 1;
     private Supabase.Client  supabase;
 
     async void Awake()
@@ -149,6 +150,8 @@ public class gameManagerScript : MonoBehaviour
     }
     public void GoToResults(int resultNumber){
         //Changes the scene, updates the dialogue
+        Decisions[decisionIndex] = resultNumber;
+        decisionIndex++;
         SceneManager.LoadScene("Assets/Scenes/Chapters/Dialogue"+ currentDialogue.ToString() + ".unity");
         currentResult = resultNumber;
         currentScene = "Results";
@@ -168,7 +171,7 @@ public class gameManagerScript : MonoBehaviour
         SceneManager.LoadScene("Acknowledgements");
     }
 
-    public async void test()
+    public async void submitResultsToSupabase()
     {
         var model = new Results
         {
