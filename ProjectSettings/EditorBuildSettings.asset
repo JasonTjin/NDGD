@@ -30,7 +30,7 @@ EditorBuildSettings:
     path: Assets/Scenes/Chapters/Dialogue7.unity
     guid: 477633861b8a8ac4f927602214483537
   - enabled: 1
-    path: Assets/Scenes/Chapters/Dialogue9.unity
+    path: Assets/Scenes/Chapters/DialogueX.unity
     guid: a4f43b86938a5e44c92f06b7bedaf94d
   - enabled: 1
     path: Assets/Scenes/Chapters/Dialogue8.unity
