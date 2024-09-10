@@ -247,6 +247,7 @@ MonoBehaviour:
   choiceManager: {fileID: 0}
   dialogueManager: {fileID: 0}
   thisObject: {fileID: 1574516302}
+  narrativeIncluded: 1
   currentDialogue: 0
 --- !u!4 &1574516304
 Transform:

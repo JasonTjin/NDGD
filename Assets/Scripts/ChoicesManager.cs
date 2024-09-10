@@ -1,12 +1,16 @@
 using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
+using System.Transactions;
 using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class ChoiceManager : MonoBehaviour
 {
+    private List<string> unseenCharacters = new() {"Jess", "Frank", "Wilson", "Evan", "Olivia"};
     private TMP_Text choice1TextObject;
     private TMP_Text choice2TextObject;
     private TMP_Text choice3TextObject;
@@ -30,6 +34,7 @@ public class ChoiceManager : MonoBehaviour
     private List<int> MoralityScore4Changes = new();
     private List<int> MoralityScore5Changes = new();
     private List<int> MoralityScore6Changes = new();
+    private List<string> presentCharacters = new();
     private int resultsStart; //Marks where the choices end and the results nodes start
     //The following are all for the typing animation speed
     private bool typingPrompt; //A boolean that is true when the prompt is being animated and false otherwise
@@ -52,7 +57,7 @@ public class ChoiceManager : MonoBehaviour
     private int typingDelayCounter; //Keeps track of how many frames it has been since a typing animation update
     public Animator optionAnimator;
     public Animator promptAnimator;
-
+    
     private void Start()
     {
         //Updates all the text feilds and the manager
@@ -151,7 +156,7 @@ public class ChoiceManager : MonoBehaviour
         }
     }
 
-    public void SetUpChoices(string csvFilePath, int setTypingDelay)
+    public void SetUpChoices(string csvFilePath, int setTypingDelay, bool narrativeIncluded)
     {
         //Takes in the data from the csv and puts them in the relevant arrays
         currentNode = 1;
@@ -178,14 +183,105 @@ public class ChoiceManager : MonoBehaviour
             MoralityScore5Changes.Add(Convert.ToInt32(values[14]));
             MoralityScore6Changes.Add(Convert.ToInt32(values[15]));
         }
+        if (!narrativeIncluded){
+            Anonymise();
+        }
+
         //Sets the results start
         resultsStart = 0;
         while (prompts[resultsStart] != "")
         {
             resultsStart += 1;
         }
-
+        
     }
+    
+    private void UpdateCharacterLists(List<string> listOfStrings){
+        foreach (string text in listOfStrings){
+            foreach (string name in unseenCharacters){
+                if (!presentCharacters.Contains(name) && text.Contains(name)){
+                    presentCharacters.Add(name);
+                }
+            }
+        }
+    }
+
+    private void Anonymise(){
+        UpdateCharacterLists(prompts);
+        UpdateCharacterLists(choice1Text);
+        UpdateCharacterLists(choice2Text);
+        UpdateCharacterLists(choice3Text);
+        for (int promptIndex = 0; promptIndex < prompts.Count(); promptIndex++){
+            for(int presCharIndex = 0; presCharIndex < presentCharacters.Count(); presCharIndex++){
+                prompts[promptIndex] = prompts[promptIndex].Replace(presentCharacters[presCharIndex], "Employee " + (presCharIndex + 1).ToString());
+            }
+            prompts[promptIndex] = prompts[promptIndex].Replace("he", "they");
+            prompts[promptIndex] = prompts[promptIndex].Replace("He", "They");
+            prompts[promptIndex] = prompts[promptIndex].Replace("she", "they");
+            prompts[promptIndex] = prompts[promptIndex].Replace("She", "They");
+            prompts[promptIndex] = prompts[promptIndex].Replace("him", "them");
+            prompts[promptIndex] = prompts[promptIndex].Replace("Him", "Them");
+            prompts[promptIndex] = prompts[promptIndex].Replace("her", "them");
+            prompts[promptIndex] = prompts[promptIndex].Replace("Her", "Them");
+            prompts[promptIndex] = prompts[promptIndex].Replace("his", "their");
+            prompts[promptIndex] = prompts[promptIndex].Replace("His", "Their");
+            prompts[promptIndex] = prompts[promptIndex].Replace("her", "their");
+            prompts[promptIndex] = prompts[promptIndex].Replace("Her", "Their");
+        }
+        for (int choice1TextIndex = 0; choice1TextIndex < choice1Text.Count(); choice1TextIndex++){
+            for(int presCharIndex = 0; presCharIndex < presentCharacters.Count(); presCharIndex++){
+                choice1Text[choice1TextIndex] = choice1Text[choice1TextIndex].Replace(presentCharacters[presCharIndex], "Employee " + (presCharIndex + 1).ToString());
+            }
+            choice1Text[choice1TextIndex] = choice1Text[choice1TextIndex].Replace(" he ", " they ");
+            choice1Text[choice1TextIndex] = choice1Text[choice1TextIndex].Replace("He", "They");
+            choice1Text[choice1TextIndex] = choice1Text[choice1TextIndex].Replace(" she ", " they ");
+            choice1Text[choice1TextIndex] = choice1Text[choice1TextIndex].Replace("She", "They");
+            choice1Text[choice1TextIndex] = choice1Text[choice1TextIndex].Replace(" him ", " them ");
+            choice1Text[choice1TextIndex] = choice1Text[choice1TextIndex].Replace("Him", "Them");
+            choice1Text[choice1TextIndex] = choice1Text[choice1TextIndex].Replace(" her ", " them ");
+            choice1Text[choice1TextIndex] = choice1Text[choice1TextIndex].Replace("Her", "Them");
+            choice1Text[choice1TextIndex] = choice1Text[choice1TextIndex].Replace(" his ", " their ");
+            choice1Text[choice1TextIndex] = choice1Text[choice1TextIndex].Replace("His", "Their");
+            choice1Text[choice1TextIndex] = choice1Text[choice1TextIndex].Replace(" her ", " their ");
+            choice1Text[choice1TextIndex] = choice1Text[choice1TextIndex].Replace("Her", "Their");
+        }
+        for (int choice2TextIndex = 0; choice2TextIndex < choice2Text.Count(); choice2TextIndex++){
+            for(int presCharIndex = 0; presCharIndex < presentCharacters.Count(); presCharIndex++){
+                choice2Text[choice2TextIndex] = choice2Text[choice2TextIndex].Replace(presentCharacters[presCharIndex], "Employee " + (presCharIndex + 1).ToString());
+            }
+            choice2Text[choice2TextIndex] = choice2Text[choice2TextIndex].Replace("he", "they");
+            choice2Text[choice2TextIndex] = choice2Text[choice2TextIndex].Replace("He", "They");
+            choice2Text[choice2TextIndex] = choice2Text[choice2TextIndex].Replace("she", "they");
+            choice2Text[choice2TextIndex] = choice2Text[choice2TextIndex].Replace("She", "They");
+            choice2Text[choice2TextIndex] = choice2Text[choice2TextIndex].Replace("him", "them");
+            choice2Text[choice2TextIndex] = choice2Text[choice2TextIndex].Replace("Him", "Them");
+            choice2Text[choice2TextIndex] = choice2Text[choice2TextIndex].Replace("her", "them");
+            choice2Text[choice2TextIndex] = choice2Text[choice2TextIndex].Replace("Her", "Them");
+            choice2Text[choice2TextIndex] = choice2Text[choice2TextIndex].Replace("his", "their");
+            choice2Text[choice2TextIndex] = choice2Text[choice2TextIndex].Replace("His", "Their");
+            choice2Text[choice2TextIndex] = choice2Text[choice2TextIndex].Replace("her", "their");
+            choice2Text[choice2TextIndex] = choice2Text[choice2TextIndex].Replace("Her", "Their");
+        }
+        for (int choice3TextIndex = 0; choice3TextIndex < choice3Text.Count(); choice3TextIndex++){
+            for(int presCharIndex = 0; presCharIndex < presentCharacters.Count(); presCharIndex++){
+                choice3Text[choice3TextIndex] = choice3Text[choice3TextIndex].Replace(presentCharacters[presCharIndex], "Employee " + (presCharIndex + 1).ToString());
+            }
+            choice3Text[choice3TextIndex] = choice3Text[choice3TextIndex].Replace("he", "they");
+            choice3Text[choice3TextIndex] = choice3Text[choice3TextIndex].Replace("He", "They");
+            choice3Text[choice3TextIndex] = choice3Text[choice3TextIndex].Replace("she", "they");
+            choice3Text[choice3TextIndex] = choice3Text[choice3TextIndex].Replace("She", "They");
+            choice3Text[choice3TextIndex] = choice3Text[choice3TextIndex].Replace("him", "them");
+            choice3Text[choice3TextIndex] = choice3Text[choice3TextIndex].Replace("Him", "Them");
+            choice3Text[choice3TextIndex] = choice3Text[choice3TextIndex].Replace("her", "them");
+            choice3Text[choice3TextIndex] = choice3Text[choice3TextIndex].Replace("Her", "Them");
+            choice3Text[choice3TextIndex] = choice3Text[choice3TextIndex].Replace("his", "their");
+            choice3Text[choice3TextIndex] = choice3Text[choice3TextIndex].Replace("His", "Their");
+            choice3Text[choice3TextIndex] = choice3Text[choice3TextIndex].Replace("her", "their");
+            choice3Text[choice3TextIndex] = choice3Text[choice3TextIndex].Replace("Her", "Their");
+        }
+        
+    }
+    
 
     private void UpdateChoices()
     {

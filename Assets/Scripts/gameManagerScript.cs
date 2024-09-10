@@ -8,6 +8,7 @@ using Supabase.Postgrest.Models;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using System.Security.Cryptography;
 
 [Table("RESULTS")]
 public class Results : BaseModel
@@ -48,6 +49,7 @@ public class gameManagerScript : MonoBehaviour
     public DialogueManager2 dialogueManager;
     public GameObject thisObject; //Used to make this object not destroy on load
     private summaryScript summaryManager;
+    public bool narrativeIncluded = true;
     public int currentDialogue; //The number of the current dialogue file
     private int currentChoice; //The number of the current choice file
     private int currentResult; //The number of the current result from the current choice
@@ -87,9 +89,9 @@ public class gameManagerScript : MonoBehaviour
                 if (!choiceManager){
                     try{
                         choiceManager = GameObject.FindGameObjectWithTag("ChoiceManager").GetComponent<ChoiceManager>();
-                        choiceManager.SetUpChoices(CHOICES_FILE_PATH + currentChoice.ToString() + FILE_EXTENSION, TYPING_DELAY);
+                        choiceManager.SetUpChoices(CHOICES_FILE_PATH + currentChoice.ToString() + FILE_EXTENSION, TYPING_DELAY, narrativeIncluded);
                     }
-                    catch{}
+                    catch(Exception e){UnityEngine.Debug.Log(e);}
                 }
                 break;
             case "Dialogue":
@@ -98,7 +100,7 @@ public class gameManagerScript : MonoBehaviour
                         dialogueManager = GameObject.FindGameObjectWithTag("DialogueManager").GetComponent<DialogueManager2>();
                         dialogueManager.SetUpDialogue(DIALOGUE_FILE_PATH + currentDialogue.ToString() + FILE_EXTENSION, TYPING_DELAY);
                     }
-                    catch{}
+                    catch(Exception e){UnityEngine.Debug.Log(e);}
                 }
                 break;
             case "Results":
@@ -107,7 +109,7 @@ public class gameManagerScript : MonoBehaviour
                         dialogueManager = GameObject.FindGameObjectWithTag("DialogueManager").GetComponent<DialogueManager2>();
                         dialogueManager.SetUpDialogue(RESULTS_FILE_PATH + currentChoice.ToString() + "-" + currentResult.ToString() + FILE_EXTENSION, TYPING_DELAY);
                     }
-                    catch{}
+                    catch(Exception e){UnityEngine.Debug.Log(e);}
                 }
                 break;
             case "Summary":
@@ -116,7 +118,7 @@ public class gameManagerScript : MonoBehaviour
                         summaryManager = GameObject.FindGameObjectWithTag("Summary").GetComponent<summaryScript>();
                         summaryManager.UpdateScores(FinancialScore, TeamMoralScore * 25, ((MoralityScore1 + MoralityScore2 + MoralityScore3 + MoralityScore4 + MoralityScore5 + MoralityScore6)/6) * 25);
                     }
-                    catch{}
+                    catch(Exception e){UnityEngine.Debug.Log(e);}
                 }
                 break;
             default:
@@ -138,9 +140,14 @@ public class gameManagerScript : MonoBehaviour
 
     public void GoToDialogue(){
         //Changes the scene, updates the dialogue
-        currentDialogue ++;
-        SceneManager.LoadScene("Assets/Scenes/Chapters/Dialogue"+ currentDialogue.ToString() + ".unity"); 
-        currentScene = "Dialogue";
+        if (narrativeIncluded){
+            currentDialogue ++;
+            SceneManager.LoadScene("Assets/Scenes/Chapters/Dialogue"+ currentDialogue.ToString() + ".unity"); 
+            currentScene = "Dialogue";
+        }
+        else{
+            GoToChoices();
+        }
     }
     public void GoToChoices(){
         //Changes the scene, updates the dialogue
@@ -151,10 +158,15 @@ public class gameManagerScript : MonoBehaviour
     public void GoToResults(int resultNumber){
         //Changes the scene, updates the dialogue
         Decisions[decisionIndex] = resultNumber;
-        decisionIndex++;
-        SceneManager.LoadScene("Assets/Scenes/Chapters/Dialogue"+ currentDialogue.ToString() + ".unity");
-        currentResult = resultNumber;
-        currentScene = "Results";
+        if (narrativeIncluded){
+            decisionIndex++;
+            SceneManager.LoadScene("Assets/Scenes/Chapters/Dialogue"+ currentDialogue.ToString() + ".unity");
+            currentResult = resultNumber;
+            currentScene = "Results";
+        }
+        else{
+            GoToChoices();
+        }
     }
 
     public void GoToSumary(){
