@@ -1,0 +1,12 @@
+﻿Node Id,Speaker,Text,Next Node Id
+1,…,You are sitting in your office at the end of a long day.,2
+2,You,*Sigh* I don't know what to do anymore.,3
+3,You,Its been long past the 2 months I had to make this branch stand on top of the industry.,4
+4,You,Yet here I am| pretty much exactly where I started.,5
+5,Phone,*Ring ring* *Ring ring*,6
+6,John Bossman,Hello| you've been here for plenty long and I have yet to see any major improvement.,7
+7,You,About that| I'm still wor-,8
+8,John Bossman,I don't need to hear it| I just want results.,9
+9,John Bossman,Seeing as how you haven't exactly failed the branch either| I'm willing to let you keep trying.,10
+10,John Bossman,Next time| I won't be so nice.,11
+11,You,Alright then| thanks for the opportunity.,0
