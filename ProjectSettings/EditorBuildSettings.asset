@@ -29,7 +29,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Chapters/Dialogue7.unity
     guid: 477633861b8a8ac4f927602214483537
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/Chapters/DialogueX.unity
     guid: a4f43b86938a5e44c92f06b7bedaf94d
   - enabled: 1
@@ -38,6 +38,9 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Chapters/Dialogue9.unity
     guid: 2645458a5ed77924d83052fef4619c93
+  - enabled: 1
+    path: Assets/Scenes/Chapters/Dialogue10.unity
+    guid: b9b692dd10dd98b4d91c67caf360b26a
   - enabled: 1
     path: Assets/Scenes/Chapters/X.unity
     guid: 29af8885aa423ae4881dfec7077bebca

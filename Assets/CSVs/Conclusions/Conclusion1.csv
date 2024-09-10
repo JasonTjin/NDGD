@@ -1,0 +1,13 @@
+﻿Node Id,Speaker,Text,Next Node Id
+1,???,Spare some change? Spare some cash please.,2
+2,Jess,Um| Boss?,3
+3,You,Jess? Is that you?,4
+4,Jess,Ummmm| yeah… it is.,5
+5,Jess,What are you doing out here?,6
+6,You,Well… after we failed to turn things around at ITS4| I haven't been able to find a new job…,7
+7,Jess,Oh... … …,8
+8,You,… … …,9
+9,You,So since then I've been trying to get back on my feet but its been difficult.,10
+10,You,I made too many poor choices and its led to this.,11
+11,Jess,Well| I havent been doing too well either| I'm actually on my way to a job interview so I gotta run.,12
+12,You,Good luck with that! But uh| before you go| do you think you could spare some lunch money?,0
