@@ -1,0 +1,14 @@
+﻿Node ID,Text,Option1,Option2,Option3,NextNode1,NextNode2,NextNode3,FinancialChange,TeamMoralChange,MoralityScore1,MoralityScore2,MoralityScore3,MoralityScore4,MoralityScore5,MoralityScore6
+1,How do I handle this situation?,Employee 1 is in the wrong and needs to be diciplined.,Some sort of middle ground can be found.,Employee 2 is in the wrong and needs to be diciplined,2,3,4,0,0,0,0,0,0,0,0
+2,How should Employee 1 be punished?,They should be made to appologise to Employee 2 for yelling.,They should be reprimanded for their promise on behalf of the company.,They should appologise and be told why ITS4 doesn't make those promises.,5,6,7,0,0,0,0,0,0,0,0
+3,How should I mediate?,Both of them should be made to appologise for yelling.,Employee 2 should be repremanded for starting office conflict| but Employee 1 should apologise to Employee 2.,Employee 1 should be remprimanded for being unethical| but Employee 2 should appologise too.,8,9,10,0,0,0,0,0,0,0,0
+4,How should Employee 2 be punished?,They should be made to appologise to Employee 1 for yelling.,They should be reprimanded for starting an office fight.,They should appologise and be told why what Employee 1 did is not something to get upset about.,11,12,13,0,0,0,0,0,0,0,0
+5,,,,,0,0,0,0,5,2,0,0,0,0,1
+6,,,,,0,0,0,0,15,4,0,0,0,0,2
+7,,,,,0,0,0,5,15,4,0,0,0,0,3
+8,,,,,0,0,0,5,5,1,0,0,0,0,3
+9,,,,,0,0,0,10,-10,1,0,0,0,0,3
+10,,,,,0,0,0,-5,20,4,0,0,0,0,3
+11,,,,,0,0,0,10,-10,-1,0,0,0,0,1
+12,,,,,0,0,0,5,-20,-3,0,0,0,0,-1
+13,,,,,0,0,0,15,-15,-4,0,0,0,0,1

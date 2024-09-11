@@ -1,0 +1,14 @@
+﻿Node ID,Text,Option1,Option2,Option3,NextNode1,NextNode2,NextNode3,FinancialChange,TeamMoralChange,MoralityScore1,MoralityScore2,MoralityScore3,MoralityScore4,MoralityScore5,MoralityScore6
+1,Employee 1 is clearly struggling| what should I do?,They have said they can do it and I believe them.,They needs extra support.,It would be a more efficient use of their skills to assingn Employee 2 to this task.,2,3,4,0,0,0,0,0,0,0,0
+2,I'll let them figure it out on their own| but should I plan for if they can't manage?,I should pay closer attention to the project and look out for mistakes.,It's important to show that I respect their capabilities without planning for their failure.,I will get Employee 2 to finish off the project so that they can correct any mistakes.,5,6,7,0,0,0,0,0,0,0,0
+3,How should I support them?,I will learn the algorithms myself so that I can help explain them to Employee 1.,I will assign Employee 2 to work along side her for support and to improve understanding.,I will go with them to the client to negotiate an easier implementation.,8,9,10,0,0,0,0,0,0,0,0
+4,"Employee 1 will probably not like me reassigning them, how do I best tell them?",Explain that it is a more efficient use of their talents to reassign them.,Explain that Employee 2 is better suited to this task.,Explain that the project is too important to make mistakes and they can learn in thier own time.,11,12,13,0,0,0,0,0,0,0,0
+5,,,,,0,0,0,10,10,0,0,0,0,3,0
+6,,,,,0,0,0,-20,20,0,0,0,0,2,0
+7,,,,,0,0,0,20,-5,0,0,0,0,1,-1
+8,,,,,0,0,0,5,15,0,0,0,0,2,1
+9,,,,,0,0,0,15,5,0,0,0,0,3,1
+10,,,,,0,0,0,-10,-5,0,0,0,0,-1,0
+11,,,,,0,0,0,20,-10,0,0,0,0,-1,0
+12,,,,,0,0,0,20,-15,0,0,0,0,-2,-1
+13,,,,,0,0,0,20,-20,0,0,0,0,-3,-3

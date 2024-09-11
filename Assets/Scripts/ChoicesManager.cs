@@ -183,10 +183,11 @@ public class ChoiceManager : MonoBehaviour
             MoralityScore5Changes.Add(Convert.ToInt32(values[14]));
             MoralityScore6Changes.Add(Convert.ToInt32(values[15]));
         }
+        /*
         if (!narrativeIncluded){
             Anonymise();
         }
-
+        */
         //Sets the results start
         resultsStart = 0;
         while (prompts[resultsStart] != "")
