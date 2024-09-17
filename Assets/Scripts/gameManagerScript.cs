@@ -37,6 +37,8 @@ public class Results : BaseModel
     public int Decision10 { get; set; }
     [Column("Decision11")]
     public int Decision11 { get; set; }
+    [Column("Narrative_Included")]
+    public bool Narrative_Included {get; set;}
 }
 public class gameManagerScript : MonoBehaviour
 {
@@ -89,7 +91,12 @@ public class gameManagerScript : MonoBehaviour
                 if (!choiceManager){
                     try{
                         choiceManager = GameObject.FindGameObjectWithTag("ChoiceManager").GetComponent<ChoiceManager>();
-                        choiceManager.SetUpChoices(CHOICES_FILE_PATH + currentChoice.ToString() + FILE_EXTENSION, TYPING_DELAY, narrativeIncluded);
+                        if (narrativeIncluded){
+                            choiceManager.SetUpChoices(CHOICES_FILE_PATH + currentChoice.ToString() + FILE_EXTENSION, TYPING_DELAY, narrativeIncluded);
+                        }
+                        else{
+                            choiceManager.SetUpChoices(CHOICES_FILE_PATH + "A" + currentChoice.ToString() + FILE_EXTENSION, TYPING_DELAY, narrativeIncluded);
+                        }
                     }
                     catch(Exception e){UnityEngine.Debug.Log(e);}
                 }
@@ -197,7 +204,8 @@ public class gameManagerScript : MonoBehaviour
             Decision8 = Decisions[7],
             Decision9 = Decisions[8],
             Decision10 = Decisions[9],
-            Decision11 = Decisions[10]
+            Decision11 = Decisions[10],
+            Narrative_Included = narrativeIncluded
         };
         await supabase.From<Results>().Insert(model);
     }
