@@ -9,13 +9,16 @@ public class summaryScript : MonoBehaviour
     private TMP_Text teamMorale;
     private TMP_Text moralityScore;
     private gameManagerScript gameManager;
+    private string financeScoreText;
+    private string teamMoraleText;
+    private string moralityScoreText;
 
     // Update is called once per frame
     public void UpdateScores(int newFinanceScore, int newTeamMorale, int newMoralityScore)
     {
-        financeScore.text = (newFinanceScore.ToString() + '%');
-        teamMorale.text = (newTeamMorale.ToString() + '%');
-        moralityScore.text = (newMoralityScore.ToString() + '%');
+        financeScoreText = (newFinanceScore.ToString() + '%');
+        teamMoraleText = (newTeamMorale.ToString() + '%');
+        moralityScoreText = (newMoralityScore.ToString() + '%');
     }
 
     void Start(){
@@ -23,6 +26,12 @@ public class summaryScript : MonoBehaviour
         teamMorale = GameObject.FindGameObjectWithTag("TeamMorale").GetComponent<TMP_Text>();
         moralityScore = GameObject.FindGameObjectWithTag("MoralityScore").GetComponent<TMP_Text>();
         gameManager = GameObject.FindGameObjectWithTag("GameManager").GetComponent<gameManagerScript>();
+    }
+
+    void Update(){
+        financeScore.text = financeScoreText;
+        teamMorale.text = teamMoraleText;
+        moralityScore.text = moralityScoreText;
     }
 
     public void Continue(){

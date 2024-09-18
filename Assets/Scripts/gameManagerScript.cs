@@ -16,7 +16,6 @@ public class Results : BaseModel
     public Results() { } // Parameterless constructor
     [Column("Decision1")]
     public int Decision1 { get; set; }
-
     [Column("Decision2")]
     public int Decision2 { get; set; }
     [Column("Decision3")]
@@ -55,22 +54,22 @@ public class gameManagerScript : MonoBehaviour
     public int currentDialogue; //The number of the current dialogue file
     private int currentChoice; //The number of the current choice file
     private int currentResult; //The number of the current result from the current choice
-    private int FinancialScore = 0; 
-    private int TeamMoralScore = 0;
-    private int MoralityScore1 = 0; //The primacy of the public interest
-    private int MoralityScore2 = 0; //The enhancement of quality of life
-    private int MoralityScore3 = 0; //Honesty
-    private int MoralityScore4 = 0; //Compentancy
-    private int MoralityScore5 = 0; //Professional development
-    private int MoralityScore6 = 0; //Professionalism
-    private int FinancialScoreMax; 
-    private int TeamMoralScoreMax;
-    private int MoralityScore1Max; //The primacy of the public interest
-    private int MoralityScore2Max; //The enhancement of quality of life
-    private int MoralityScore3Max; //Honesty
-    private int MoralityScore4Max; //Compentancy
-    private int MoralityScore5Max; //Professional development
-    private int MoralityScore6Max; //Professionalism
+    private int FinancialScore = 1; 
+    private int TeamMoralScore = 1;
+    private int MoralityScore1 = 1; //The primacy of the public interest
+    private int MoralityScore2 = 1; //The enhancement of quality of life
+    private int MoralityScore3 = 1; //Honesty
+    private int MoralityScore4 = 1; //Compentancy
+    private int MoralityScore5 = 1; //Professional development
+    private int MoralityScore6 = 1; //Professionalism
+    private int FinancialScoreMax = 1; 
+    private int TeamMoralScoreMax = 1;
+    private int MoralityScore1Max = 1; //The primacy of the public interest
+    private int MoralityScore2Max = 1; //The enhancement of quality of life
+    private int MoralityScore3Max = 1; //Honesty
+    private int MoralityScore4Max = 1; //Compentancy
+    private int MoralityScore5Max = 1; //Professional development
+    private int MoralityScore6Max = 1; //Professionalism
     private string currentScene; //The name of the current scene
     private int[] Decisions = new int[11];
     private int decisionIndex = 1;
@@ -106,7 +105,7 @@ public class gameManagerScript : MonoBehaviour
                             choiceManager.SetUpChoices(CHOICES_FILE_PATH + "A" + currentChoice.ToString() + FILE_EXTENSION, TYPING_DELAY, narrativeIncluded);
                         }
                     }
-                    catch(Exception e){UnityEngine.Debug.Log(e);}
+                    catch(Exception e){}
                 }
                 break;
             case "Dialogue":
@@ -115,7 +114,7 @@ public class gameManagerScript : MonoBehaviour
                         dialogueManager = GameObject.FindGameObjectWithTag("DialogueManager").GetComponent<DialogueManager2>();
                         dialogueManager.SetUpDialogue(DIALOGUE_FILE_PATH + currentDialogue.ToString() + FILE_EXTENSION, TYPING_DELAY);
                     }
-                    catch(Exception e){UnityEngine.Debug.Log(e);}
+                    catch(Exception e){}
                 }
                 break;
             case "Results":
@@ -124,16 +123,19 @@ public class gameManagerScript : MonoBehaviour
                         dialogueManager = GameObject.FindGameObjectWithTag("DialogueManager").GetComponent<DialogueManager2>();
                         dialogueManager.SetUpDialogue(RESULTS_FILE_PATH + currentChoice.ToString() + "-" + currentResult.ToString() + FILE_EXTENSION, TYPING_DELAY);
                     }
-                    catch(Exception e){UnityEngine.Debug.Log(e);}
+                    catch(Exception e){}
                 }
                 break;
             case "Summary":
                 if (!summaryManager){
                     try{
                         summaryManager = GameObject.FindGameObjectWithTag("Summary").GetComponent<summaryScript>();
-                        summaryManager.UpdateScores(FinancialScore/FinancialScoreMax, TeamMoralScore/TeamMoralScoreMax, ((MoralityScore1/MoralityScore1Max + MoralityScore2/MoralityScore2Max + MoralityScore3/MoralityScore3Max + MoralityScore4/MoralityScore4Max + MoralityScore5/MoralityScore5Max + MoralityScore6/MoralityScore6Max)/6));
+                        var FSChange = (FinancialScore * 100)/FinancialScoreMax;
+                        var TMChange = (TeamMoralScore * 100)/TeamMoralScoreMax;
+                        var MSChange = ((MoralityScore1 * 100)/MoralityScore1Max + (MoralityScore2 * 100)/MoralityScore2Max + (MoralityScore3 * 100)/MoralityScore3Max + (MoralityScore4 * 100)/MoralityScore4Max + (MoralityScore5 * 100)/MoralityScore5Max + (MoralityScore6 * 100)/MoralityScore6Max)/6;
+                        summaryManager.UpdateScores(FSChange, TMChange, MSChange);
                     }
-                    catch(Exception e){UnityEngine.Debug.Log(e);}
+                    catch(Exception e){}
                 }
                 break;
             default:
