@@ -13,9 +13,9 @@ public class summaryScript : MonoBehaviour
     // Update is called once per frame
     public void UpdateScores(int newFinanceScore, int newTeamMorale, int newMoralityScore)
     {
-        financeScore.text = newFinanceScore.ToString();
-        teamMorale.text = newTeamMorale.ToString();
-        moralityScore.text = newMoralityScore.ToString();
+        financeScore.text = (newFinanceScore.ToString() + '%');
+        teamMorale.text = (newTeamMorale.ToString() + '%');
+        moralityScore.text = (newMoralityScore.ToString() + '%');
     }
 
     void Start(){

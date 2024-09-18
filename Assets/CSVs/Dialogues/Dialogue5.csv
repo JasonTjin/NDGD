@@ -1,6 +1,6 @@
 ﻿Node ID,Speaker,Text,Next Node ID
 1,…,You hear some raised voices and it sounds like Frank and Evan.,2
-2,Evan,You are a disgrace to ITS4,3
+2,Evan,You are a disgrace to ITS4.,3
 3,Frank,How do you move around with that stick so far up your arse?,4
 4,Evan,Just wait until he finds out what you did.,5
 5,Frank,He will thank me for what I did.,6
@@ -9,4 +9,4 @@
 8,Frank,All I did was tell them what they wanted to hear.,9
 9,Evan,You told a client that we would happily add in a backdoor bypass into their gambling software.,10
 10,Frank,It's their product| we just follow what they tell us to do.,11
-11,You,I think I understand what's going on,0
+11,You,I think I understand what's going on.,0

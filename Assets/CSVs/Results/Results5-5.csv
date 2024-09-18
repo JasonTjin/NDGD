@@ -3,8 +3,8 @@
 2,You,*Ring* *Ring*,3
 3,John Bossman,What is it?,4
 4,You,I want to bribe a client into giving us a new project.,5
-5,John Bossman,Sure| just don't call it a bribe,6
+5,John Bossman,Sure| just don't call it a bribe.,6
 6,John Bossman,Now don't call me for simple things like this| just do it.,7
-7,,*Click* the line drops,8
-8,,After giving the bribe| CivCorp were appauled that we thought that would work.,9
-9,,ITS4 was not awarded the project.,-1
+7,…,*Click* the line drops.,8
+8,…,After giving the bribe| CivCorp were appauled that we thought that would work.,9
+9,…,ITS4 was not awarded the project.,-1

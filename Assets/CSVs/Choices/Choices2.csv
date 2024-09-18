@@ -1,14 +1,14 @@
 ﻿Node ID,Text,Option1,Option2,Option3,NextNode1,NextNode2,NextNode3,FinancialChange,TeamMoralChange,MoralityScore1,MoralityScore2,MoralityScore3,MoralityScore4,MoralityScore5,MoralityScore6
-1,How do I handle this situation?,Frank is in the wrong and needs to be diciplined.,Some sort of middle ground can be found.,Evan is in the wrong and needs to be diciplined,2,3,4,0,0,0,0,0,0,0,0
+1,How do I handle this situation?,Frank is in the wrong and needs to be diciplined.,Some sort of middle ground can be found.,Evan is in the wrong and needs to be diciplined.,2,3,4,0,0,0,0,0,0,0,0
 2,How should Frank be punished?,He should be made to appologise to Evan for yelling.,He should be reprimanded for his promise on behalf of the company.,He should appologise and be told why ITS4 doesn't make those promises.,5,6,7,0,0,0,0,0,0,0,0
 3,How should I mediate?,Both of them should be made to appologise for yelling.,Evan should be repremanded for starting office conflict| but Frank should apologise to Evan.,Frank should be remprimanded for being unethical| but Evan should appologise too.,8,9,10,0,0,0,0,0,0,0,0
 4,How should Evan be punished?,He should be made to appologise to Frank for yelling.,He should be reprimanded for starting an office fight.,He should appologise and be told why what Frank did is not something to get upset about.,11,12,13,0,0,0,0,0,0,0,0
-5,,,,,0,0,0,0,5,2,0,0,0,0,1
-6,,,,,0,0,0,0,15,4,0,0,0,0,2
-7,,,,,0,0,0,5,15,4,0,0,0,0,3
-8,,,,,0,0,0,5,5,1,0,0,0,0,3
-9,,,,,0,0,0,10,-10,1,0,0,0,0,3
-10,,,,,0,0,0,-5,20,4,0,0,0,0,3
-11,,,,,0,0,0,10,-10,-1,0,0,0,0,1
-12,,,,,0,0,0,5,-20,-3,0,0,0,0,-1
-13,,,,,0,0,0,15,-15,-4,0,0,0,0,1
+5,,,,,0,0,0,5,25,6,0,0,0,0,2
+6,,,,,0,0,0,5,35,8,0,0,0,0,3
+7,,,,,0,0,0,10,35,8,0,0,0,0,4
+8,,,,,0,0,0,10,25,5,0,0,0,0,4
+9,,,,,0,0,0,15,10,5,0,0,0,0,4
+10,,,,,0,0,0,0,40,8,0,0,0,0,4
+11,,,,,0,0,0,15,10,3,0,0,0,0,2
+12,,,,,0,0,0,10,0,1,0,0,0,0,0
+13,,,,,0,0,0,20,5,0,0,0,0,0,2

@@ -241,7 +241,7 @@ public class ChoiceManager : MonoBehaviour
     private void ResolveChoiceResults()
     {
         //Updates the score and tells the game manager to go to the results
-        gameManager.UpdateScores(FinancialChanges[currentNode - 1], TeamMoralChanges[currentNode - 1], MoralityScore1Changes[currentNode - 1], MoralityScore2Changes[currentNode - 1], MoralityScore3Changes[currentNode - 1], MoralityScore4Changes[currentNode - 1], MoralityScore5Changes[currentNode - 1], MoralityScore6Changes[currentNode - 1]);
+        gameManager.UpdateScores(FinancialChanges[currentNode - 1], TeamMoralChanges[currentNode - 1], MoralityScore1Changes[currentNode - 1], MoralityScore2Changes[currentNode - 1], MoralityScore3Changes[currentNode - 1], MoralityScore4Changes[currentNode - 1], MoralityScore5Changes[currentNode - 1], MoralityScore6Changes[currentNode - 1], FinancialChanges.Max(), TeamMoralChanges.Max(), MoralityScore1Changes.Max(), MoralityScore2Changes.Max(), MoralityScore3Changes.Max(), MoralityScore4Changes.Max(), MoralityScore5Changes.Max(), MoralityScore6Changes.Max());
         gameManager.GoToResults(currentNode - resultsStart);
     }
     public void OpenUI()

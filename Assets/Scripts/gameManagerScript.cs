@@ -63,6 +63,14 @@ public class gameManagerScript : MonoBehaviour
     private int MoralityScore4 = 0; //Compentancy
     private int MoralityScore5 = 0; //Professional development
     private int MoralityScore6 = 0; //Professionalism
+    private int FinancialScoreMax; 
+    private int TeamMoralScoreMax;
+    private int MoralityScore1Max; //The primacy of the public interest
+    private int MoralityScore2Max; //The enhancement of quality of life
+    private int MoralityScore3Max; //Honesty
+    private int MoralityScore4Max; //Compentancy
+    private int MoralityScore5Max; //Professional development
+    private int MoralityScore6Max; //Professionalism
     private string currentScene; //The name of the current scene
     private int[] Decisions = new int[11];
     private int decisionIndex = 1;
@@ -123,7 +131,7 @@ public class gameManagerScript : MonoBehaviour
                 if (!summaryManager){
                     try{
                         summaryManager = GameObject.FindGameObjectWithTag("Summary").GetComponent<summaryScript>();
-                        summaryManager.UpdateScores(FinancialScore, TeamMoralScore * 25, ((MoralityScore1 + MoralityScore2 + MoralityScore3 + MoralityScore4 + MoralityScore5 + MoralityScore6)/6) * 25);
+                        summaryManager.UpdateScores(FinancialScore/FinancialScoreMax, TeamMoralScore/TeamMoralScoreMax, ((MoralityScore1/MoralityScore1Max + MoralityScore2/MoralityScore2Max + MoralityScore3/MoralityScore3Max + MoralityScore4/MoralityScore4Max + MoralityScore5/MoralityScore5Max + MoralityScore6/MoralityScore6Max)/6));
                     }
                     catch(Exception e){UnityEngine.Debug.Log(e);}
                 }
@@ -133,7 +141,7 @@ public class gameManagerScript : MonoBehaviour
         }
     }
 
-    public void UpdateScores(int FinancialChange, int TeamMoralChange, int MoralityScore1Change, int MoralityScore2Change, int MoralityScore3Change, int MoralityScore4Change, int MoralityScore5Change, int MoralityScore6Change){
+    public void UpdateScores(int FinancialChange, int TeamMoralChange, int MoralityScore1Change, int MoralityScore2Change, int MoralityScore3Change, int MoralityScore4Change, int MoralityScore5Change, int MoralityScore6Change, int FinancialChangeMax, int TeamMoralChangeMax, int MoralityScore1ChangeMax, int MoralityScore2ChangeMax, int MoralityScore3ChangeMax, int MoralityScore4ChangeMax, int MoralityScore5ChangeMax, int MoralityScore6ChangeMax){
         //Updates all the scores
         FinancialScore += FinancialChange;
         TeamMoralScore += TeamMoralChange;
@@ -143,6 +151,14 @@ public class gameManagerScript : MonoBehaviour
         MoralityScore4 += MoralityScore4Change;
         MoralityScore5 += MoralityScore5Change;
         MoralityScore6 += MoralityScore6Change;
+        FinancialScoreMax += FinancialChangeMax;
+        TeamMoralScoreMax += TeamMoralChangeMax;
+        MoralityScore1Max += MoralityScore1ChangeMax;
+        MoralityScore2Max += MoralityScore2ChangeMax;
+        MoralityScore3Max += MoralityScore3ChangeMax;
+        MoralityScore4Max += MoralityScore4ChangeMax;
+        MoralityScore5Max += MoralityScore5ChangeMax;
+        MoralityScore6Max += MoralityScore6ChangeMax;
     }
 
     public void GoToDialogue(){
