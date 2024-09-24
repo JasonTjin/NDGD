@@ -46,10 +46,11 @@ public class gameManagerScript : MonoBehaviour
     const string RESULTS_FILE_PATH = "./assets/CSVs/Results/Results";
     const string FILE_EXTENSION = ".csv";
     const int TYPING_DELAY = 10; //Controlls the delay between each letter showing up
-    public ChoiceManager choiceManager;
-    public DialogueManager2 dialogueManager;
-    public GameObject thisObject; //Used to make this object not destroy on load
+    private ChoiceManager choiceManager;
+    private DialogueManager2 dialogueManager;
+    private GameObject thisObject; //Used to make this object not destroy on load
     private summaryScript summaryManager;
+    private EndManagerScript endManager;
     public bool narrativeIncluded = true;
     public int currentDialogue; //The number of the current dialogue file
     private int currentChoice; //The number of the current choice file
@@ -70,6 +71,22 @@ public class gameManagerScript : MonoBehaviour
     private int MoralityScore4Max = 1; //Compentancy
     private int MoralityScore5Max = 1; //Professional development
     private int MoralityScore6Max = 1; //Professionalism
+    private int FinancialScoreBiggestLoss = 0; 
+    private int TeamMoralScoreBiggestLoss = 0;
+    private int MoralityScore1BiggestLoss = 0; //The primacy of the public interest
+    private int MoralityScore2BiggestLoss = 0; //The enhancement of quality of life
+    private int MoralityScore3BiggestLoss = 0; //Honesty
+    private int MoralityScore4BiggestLoss = 0; //Compentancy
+    private int MoralityScore5BiggestLoss = 0; //Professional development
+    private int MoralityScore6BiggestLoss = 0; //Professionalism
+    private int FinancialScoreBiggestLossDecisionIndex = 0; 
+    private int TeamMoralScoreBiggestLossDecisionIndex = 0;
+    private int MoralityScore1BiggestLossDecisionIndex = 0; //The primacy of the public interest
+    private int MoralityScore2BiggestLossDecisionIndex = 0; //The enhancement of quality of life
+    private int MoralityScore3BiggestLossDecisionIndex = 0; //Honesty
+    private int MoralityScore4BiggestLossDecisionIndex = 0; //Compentancy
+    private int MoralityScore5BiggestLossDecisionIndex = 0; //Professional development
+    private int MoralityScore6BiggestLossDecisionIndex = 0; //Professionalism
     private string currentScene; //The name of the current scene
     private int[] Decisions = new int[11];
     private int decisionIndex = 1;
@@ -105,7 +122,7 @@ public class gameManagerScript : MonoBehaviour
                             choiceManager.SetUpChoices(CHOICES_FILE_PATH + "A" + currentChoice.ToString() + FILE_EXTENSION, TYPING_DELAY, narrativeIncluded);
                         }
                     }
-                    catch(Exception e){}
+                    catch{}
                 }
                 break;
             case "Dialogue":
@@ -114,7 +131,7 @@ public class gameManagerScript : MonoBehaviour
                         dialogueManager = GameObject.FindGameObjectWithTag("DialogueManager").GetComponent<DialogueManager2>();
                         dialogueManager.SetUpDialogue(DIALOGUE_FILE_PATH + currentDialogue.ToString() + FILE_EXTENSION, TYPING_DELAY);
                     }
-                    catch(Exception e){}
+                    catch{}
                 }
                 break;
             case "Results":
@@ -123,19 +140,41 @@ public class gameManagerScript : MonoBehaviour
                         dialogueManager = GameObject.FindGameObjectWithTag("DialogueManager").GetComponent<DialogueManager2>();
                         dialogueManager.SetUpDialogue(RESULTS_FILE_PATH + currentChoice.ToString() + "-" + currentResult.ToString() + FILE_EXTENSION, TYPING_DELAY);
                     }
-                    catch(Exception e){}
+                    catch{}
                 }
                 break;
             case "Summary":
                 if (!summaryManager){
                     try{
                         summaryManager = GameObject.FindGameObjectWithTag("Summary").GetComponent<summaryScript>();
-                        var FSChange = (FinancialScore * 100)/FinancialScoreMax;
-                        var TMChange = (TeamMoralScore * 100)/TeamMoralScoreMax;
-                        var MSChange = ((MoralityScore1 * 100)/MoralityScore1Max + (MoralityScore2 * 100)/MoralityScore2Max + (MoralityScore3 * 100)/MoralityScore3Max + (MoralityScore4 * 100)/MoralityScore4Max + (MoralityScore5 * 100)/MoralityScore5Max + (MoralityScore6 * 100)/MoralityScore6Max)/6;
-                        summaryManager.UpdateScores(FSChange, TMChange, MSChange);
+                        summaryManager.UpdateScores((FinancialScore * 100)/FinancialScoreMax, (TeamMoralScore * 100)/TeamMoralScoreMax, ((MoralityScore1 * 100)/MoralityScore1Max + (MoralityScore2 * 100)/MoralityScore2Max + (MoralityScore3 * 100)/MoralityScore3Max + (MoralityScore4 * 100)/MoralityScore4Max + (MoralityScore5 * 100)/MoralityScore5Max + (MoralityScore6 * 100)/MoralityScore6Max)/6);
                     }
-                    catch(Exception e){}
+                    catch{}
+                }
+                break;
+            case "End":
+                if (!endManager){
+                    try{
+                        endManager = GameObject.FindGameObjectWithTag("End").GetComponent<EndManagerScript>();
+                        endManager.InitiateEndSequence(
+                            FinancialScore,
+                            TeamMoralScore, 
+                            MoralityScore1, 
+                            MoralityScore2, 
+                            MoralityScore3, 
+                            MoralityScore4, 
+                            MoralityScore5, 
+                            MoralityScore6, 
+                            FinancialScoreBiggestLossDecisionIndex,
+                            TeamMoralScoreBiggestLossDecisionIndex,
+                            MoralityScore1BiggestLossDecisionIndex,
+                            MoralityScore2BiggestLossDecisionIndex,
+                            MoralityScore3BiggestLossDecisionIndex,
+                            MoralityScore4BiggestLossDecisionIndex,
+                            MoralityScore5BiggestLossDecisionIndex,
+                            MoralityScore6BiggestLossDecisionIndex);
+                    }
+                    catch{}
                 }
                 break;
             default:
@@ -161,6 +200,32 @@ public class gameManagerScript : MonoBehaviour
         MoralityScore4Max += MoralityScore4ChangeMax;
         MoralityScore5Max += MoralityScore5ChangeMax;
         MoralityScore6Max += MoralityScore6ChangeMax;
+        if (FinancialChange - FinancialChangeMax < FinancialScoreBiggestLoss){
+            FinancialScoreBiggestLoss = FinancialChange - FinancialChangeMax;
+            FinancialScoreBiggestLossDecisionIndex = decisionIndex;
+        }
+        if (TeamMoralChange - TeamMoralChangeMax < TeamMoralScoreBiggestLoss){
+            TeamMoralScoreBiggestLoss = TeamMoralChange - TeamMoralChangeMax;
+            TeamMoralScoreBiggestLossDecisionIndex = decisionIndex;
+        }
+        if (MoralityScore1Change - MoralityScore1ChangeMax < MoralityScore1BiggestLoss){
+            MoralityScore1BiggestLoss = MoralityScore1Change - MoralityScore1ChangeMax;
+        }
+        if (MoralityScore2Change - MoralityScore2ChangeMax < MoralityScore2BiggestLoss){
+            MoralityScore2BiggestLoss = MoralityScore2Change - MoralityScore2ChangeMax;
+        }
+        if (MoralityScore3Change - MoralityScore3ChangeMax < MoralityScore3BiggestLoss){
+            MoralityScore3BiggestLoss = MoralityScore3Change - MoralityScore3ChangeMax;
+        }
+        if (MoralityScore4Change - MoralityScore4ChangeMax < MoralityScore4BiggestLoss){
+            MoralityScore4BiggestLoss = MoralityScore4Change - MoralityScore4ChangeMax;
+        }
+        if (MoralityScore5Change - MoralityScore5ChangeMax < MoralityScore5BiggestLoss){
+            MoralityScore5BiggestLoss = MoralityScore5Change - MoralityScore5ChangeMax;
+        }
+        if (MoralityScore6Change - MoralityScore6ChangeMax < MoralityScore6BiggestLoss){
+            MoralityScore6BiggestLoss = MoralityScore6Change - MoralityScore6ChangeMax;
+        }
     }
 
     public void GoToDialogue(){
