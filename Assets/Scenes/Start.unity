@@ -244,11 +244,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dc3acaa1f328e493387df6382db191aa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  choiceManager: {fileID: 0}
-  dialogueManager: {fileID: 0}
   thisObject: {fileID: 1574516302}
   narrativeIncluded: 1
-  currentDialogue: 0
 --- !u!4 &1574516304
 Transform:
   m_ObjectHideFlags: 0

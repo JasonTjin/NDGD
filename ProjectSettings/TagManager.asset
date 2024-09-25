@@ -17,6 +17,9 @@ TagManager:
   - MoralityScore
   - TeamMorale
   - Summary
+  - Title
+  - Body
+  - ContextManager
   layers:
   - Default
   - TransparentFX

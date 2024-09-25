@@ -41,7 +41,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Chapters/Dialogue10.unity
     guid: b9b692dd10dd98b4d91c67caf360b26a
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/Chapters/X.unity
     guid: 29af8885aa423ae4881dfec7077bebca
   - enabled: 1
@@ -68,4 +68,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Start.unity
     guid: acb43e7bb8f944d39aeb256558f67272
+  - enabled: 1
+    path: Assets/Scenes/Context.unity
+    guid: f8f6da3bada35384cb8acb024bae434f
   m_configObjects: {}

@@ -44,15 +44,18 @@ public class gameManagerScript : MonoBehaviour
     const string DIALOGUE_FILE_PATH = "./assets/CSVs/Dialogues/Dialogue";
     const string CHOICES_FILE_PATH = "./assets/CSVs/Choices/Choices";
     const string RESULTS_FILE_PATH = "./assets/CSVs/Results/Results";
-    const string FILE_EXTENSION = ".csv";
+    const string CONTEXT_FILE_PATH = "./assets/CSVs/Contexts/Context";
+    const string CSV_EXTENSION = ".csv";
+    const string TXT_EXTENSION = ".txt";
     const int TYPING_DELAY = 10; //Controlls the delay between each letter showing up
     private ChoiceManager choiceManager;
     private DialogueManager2 dialogueManager;
-    private GameObject thisObject; //Used to make this object not destroy on load
+    public GameObject thisObject; //Used to make this object not destroy on load
     private summaryScript summaryManager;
+    private ContextManagerScript contextManager;
     private EndManagerScript endManager;
     public bool narrativeIncluded = true;
-    public int currentDialogue; //The number of the current dialogue file
+    private int currentDialogue; //The number of the current dialogue file
     private int currentChoice; //The number of the current choice file
     private int currentResult; //The number of the current result from the current choice
     private int FinancialScore = 1; 
@@ -90,6 +93,7 @@ public class gameManagerScript : MonoBehaviour
     private string currentScene; //The name of the current scene
     private int[] Decisions = new int[11];
     private int decisionIndex = 1;
+    private bool initialContextGiven = false;
     private Supabase.Client  supabase;
 
     async void Awake()
@@ -116,10 +120,10 @@ public class gameManagerScript : MonoBehaviour
                     try{
                         choiceManager = GameObject.FindGameObjectWithTag("ChoiceManager").GetComponent<ChoiceManager>();
                         if (narrativeIncluded){
-                            choiceManager.SetUpChoices(CHOICES_FILE_PATH + currentChoice.ToString() + FILE_EXTENSION, TYPING_DELAY, narrativeIncluded);
+                            choiceManager.SetUpChoices(CHOICES_FILE_PATH + currentChoice.ToString() + CSV_EXTENSION, TYPING_DELAY, narrativeIncluded);
                         }
                         else{
-                            choiceManager.SetUpChoices(CHOICES_FILE_PATH + "A" + currentChoice.ToString() + FILE_EXTENSION, TYPING_DELAY, narrativeIncluded);
+                            choiceManager.SetUpChoices(CHOICES_FILE_PATH + "A" + currentChoice.ToString() + CSV_EXTENSION, TYPING_DELAY, narrativeIncluded);
                         }
                     }
                     catch{}
@@ -129,7 +133,7 @@ public class gameManagerScript : MonoBehaviour
                 if (!dialogueManager){
                     try{
                         dialogueManager = GameObject.FindGameObjectWithTag("DialogueManager").GetComponent<DialogueManager2>();
-                        dialogueManager.SetUpDialogue(DIALOGUE_FILE_PATH + currentDialogue.ToString() + FILE_EXTENSION, TYPING_DELAY);
+                        dialogueManager.SetUpDialogue(DIALOGUE_FILE_PATH + currentDialogue.ToString() + CSV_EXTENSION, TYPING_DELAY);
                     }
                     catch{}
                 }
@@ -138,7 +142,7 @@ public class gameManagerScript : MonoBehaviour
                 if (!dialogueManager){
                     try{
                         dialogueManager = GameObject.FindGameObjectWithTag("DialogueManager").GetComponent<DialogueManager2>();
-                        dialogueManager.SetUpDialogue(RESULTS_FILE_PATH + currentChoice.ToString() + "-" + currentResult.ToString() + FILE_EXTENSION, TYPING_DELAY);
+                        dialogueManager.SetUpDialogue(RESULTS_FILE_PATH + currentChoice.ToString() + "-" + currentResult.ToString() + CSV_EXTENSION, TYPING_DELAY);
                     }
                     catch{}
                 }
@@ -147,7 +151,22 @@ public class gameManagerScript : MonoBehaviour
                 if (!summaryManager){
                     try{
                         summaryManager = GameObject.FindGameObjectWithTag("Summary").GetComponent<summaryScript>();
-                        summaryManager.UpdateScores((FinancialScore * 100)/FinancialScoreMax, (TeamMoralScore * 100)/TeamMoralScoreMax, ((MoralityScore1 * 100)/MoralityScore1Max + (MoralityScore2 * 100)/MoralityScore2Max + (MoralityScore3 * 100)/MoralityScore3Max + (MoralityScore4 * 100)/MoralityScore4Max + (MoralityScore5 * 100)/MoralityScore5Max + (MoralityScore6 * 100)/MoralityScore6Max)/6);
+                        summaryManager.UpdateScores(FinancialScore * 100/FinancialScoreMax, TeamMoralScore * 100/TeamMoralScoreMax, (MoralityScore1 * 100/MoralityScore1Max + MoralityScore2 * 100/MoralityScore2Max + MoralityScore3 * 100/MoralityScore3Max + MoralityScore4 * 100/MoralityScore4Max + MoralityScore5 * 100/MoralityScore5Max + MoralityScore6 * 100/MoralityScore6Max)/6);
+                    }
+                    catch{}
+                }
+                break;
+            case "Context":
+                if (!contextManager){
+                    try{
+                        contextManager = GameObject.FindGameObjectWithTag("ContextManager").GetComponent<ContextManagerScript>();
+                        if (!initialContextGiven && currentChoice == 0){
+                            initialContextGiven = true;
+                            contextManager.SetUpContext("", currentChoice);
+                        }
+                        else{
+                            contextManager.SetUpContext(CONTEXT_FILE_PATH + (currentChoice + 1).ToString() + TXT_EXTENSION, currentChoice + 1);
+                        }
                     }
                     catch{}
                 }
@@ -165,6 +184,14 @@ public class gameManagerScript : MonoBehaviour
                             MoralityScore4, 
                             MoralityScore5, 
                             MoralityScore6, 
+                            FinancialScoreMax,
+                            TeamMoralScoreMax,
+                            MoralityScore1Max,
+                            MoralityScore2Max,
+                            MoralityScore3Max,
+                            MoralityScore4Max,
+                            MoralityScore5Max,
+                            MoralityScore6Max,
                             FinancialScoreBiggestLossDecisionIndex,
                             TeamMoralScoreBiggestLossDecisionIndex,
                             MoralityScore1BiggestLossDecisionIndex,
@@ -236,7 +263,7 @@ public class gameManagerScript : MonoBehaviour
             currentScene = "Dialogue";
         }
         else{
-            GoToChoices();
+            GoToContext();
         }
     }
     public void GoToChoices(){
@@ -255,7 +282,7 @@ public class gameManagerScript : MonoBehaviour
             currentScene = "Results";
         }
         else{
-            GoToChoices();
+            GoToContext();
         }
     }
 
@@ -263,6 +290,11 @@ public class gameManagerScript : MonoBehaviour
         //Changes the scene, updates the score
         SceneManager.LoadScene("Summary");
         currentScene = "Summary";
+    }
+    public void GoToContext(){
+        //Changes the scene, updates the dialogue
+        SceneManager.LoadScene("Context");
+        currentScene = "Context";
     }
 
     public void goToMainMenu(){

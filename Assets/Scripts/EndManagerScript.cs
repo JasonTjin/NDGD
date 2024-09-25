@@ -12,6 +12,14 @@ public class EndManagerScript : MonoBehaviour
     private int moralityScore4;
     private int moralityScore5;
     private int moralityScore6;
+    private int financialScoreMax;
+    private int teamMoralScoreMax; 
+    private int moralityScore1Max;
+    private int moralityScore2Max;
+    private int moralityScore3Max;
+    private int moralityScore4Max;
+    private int moralityScore5Max;
+    private int moralityScore6Max;
     private int FinancialScoreBiggestLossDecisionIndex;
     private int TeamMoralScoreBiggestLossDecisionIndex;
     private int MoralityScore1BiggestLossDecisionIndex;
@@ -40,6 +48,14 @@ public class EndManagerScript : MonoBehaviour
         int moralityScore4Final, 
         int moralityScore5Final, 
         int moralityScore6Final, 
+        int financialScoreMaxFinal, 
+        int teamMoralScoreMaxFinal, 
+        int moralityScore1MaxFinal, 
+        int moralityScore2MaxFinal, 
+        int moralityScore3MaxFinal, 
+        int moralityScore4MaxFinal, 
+        int moralityScore5MaxFinal, 
+        int moralityScore6MaxFinal, 
         int FinancialScoreBiggestLossDecisionIndexFinal,
         int TeamMoralScoreBiggestLossDecisionIndexFinal,
         int MoralityScore1BiggestLossDecisionIndexFinal,
@@ -57,6 +73,14 @@ public class EndManagerScript : MonoBehaviour
         moralityScore4 = moralityScore4Final;
         moralityScore5 = moralityScore5Final;
         moralityScore6 = moralityScore6Final;
+        financialScoreMax = financialScoreMaxFinal;
+        teamMoralScoreMax = teamMoralScoreMaxFinal;
+        moralityScore1Max = moralityScore1MaxFinal;
+        moralityScore2Max = moralityScore2MaxFinal;
+        moralityScore3Max = moralityScore3MaxFinal;
+        moralityScore4Max = moralityScore4MaxFinal;
+        moralityScore5Max = moralityScore5MaxFinal;
+        moralityScore6Max = moralityScore6MaxFinal;
         FinancialScoreBiggestLossDecisionIndex = FinancialScoreBiggestLossDecisionIndexFinal;
         TeamMoralScoreBiggestLossDecisionIndex = TeamMoralScoreBiggestLossDecisionIndexFinal;
         MoralityScore1BiggestLossDecisionIndex = MoralityScore1BiggestLossDecisionIndexFinal;
