@@ -82,14 +82,14 @@ public class gameManagerScript : MonoBehaviour
     private int MoralityScore4BiggestLoss = 0; //Compentancy
     private int MoralityScore5BiggestLoss = 0; //Professional development
     private int MoralityScore6BiggestLoss = 0; //Professionalism
-    private int FinancialScoreBiggestLossDecisionIndex = 0; 
-    private int TeamMoralScoreBiggestLossDecisionIndex = 0;
-    private int MoralityScore1BiggestLossDecisionIndex = 0; //The primacy of the public interest
-    private int MoralityScore2BiggestLossDecisionIndex = 0; //The enhancement of quality of life
-    private int MoralityScore3BiggestLossDecisionIndex = 0; //Honesty
-    private int MoralityScore4BiggestLossDecisionIndex = 0; //Compentancy
-    private int MoralityScore5BiggestLossDecisionIndex = 0; //Professional development
-    private int MoralityScore6BiggestLossDecisionIndex = 0; //Professionalism
+    private int FinancialScoreBiggestLossDecisionIndex = -1; 
+    private int TeamMoralScoreBiggestLossDecisionIndex = -1;
+    private int MoralityScore1BiggestLossDecisionIndex = -1; //The primacy of the public interest
+    private int MoralityScore2BiggestLossDecisionIndex = -1; //The enhancement of quality of life
+    private int MoralityScore3BiggestLossDecisionIndex = -1; //Honesty
+    private int MoralityScore4BiggestLossDecisionIndex = -1; //Compentancy
+    private int MoralityScore5BiggestLossDecisionIndex = -1; //Professional development
+    private int MoralityScore6BiggestLossDecisionIndex = -1; //Professionalism
     private string currentScene; //The name of the current scene
     private int[] Decisions = new int[11];
     private int decisionIndex = 1;
@@ -199,7 +199,8 @@ public class gameManagerScript : MonoBehaviour
                             MoralityScore3BiggestLossDecisionIndex,
                             MoralityScore4BiggestLossDecisionIndex,
                             MoralityScore5BiggestLossDecisionIndex,
-                            MoralityScore6BiggestLossDecisionIndex);
+                            MoralityScore6BiggestLossDecisionIndex,
+                            Decisions);
                     }
                     catch{}
                 }

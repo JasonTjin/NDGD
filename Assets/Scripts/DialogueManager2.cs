@@ -58,7 +58,7 @@ public class DialogueManager2 : MonoBehaviour
 
         //Iterate through all the text to animate them on select frames based on the delay
         typingDelayCounter++;
-        if (typingSpeaker && typingDelayCounter >= typingDelay)
+        if (typingSpeaker && typingDelayCounter >= typingDelay && speakers != null)
         {
             speakerTextTyping = speakerTextTyping + speakers[currentNode - 1][speakerTextIndex];
             speakerText.text = speakerTextTyping;
@@ -68,7 +68,7 @@ public class DialogueManager2 : MonoBehaviour
                 typingSpeaker = false;
             }
         }
-        if (typingDialogue && typingDelayCounter >= typingDelay)
+        if (typingDialogue && typingDelayCounter >= typingDelay && prompts != null)
         {
             dialogueTextTyping = dialogueTextTyping + prompts[currentNode - 1][dialogueTextIndex];
             dialogueText.text = dialogueTextTyping;

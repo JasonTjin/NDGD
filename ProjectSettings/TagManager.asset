@@ -20,6 +20,9 @@ TagManager:
   - Title
   - Body
   - ContextManager
+  - EndBackButton
+  - EndNextButton
+  - FinalScore
   layers:
   - Default
   - TransparentFX
