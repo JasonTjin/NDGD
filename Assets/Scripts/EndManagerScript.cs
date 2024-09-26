@@ -54,54 +54,122 @@ public class EndManagerScript : MonoBehaviour
         updated = false;
     }
 
+    private string GetRecomendations(int percentageScore, string ethicsName){
+        var recomendations = "";
+        if ((moralityScore1 * 100 / moralityScore1Max) >= 90){
+            recomendations = "  Your adherance to " + ethicsName + " was very good and needs little improvemnt.";
+        }
+        else if ((moralityScore1 * 100 / moralityScore1Max) >= 80){
+            recomendations = "  Your adherance to " + ethicsName + " was good, but you could probably touch up on your undestanding.";
+        }
+        else if ((moralityScore1 * 100 / moralityScore1Max) >= 70){
+            recomendations = "  Your adherance to " + ethicsName + " was okay, however you can certainly improve your understanding.";
+        }
+        else if ((moralityScore1 * 100 / moralityScore1Max) >= 60){
+            recomendations = "  Your adherance to " + ethicsName + " was mediocre and you should read up on the ACS code of ethics.";
+        }
+        else if ((moralityScore1 * 100 / moralityScore1Max) >= 50){
+            recomendations = "  Your adherance to " + ethicsName + " was not good and suggests that you need to do some serious study of the ACS code of ethics.";
+        }
+        else if ((moralityScore1 * 100 / moralityScore1Max) >= 40){
+            recomendations = "  Your adherance to " + ethicsName + " was bad and suggests a missunderstanding in the key concepts involved.  We highly recomend reading up on " + ethicsName + " in the ACS code of ethics.";
+        }
+        else if ((moralityScore1 * 100 / moralityScore1Max) >= 30){
+            recomendations = "  Your adherance to " + ethicsName + " was very bad, nearly every decision relating to " + ethicsName + " was wrong.  It is a necessity that you read the ACS code of ethics to understand where you went wrong.";
+        }
+        else if ((moralityScore1 * 100 / moralityScore1Max) >= 20){
+            recomendations = "  Your adherance to " + ethicsName + " was non-existent and suggests a deliberate attempt to be unethical, however you could have been worse.";
+        }
+        else {
+            recomendations = "  Congratulations you have been so unethical that it is possible " + '"' + ethicsName + '"' + " isn't a part of your vocabulary.";
+        }
+        return recomendations;
+    }
+
     // Update is called once per frame
     void Update()
     {
         if (!updated){
+            var bodyText = "";
+            var success = true;
             switch(currentSlide){
                 case 1:
                     title.text = "Finances";
                     score.text = (financialScore * 100 / financialScoreMax).ToString() + "%";
-                    updated = true;
+                    bodyText = ("Your biggest loss in finances was in scenario " 
+                        +  FinancialScoreBiggestLossDecisionIndex.ToString() 
+                        + " when you decided to " 
+                        + "");
                     break;
                 case 2:
                     title.text = "Team Morale";
                     score.text = (teamMoralScore * 100 / teamMoralScoreMax).ToString() + "%";
-                    updated = true;
+                    bodyText = ("Your biggest loss in team morale was in scenario " 
+                        +  TeamMoralScoreBiggestLossDecisionIndex.ToString() 
+                        + " when you decided to " 
+                        + "");
                     break;
                 case 3:
                     title.text = "The Primacy of the Public Interest";
                     score.text = (moralityScore1 * 100 / moralityScore1Max).ToString() + "%";
-                    updated = true;
+                    if ((moralityScore1 * 100 / moralityScore1Max) == 100){
+
+                    }
+                    bodyText = ("Your decision that least adheared to the primacy of the public interest was in scenario " 
+                        +  MoralityScore1BiggestLossDecisionIndex.ToString() 
+                        + " when you decided to " 
+                        + "");
+                    
                     break;
                 case 4:
                     title.text = "The Enhancement of Quality of Life";
                     score.text = (moralityScore2 * 100 / moralityScore2Max).ToString() + "%";
-                    updated = true;
+                    bodyText = ("Your decision that least adheared to the enhancement of quality of life was in scenario " 
+                        +  MoralityScore2BiggestLossDecisionIndex.ToString() 
+                        + " when you decided to " 
+                        + "");
                     break;
                 case 5:
                     title.text = "Honesty";
                     score.text = (moralityScore3 * 100 / moralityScore3Max).ToString() + "%";
-                    updated = true;
+                    bodyText = ("Your decision that least adheared to honesty was in scenario " 
+                        +  MoralityScore3BiggestLossDecisionIndex.ToString() 
+                        + " when you decided to " 
+                        + "");
                     break;
                 case 6:
                     title.text = "Competence";
                     score.text = (moralityScore4 * 100 / moralityScore4Max).ToString() + "%";
-                    updated = true;
+                    bodyText = ("Your decision that least adheared to competence was in scenario " 
+                        +  MoralityScore4BiggestLossDecisionIndex.ToString() 
+                        + " when you decided to " 
+                        + "");
                     break;
                 case 7:
                     title.text = "Professional Development";
                     score.text = (moralityScore5 * 100 / moralityScore5Max).ToString() + "%";
-                    updated = true;
+                    bodyText = ("Your decision that least adheared to professional development was in scenario " 
+                        +  MoralityScore5BiggestLossDecisionIndex.ToString() 
+                        + " when you decided to " 
+                        + "");
                     break;
                 case 8:
                     title.text = "Professionalism";
                     score.text = (moralityScore6 * 100 / moralityScore6Max).ToString() + "%";
-                    updated = true;
+                    bodyText = ("Your decision that least adheared to professionalism was in scenario " 
+                        +  MoralityScore6BiggestLossDecisionIndex.ToString() 
+                        + " when you decided to " 
+                        + "");
                     break;
                 default:
+                    success = false;
                     break;
             }
+            if (success){
+                body.text = bodyText;
+                updated = true; 
+            }
+            
         }
     }
     public void InitiateEndSequence(
