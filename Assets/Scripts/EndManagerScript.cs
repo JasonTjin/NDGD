@@ -98,7 +98,7 @@ public class EndManagerScript : MonoBehaviour
                     score.text = (financialScore * 100 / financialScoreMax).ToString() + "%";
                     bodyText = ("Your biggest loss in finances was in scenario " 
                         +  FinancialScoreBiggestLossDecisionIndex.ToString() 
-                        + " when you decided to " 
+                        + " when you " 
                         + "");
                     break;
                 case 2:
@@ -106,7 +106,7 @@ public class EndManagerScript : MonoBehaviour
                     score.text = (teamMoralScore * 100 / teamMoralScoreMax).ToString() + "%";
                     bodyText = ("Your biggest loss in team morale was in scenario " 
                         +  TeamMoralScoreBiggestLossDecisionIndex.ToString() 
-                        + " when you decided to " 
+                        + " when you " 
                         + "");
                     break;
                 case 3:
@@ -117,7 +117,7 @@ public class EndManagerScript : MonoBehaviour
                     }
                     bodyText = ("Your decision that least adheared to the primacy of the public interest was in scenario " 
                         +  MoralityScore1BiggestLossDecisionIndex.ToString() 
-                        + " when you decided to " 
+                        + " when you " 
                         + "");
                     
                     break;
@@ -126,7 +126,7 @@ public class EndManagerScript : MonoBehaviour
                     score.text = (moralityScore2 * 100 / moralityScore2Max).ToString() + "%";
                     bodyText = ("Your decision that least adheared to the enhancement of quality of life was in scenario " 
                         +  MoralityScore2BiggestLossDecisionIndex.ToString() 
-                        + " when you decided to " 
+                        + " when you " 
                         + "");
                     break;
                 case 5:
@@ -134,7 +134,7 @@ public class EndManagerScript : MonoBehaviour
                     score.text = (moralityScore3 * 100 / moralityScore3Max).ToString() + "%";
                     bodyText = ("Your decision that least adheared to honesty was in scenario " 
                         +  MoralityScore3BiggestLossDecisionIndex.ToString() 
-                        + " when you decided to " 
+                        + " when you " 
                         + "");
                     break;
                 case 6:
@@ -142,7 +142,7 @@ public class EndManagerScript : MonoBehaviour
                     score.text = (moralityScore4 * 100 / moralityScore4Max).ToString() + "%";
                     bodyText = ("Your decision that least adheared to competence was in scenario " 
                         +  MoralityScore4BiggestLossDecisionIndex.ToString() 
-                        + " when you decided to " 
+                        + " when you " 
                         + "");
                     break;
                 case 7:
@@ -150,7 +150,7 @@ public class EndManagerScript : MonoBehaviour
                     score.text = (moralityScore5 * 100 / moralityScore5Max).ToString() + "%";
                     bodyText = ("Your decision that least adheared to professional development was in scenario " 
                         +  MoralityScore5BiggestLossDecisionIndex.ToString() 
-                        + " when you decided to " 
+                        + " when you " 
                         + "");
                     break;
                 case 8:
@@ -158,7 +158,7 @@ public class EndManagerScript : MonoBehaviour
                     score.text = (moralityScore6 * 100 / moralityScore6Max).ToString() + "%";
                     bodyText = ("Your decision that least adheared to professionalism was in scenario " 
                         +  MoralityScore6BiggestLossDecisionIndex.ToString() 
-                        + " when you decided to " 
+                        + " when you " 
                         + "");
                     break;
                 default:
