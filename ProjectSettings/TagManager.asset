@@ -23,6 +23,8 @@ TagManager:
   - EndBackButton
   - EndNextButton
   - FinalScore
+  - EndManager
+  - EndNextButtonText
   layers:
   - Default
   - TransparentFX

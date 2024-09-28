@@ -92,7 +92,6 @@ public class gameManagerScript : MonoBehaviour
     private int MoralityScore6BiggestLossDecisionIndex = -1; //Professionalism
     private string currentScene; //The name of the current scene
     private int[] Decisions = new int[11];
-    private int decisionIndex = 1;
     private bool initialContextGiven = false;
     private Supabase.Client  supabase;
 
@@ -174,7 +173,7 @@ public class gameManagerScript : MonoBehaviour
             case "End":
                 if (!endManager){
                     try{
-                        endManager = GameObject.FindGameObjectWithTag("End").GetComponent<EndManagerScript>();
+                        endManager = GameObject.FindGameObjectWithTag("EndManager").GetComponent<EndManagerScript>();
                         endManager.InitiateEndSequence(
                             FinancialScore,
                             TeamMoralScore, 
@@ -203,7 +202,7 @@ public class gameManagerScript : MonoBehaviour
                             Decisions,
                             narrativeIncluded);
                     }
-                    catch{}
+                    catch {}
                 }
                 break;
             default:
@@ -231,33 +230,43 @@ public class gameManagerScript : MonoBehaviour
         MoralityScore6Max += MoralityScore6ChangeMax;
         if (FinancialChange - FinancialChangeMax < FinancialScoreBiggestLoss){
             FinancialScoreBiggestLoss = FinancialChange - FinancialChangeMax;
-            FinancialScoreBiggestLossDecisionIndex = decisionIndex;
+            FinancialScoreBiggestLossDecisionIndex = currentChoice;
         }
         if (TeamMoralChange - TeamMoralChangeMax < TeamMoralScoreBiggestLoss){
             TeamMoralScoreBiggestLoss = TeamMoralChange - TeamMoralChangeMax;
-            TeamMoralScoreBiggestLossDecisionIndex = decisionIndex;
+            TeamMoralScoreBiggestLossDecisionIndex = currentChoice;
         }
         if (MoralityScore1Change - MoralityScore1ChangeMax < MoralityScore1BiggestLoss){
             MoralityScore1BiggestLoss = MoralityScore1Change - MoralityScore1ChangeMax;
+            MoralityScore1BiggestLossDecisionIndex = currentChoice;
         }
         if (MoralityScore2Change - MoralityScore2ChangeMax < MoralityScore2BiggestLoss){
             MoralityScore2BiggestLoss = MoralityScore2Change - MoralityScore2ChangeMax;
+            MoralityScore2BiggestLossDecisionIndex = currentChoice;
         }
         if (MoralityScore3Change - MoralityScore3ChangeMax < MoralityScore3BiggestLoss){
             MoralityScore3BiggestLoss = MoralityScore3Change - MoralityScore3ChangeMax;
+            MoralityScore3BiggestLossDecisionIndex = currentChoice;
         }
         if (MoralityScore4Change - MoralityScore4ChangeMax < MoralityScore4BiggestLoss){
             MoralityScore4BiggestLoss = MoralityScore4Change - MoralityScore4ChangeMax;
+            MoralityScore4BiggestLossDecisionIndex = currentChoice;
         }
         if (MoralityScore5Change - MoralityScore5ChangeMax < MoralityScore5BiggestLoss){
             MoralityScore5BiggestLoss = MoralityScore5Change - MoralityScore5ChangeMax;
+            MoralityScore5BiggestLossDecisionIndex = currentChoice;
         }
         if (MoralityScore6Change - MoralityScore6ChangeMax < MoralityScore6BiggestLoss){
             MoralityScore6BiggestLoss = MoralityScore6Change - MoralityScore6ChangeMax;
+            MoralityScore6BiggestLossDecisionIndex = currentChoice;
         }
     }
 
     public void GoToDialogue(){
+        if (currentChoice >= Decisions.Length){
+            GoToEnd();
+            return;
+        }
         //Changes the scene, updates the dialogue
         if (narrativeIncluded){
             currentDialogue ++;
@@ -276,9 +285,8 @@ public class gameManagerScript : MonoBehaviour
     }
     public void GoToResults(int resultNumber){
         //Changes the scene, updates the dialogue
-        Decisions[decisionIndex] = resultNumber;
+        Decisions[currentChoice - 1] = resultNumber;
         if (narrativeIncluded){
-            decisionIndex++;
             SceneManager.LoadScene("Assets/Scenes/Chapters/Dialogue"+ currentDialogue.ToString() + ".unity");
             currentResult = resultNumber;
             currentScene = "Results";
@@ -294,9 +302,19 @@ public class gameManagerScript : MonoBehaviour
         currentScene = "Summary";
     }
     public void GoToContext(){
+        if (currentChoice >= Decisions.Length){
+            GoToEnd();
+            return;
+        }
         //Changes the scene, updates the dialogue
         SceneManager.LoadScene("Context");
         currentScene = "Context";
+    }
+
+    public void GoToEnd(){
+        //Changes the scene to the end
+        SceneManager.LoadScene("End");
+        currentScene = "End";
     }
 
     public void goToMainMenu(){

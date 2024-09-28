@@ -810,7 +810,7 @@ GameObject:
   - component: {fileID: 719686504}
   m_Layer: 5
   m_Name: Text (TMP)
-  m_TagString: Untagged
+  m_TagString: EndNextButtonText
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1582,7 +1582,7 @@ GameObject:
   - component: {fileID: 1474993605}
   m_Layer: 0
   m_Name: EndManager
-  m_TagString: Untagged
+  m_TagString: EndManager
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

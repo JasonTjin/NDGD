@@ -71,44 +71,40 @@ public class EndManagerScript : MonoBehaviour
         body = GameObject.FindGameObjectWithTag("Body").GetComponent<TMP_Text>();
         nextButton = GameObject.FindGameObjectWithTag("EndNextButton");
         backButton = GameObject.FindGameObjectWithTag("EndBackButton");
-        nextButtonText = GameObject.FindGameObjectWithTag("EndNextButton").GetComponent<TMP_Text>();
+        nextButtonText = GameObject.FindGameObjectWithTag("EndNextButtonText").GetComponent<TMP_Text>();
         score = GameObject.FindGameObjectWithTag("FinalScore").GetComponent<TMP_Text>();
         backButton.SetActive(false);
         updated = false;
-        
-        for (var i = 0; i < decisionsList.Length; i++){
-            summaries.Add(GetSummary(i));
-        }
     }
 
     private string GetRecomendations(int percentageScore, string ethicsName){
         var recomendations = "";
-        if ((moralityScore1 * 100 / moralityScore1Max) >= 90){
+        if (percentageScore >= 90){
             recomendations = "  Your adherance to " + ethicsName + " was very good and needs little improvemnt.";
         }
-        else if ((moralityScore1 * 100 / moralityScore1Max) >= 80){
+        else if (percentageScore >= 80){
             recomendations = "  Your adherance to " + ethicsName + " was good, but you could probably touch up on your undestanding.";
         }
-        else if ((moralityScore1 * 100 / moralityScore1Max) >= 70){
+        else if (percentageScore >= 70){
             recomendations = "  Your adherance to " + ethicsName + " was okay, however you can certainly improve your understanding.";
         }
-        else if ((moralityScore1 * 100 / moralityScore1Max) >= 60){
+        else if (percentageScore >= 60){
             recomendations = "  Your adherance to " + ethicsName + " was mediocre and you should read up on the ACS code of ethics.";
         }
-        else if ((moralityScore1 * 100 / moralityScore1Max) >= 50){
+        else if (percentageScore >= 50){
             recomendations = "  Your adherance to " + ethicsName + " was not good and suggests that you need to do some serious study of the ACS code of ethics.";
         }
-        else if ((moralityScore1 * 100 / moralityScore1Max) >= 40){
+        else if (percentageScore >= 40){
             recomendations = "  Your adherance to " + ethicsName + " was bad and suggests a missunderstanding in the key concepts involved.  We highly recomend reading up on " + ethicsName + " in the ACS code of ethics.";
         }
-        else if ((moralityScore1 * 100 / moralityScore1Max) >= 30){
+        else if (percentageScore >= 30){
             recomendations = "  Your adherance to " + ethicsName + " was very bad, nearly every decision relating to " + ethicsName + " was wrong.  It is a necessity that you read the ACS code of ethics to understand where you went wrong.";
         }
-        else if ((moralityScore1 * 100 / moralityScore1Max) >= 20){
+        else if (percentageScore >= 20){
             recomendations = "  Your adherance to " + ethicsName + " was non-existent and suggests a deliberate attempt to be unethical, however you could have been worse.";
         }
         else {
-            recomendations = "  Congratulations you have been so unethical that it is possible " + '"' + ethicsName + '"' + " isn't a part of your vocabulary.";
+            recomendations = "  Congratulations you achieved one of the most unethical scores possible.";
         }
         return recomendations;
     }
@@ -123,11 +119,10 @@ public class EndManagerScript : MonoBehaviour
                 case 1:
                     title.text = "Finances";
                     score.text = (financialScore * 100 / financialScoreMax).ToString() + "%";
-                    bodyText = (
-                        "Your biggest loss in finances was in scenario " 
-                        +  FinancialScoreBiggestLossDecisionIndex.ToString() 
-                        + " when you " 
-                        + summaries[FinancialScoreBiggestLossDecisionIndex][decisionsList[FinancialScoreBiggestLossDecisionIndex]]);
+                    bodyText += "Your biggest loss in finances was in scenario ";
+                    bodyText += FinancialScoreBiggestLossDecisionIndex.ToString() ;
+                    bodyText += " when you " ;
+                    bodyText += summaries[FinancialScoreBiggestLossDecisionIndex][decisionsList[FinancialScoreBiggestLossDecisionIndex] - 1];
                     break;
                 case 2:
                     title.text = "Team Morale";
@@ -136,7 +131,7 @@ public class EndManagerScript : MonoBehaviour
                         "Your biggest loss in team morale was in scenario " 
                         +  TeamMoralScoreBiggestLossDecisionIndex.ToString() 
                         + " when you " 
-                        + summaries[TeamMoralScoreBiggestLossDecisionIndex][decisionsList[TeamMoralScoreBiggestLossDecisionIndex]]);
+                        + summaries[TeamMoralScoreBiggestLossDecisionIndex][decisionsList[TeamMoralScoreBiggestLossDecisionIndex] - 1]);
                     break;
                 case 3:
                     title.text = "The Primacy of the Public Interest";
@@ -148,7 +143,7 @@ public class EndManagerScript : MonoBehaviour
                         "Your decision that least adheared to the primacy of the public interest was in scenario " 
                         +  MoralityScore1BiggestLossDecisionIndex.ToString() 
                         + " when you " 
-                        + summaries[MoralityScore1BiggestLossDecisionIndex][decisionsList[MoralityScore1BiggestLossDecisionIndex]]
+                        + summaries[MoralityScore1BiggestLossDecisionIndex][decisionsList[MoralityScore1BiggestLossDecisionIndex] - 1]
                         + GetRecomendations(moralityScore1 * 100 / moralityScore1Max, "the primacy of the public interest"));
                     
                     break;
@@ -159,7 +154,7 @@ public class EndManagerScript : MonoBehaviour
                         "Your decision that least adheared to the enhancement of quality of life was in scenario " 
                         +  MoralityScore2BiggestLossDecisionIndex.ToString() 
                         + " when you " 
-                        + summaries[MoralityScore2BiggestLossDecisionIndex][decisionsList[MoralityScore2BiggestLossDecisionIndex]]
+                        + summaries[MoralityScore2BiggestLossDecisionIndex][decisionsList[MoralityScore2BiggestLossDecisionIndex] - 1]
                         + GetRecomendations(moralityScore2 * 100 / moralityScore2Max, "the enhancement of quality of life"));
                     break;
                 case 5:
@@ -169,7 +164,7 @@ public class EndManagerScript : MonoBehaviour
                         "Your decision that least adheared to honesty was in scenario " 
                         +  MoralityScore3BiggestLossDecisionIndex.ToString() 
                         + " when you " 
-                        + summaries[MoralityScore3BiggestLossDecisionIndex][decisionsList[MoralityScore3BiggestLossDecisionIndex]]
+                        + summaries[MoralityScore3BiggestLossDecisionIndex][decisionsList[MoralityScore3BiggestLossDecisionIndex] - 1]
                         + GetRecomendations(moralityScore3 * 100 / moralityScore3Max, "honesty"));
                     break;
                 case 6:
@@ -179,7 +174,7 @@ public class EndManagerScript : MonoBehaviour
                         "Your decision that least adheared to competence was in scenario " 
                         +  MoralityScore4BiggestLossDecisionIndex.ToString() 
                         + " when you " 
-                        + summaries[MoralityScore4BiggestLossDecisionIndex][decisionsList[MoralityScore4BiggestLossDecisionIndex]]
+                        + summaries[MoralityScore4BiggestLossDecisionIndex][decisionsList[MoralityScore4BiggestLossDecisionIndex] - 1]
                         + GetRecomendations(moralityScore4 * 100 / moralityScore4Max, "competence"));
                     break;
                 case 7:
@@ -189,7 +184,7 @@ public class EndManagerScript : MonoBehaviour
                         "Your decision that least adheared to professional development was in scenario " 
                         +  MoralityScore5BiggestLossDecisionIndex.ToString() 
                         + " when you " 
-                        + summaries[MoralityScore5BiggestLossDecisionIndex][decisionsList[MoralityScore5BiggestLossDecisionIndex]]
+                        + summaries[MoralityScore5BiggestLossDecisionIndex][decisionsList[MoralityScore5BiggestLossDecisionIndex] - 1]
                         + GetRecomendations(moralityScore5 * 100 / moralityScore5Max, "professional development"));
                     break;
                 case 8:
@@ -199,7 +194,7 @@ public class EndManagerScript : MonoBehaviour
                         "Your decision that least adheared to professionalism was in scenario " 
                         +  MoralityScore6BiggestLossDecisionIndex.ToString() 
                         + " when you " 
-                        + summaries[MoralityScore6BiggestLossDecisionIndex][decisionsList[MoralityScore6BiggestLossDecisionIndex]]
+                        + summaries[MoralityScore6BiggestLossDecisionIndex][decisionsList[MoralityScore6BiggestLossDecisionIndex] - 1]
                         + GetRecomendations(moralityScore6 * 100 / moralityScore6Max, "professionalism"));
                     break;
                 default:
@@ -267,29 +262,31 @@ public class EndManagerScript : MonoBehaviour
         MoralityScore6BiggestLossDecisionIndex = MoralityScore6BiggestLossDecisionIndexFinal;
         decisionsList = decisionsListFinal;
         narrativeIncluded = setNarrativeIncluded;
+        summaries = new();
+        for (var i = 1; i <= decisionsList.Length; i++){
+            summaries.Add(GetSummary(i));
+        }
     }
 
     public void Next(){
         if (currentSlide != 8){
-            if (currentSlide == 0){
-                backButton.SetActive(true);
-            }
+            backButton.SetActive(true);
             currentSlide++;
             updated = false;
-            if (currentSlide == 9){
+            if (currentSlide == 8){
                 nextButtonText.text = "Finish";
             }
         }
     }
 
     public void Back(){
-        if (currentSlide != 0){
+        if (currentSlide != 1){
             if (currentSlide == 8){
                 nextButtonText.text = "Next";
             }
             currentSlide--;
             updated = false;
-            if (currentSlide == 0){
+            if (currentSlide == 1){
                 backButton.SetActive(false);
             }
         }

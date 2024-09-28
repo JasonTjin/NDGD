@@ -190,17 +190,6 @@ public class ChoiceManager : MonoBehaviour
         }
         
     }
-    
-    private void UpdateCharacterLists(List<string> listOfStrings){
-        foreach (string text in listOfStrings){
-            foreach (string name in unseenCharacters){
-                if (!presentCharacters.Contains(name) && text.Contains(name)){
-                    presentCharacters.Add(name);
-                }
-            }
-        }
-    }
-    
 
     private void UpdateChoices()
     {
