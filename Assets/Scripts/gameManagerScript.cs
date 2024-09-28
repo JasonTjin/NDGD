@@ -200,7 +200,8 @@ public class gameManagerScript : MonoBehaviour
                             MoralityScore4BiggestLossDecisionIndex,
                             MoralityScore5BiggestLossDecisionIndex,
                             MoralityScore6BiggestLossDecisionIndex,
-                            Decisions);
+                            Decisions,
+                            narrativeIncluded);
                     }
                     catch{}
                 }
