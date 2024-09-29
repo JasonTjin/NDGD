@@ -1,6 +1,6 @@
 ﻿Node ID,Text,Option1,Option2,Option3,NextNode1,NextNode2,NextNode3,FinancialChange,TeamMoralChange,MoralityScore1,MoralityScore2,MoralityScore3,MoralityScore4,MoralityScore5,MoralityScore6
 1,How should I handle this?,Employee 1 shouldn't be doing other people's work if it means staying after hours.,If Employee 1 want's to help Employee 2 then that's their choice.,Employee 1 needs some support to complete their work on time.,2,4,3,0,0,0,0,0,0,0,0
-2,What should I tell Employee 1?,They shouldn't accept work that they have to stay after work to complete.,They should try to prioritise their welbeing over taking on extra work.,They should stand up for themself and only accept work if they can comfortably do it.,5,6,7,0,0,0,0,0,0,0,0
+2,What should I tell Employee 1?,They shouldn't accept work that they have to stay after work to complete.,They should try to prioritise their wellbeing over taking on extra work.,They should stand up for themself and only accept work if they can comfortably do it.,5,6,7,0,0,0,0,0,0,0,0
 3,How should I support Employee 1?,I will help Employee 1 complete the work they have.,I'll tell them they should stand up for themself and only accept work if they can comfortably do it.,I will tell Employee 2 to stop giving Employee 1 their work and figure out why they feels the need to assign their work to Employee 1.,8,7,9,0,0,0,0,0,0,0,0
 4,,,,,0,0,0,10,0,0,0,0,0,0,0
 5,,,,,0,0,0,5,25,0,5,0,1,0,0

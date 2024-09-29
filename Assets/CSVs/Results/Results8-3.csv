@@ -1,7 +1,4 @@
-﻿Node Id,Speaker,Text,Next Node ID
-1,You,I don't think I should lie.,2
-2,Evan,Don't wanna set unrealistic expectations on us.,3
-3,You,Aww c'mon| at least write better about me| please?,4
-4,Evan,… Fine| but don't complain if you can't keep up with what this entails.,5
-5,Evan,I won't let you down!,6
-6,You,Right…,-2
+﻿Node ID,Speaker,Text,Next Node ID
+1,You,I don't want to lie too much.,2
+2,You,But I can embelish your record a little if you really want.,3
+3,Frank,You're a champion| I knew there was a reason I liked you.,-1

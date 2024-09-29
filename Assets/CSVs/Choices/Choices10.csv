@@ -1,5 +1,10 @@
 ﻿Node ID,Text,Option1,Option2,Option3,NextNode1,NextNode2,NextNode3,FinancialChange,TeamMoralChange,MoralityScore1,MoralityScore2,MoralityScore3,MoralityScore4,MoralityScore5,MoralityScore6
-1,Releasing this as is would put everyone at risk| as well as ruin our reputation if the flaw is discovered. But the client says they need the release ASAP and won't be happy.,I have to stay back with Olivia overnight and get the team to start working on this flaw in the morning too. We will miss the deadline.,We should go ahead with the release and hope the flaw doesn't present itself.,Make a bandage fix| restricting or limiting part of the product. Start working on an update fixing the flaw| communicating this with the client.,2,3,4,0,0,0,0,0,0,0,0
-2,,,,,0,0,0,0,0,8,0,8,0,0,0
-3,,,,,0,0,0,50,15,0,0,0,0,0,0
-4,,,,,0,0,0,30,10,6,0,6,0,0,0
+1,How should I handle this?,"The issue must be fixed, even if it means missing the deadline.","The issue should be fixed, but we can't avoid missing the deadline.",It's going to cost too much to fix the issue| I will find another way of dealing with it.,2,3,4,0,0,0,0,0,0,0,0
+2,How should the issue be fixed?,I have to stay back with Olivia overnight and get the team to start working on this flaw in the morning too| even if it means being late to the deadline.,I will tell the client about the issue and quote them for a fix.,Make a bandage fix| restricting or limiting part of the product. Start working on an update fixing the flaw| communicating this with the client.,5,6,7,0,0,0,0,0,0,0,0
+3,How should the issue be fixed without missing the deadline?,I will tell the client about the issue and quote them for a fix.,Make a bandage fix| restricting or limiting part of the product. Start working on an update fixing the flaw| communicating this with the client.,We will release the product as is and work on a fix.  Then once the fix is complete we will present it to the client explaining that we found an issue| but have fixed it.,6,7,8,0,0,0,0,0,0,0,0
+4,How should I deal with it?,I will ship the product and hope that the issue doesn't arise.,I will tell the client about the issue and quote them for a fix.,Make a bandage fix| restricting or limiting part of the product. Start working on an update fixing the flaw| communicating this with the client.,9,6,7,0,0,0,0,0,0,0,0
+5,,,,,0,0,0,0,10,8,0,6,6,0,0
+6,,,,,0,0,0,40,5,8,0,5,1,0,0
+7,,,,,0,0,0,20,0,5,0,6,5,0,0
+8,,,,,0,0,0,25,10,3,0,2,2,0,0
+9,,,,,0,0,0,40,20,0,0,0,0,0,0

@@ -1,10 +1,7 @@
-﻿Node Id,Speaker,Text,Next Node ID
-1,You,Frank. I know you had little to nothing to do with this project.,2
-2,Frank,Ho-How could you say that sir?,3
-3,You,Direction is not the same as execution| you have to credit Olivia and Wilson.,4
-4,Frank,What are you saying? That I should give all the credit to them?,5
-5,You,Not at all… You had your chance to do that.,6
-6,Frank,What do you mean?,7
-7,You,I'll be bringing this up with the higher ups| you're on thin ice right now.,8
-8,,Wa-wait. Please give me a second chance.,9
-9,,Not this time Frank…,-1
+﻿Node ID,Speaker,Text,Next Node ID
+1,You,I'm not happy Frank| and I think you should understand the impact of what you've done.,2
+2,You,So I want you to rewrite the report so that you would receive the credit that you were going to give to Olivia and Wilson.,3
+3,You,Then I want you to give them full credit for the work they did.,4
+4,You,Once you do I will read the report to ensure that it is acceptable,5
+5,Frank,But I worked hard on the project.,6
+6,You,You should have thought about that before trying to diminish your colleagues' work,0

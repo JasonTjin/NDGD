@@ -1,0 +1,6 @@
+﻿Node ID,Speaker,Text,Next Node ID
+1,You,Ok what you heard is serios| but we need to know for sure.,2
+2,You,I will go to the other team and ask them.,3
+3,Wilson,Won't they lie…,4
+4,You,I will be able to tell.,5
+5,Wilson,Oh ok.,0

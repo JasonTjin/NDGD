@@ -1,7 +1,4 @@
-﻿Node Id,Speaker,Text,Next Node ID
-1,You,I guess we can lie a little bit…,2
-2,Evan,Yeeahh! That’s what I'm talking about.,3
-3,You,We'll be indirectly making the expectation on us higher than we can handle.,4
-4,Evan,Don't worry| I'm sure the extra cash will motivate the team to work harder and achieve our goals!!,5
-5,Evan,Or y'know| something like that.,6
-6,You,Right…,-2
+﻿Node ID,Speaker,Text,Next Node ID
+1,You,I think it's a good idea.,2
+2,You,Just a little exageration will secure a pay bump| motivating the team to keep up the good work.,3
+3,Frank,Couldn't have said it better myself.,-1

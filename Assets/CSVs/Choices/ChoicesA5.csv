@@ -1,6 +1,6 @@
 ﻿Node ID,Text,Option1,Option2,Option3,NextNode1,NextNode2,NextNode3,FinancialChange,TeamMoralChange,MoralityScore1,MoralityScore2,MoralityScore3,MoralityScore4,MoralityScore5,MoralityScore6
 1,Should ITS4 use the idea?,No the idea isn't good.,Yes| but it should be discussed with the CEO first.,Yes| the idea will be a boon to the company.,2,3,4,0,0,0,0,0,0,0,0
-2,What should I tell the team about why we won't do the idea.,We wan't to earn our business through merrit not bribes.,Attempting to bribe the client will sour the relationship and ruin our reputation.,It's just not a good idea.,5,6,7,0,0,0,0,0,0,0,0
+2,What should I tell the team about why we won't do the idea.,We want to earn our business through merrit not bribes.,Attempting to bribe the client will sour the relationship and ruin our reputation.,It's just not a good idea.,5,6,7,0,0,0,0,0,0,0,0
 3,What should I tell the CEO?,I should explain the idea and ask for permission.,I should tell hhem that we are giving a bribe to secure new business?,Ask for guidence from the CEO on how to secure the project and see if they suggest the bribe.,8,9,10,0,0,0,0,0,0,0,0
 4,What should the gift be?,The gift should be something small that is more of a nice gesture.,The gift should be lavish and something that clearly implies that it is a bribe.,The gift should be discrete cash given to the industry representative.,11,12,13,0,0,0,0,0,0,0,0
 5,,,,,0,0,0,70,40,0,0,8,0,0,8

@@ -1,5 +1,7 @@
 ﻿Node ID,Text,Option1,Option2,Option3,NextNode1,NextNode2,NextNode3,FinancialChange,TeamMoralChange,MoralityScore1,MoralityScore2,MoralityScore3,MoralityScore4,MoralityScore5,MoralityScore6
-1,This is a huge issue that would compromise the privacy of users. But Wilson has yet to find hard evidence that they plan to do this. What should i do?,We should report this to the higher ups immediately| even if there is no evidence. It is not our responsibility to investigate and confront the other team.,Wilson and I should keep quiet about it and do some more investigating before reporting this. If we find something| then we'll confront them.,Not our client| not our project| not our problem. At the very least| they're bringing extra money into the company.,2,3,4,0,0,0,0,0,0,0,0
-2,,,,,0,0,0,0,40,8,0,8,0,0,0
-3,,,,,0,0,0,5,30,6,0,5,0,0,0
-4,,,,,0,0,0,35,0,0,0,0,0,0,0
+1,What should I do?,We need more information before accusing them.,Not our client| not our project| not our problem.,We should report what Evan heard to John Bossman.,2,3,4,0,0,0,0,0,0,0,0
+2,How should we get more information?,Wilson and I will investigate and then if we find something we will let John Bossman know.,I will go to the other team and ask them if they are doing it.,We will report the issue to John bossman and have him investigate.,5,6,4,0,0,0,0,0,0,0,0
+3,,,,,0,0,0,0,0,0,0,0,0,0,0
+4,,,,,0,0,0,0,0,4,6,3,0,0,0
+5,,,,,0,0,0,0,0,3,3,3,0,0,0
+6,,,,,0,0,0,0,0,0,1,1,0,0,0

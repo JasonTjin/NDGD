@@ -1,0 +1,6 @@
+﻿Node ID,Speaker,Text,Next Node ID
+1,You,Ok we will release the product as is.,2
+2,Olivia,What?!,3
+3,You,But we don’t let the client know and secretly work on a fix.,4
+4,You,Then we present the client with the issue and the fix at the same time| so they aren't upset.,5
+5,Olivia,Well ok… if that's what you think is best.,0

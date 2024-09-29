@@ -1,6 +1,4 @@
-﻿Node Id,Speaker,Text,Next Node ID
-1,You,Thank you for letting me know| we should keep quiet about this for now.,2
-2,Wilson,Bu-but shouldn't we tell someone?,3
-3,You,We don't have any evidence yet| we'll investigate a bit more first for some concrete evidence.,4
-4,You,Then we'll confront them directly with said evidence.,5
-5,Wilson,Al-alright then.,-2
+﻿Node ID,Speaker,Text,Next Node ID
+1,You,Ok what you heard is serios.,2
+2,You,I think we take this to John Bossman and he can investigate.,3
+3,Wilson,Ok thank you for believing me.,0

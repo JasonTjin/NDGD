@@ -1,8 +1,5 @@
-﻿Node Id,Speaker,Text,Next Node ID
-1,You,Alright Olivia| nice work on noticing the issue.,2
-2,You,We have a long night ahead of ourselves| hope you didn't have plans.,3
-3,Olivia,Let me call home first| my kids might worry.,4
-4,You,Sorry to do this to you…,5
-5,Olivia,I should have noticed this issue earlier.,6
-6,You,It's okay| I'll get the team up to speed on the issue in the morning and they'll join in fixing the problem.,7
-7,Olivia,Alright boss…,-1
+﻿Node ID,Speaker,Text,Next Node ID
+1,You,We can't release the product with this flaw.,2
+2,You,I will let the client know that we have found a flaw and will not meet the deadline.,3
+3,You,We will get started tonight and the rest of the team will start in the morning.,4
+4,Olivia,Ok| let's get to work.,0

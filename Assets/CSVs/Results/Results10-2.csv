@@ -1,7 +1,6 @@
-﻿Node Id,Speaker,Text,Next Node ID
-1,You,I- I think we should just go ahead with the release.,2
-2,You,Too much rides on us reaching this deadline. We're in a lose-lose situation.,3
-3,Olivia,Are you sure about this? If the flaw is spotted| it would ruin us.,4
-4,You,We just have to take the risk and hope it doesn't get found.,5
-5,You,Either this or lose out on the benefits of satisfying the client.,6
-6,Olivia,… Alright then.,-1
+﻿Node ID,Speaker,Text,Next Node ID
+1,You,We can't release the product with this flaw.,2
+2,You,I will let the client know that we have found a flaw and it will require more work.,3
+3,You,I will quote them the cost of how much time it will take to fix.,4
+4,Olivia,You want to give the product as is?!,5
+5,You,Yes but we will let them know of the issue and that we can fix it if they pay more.,0

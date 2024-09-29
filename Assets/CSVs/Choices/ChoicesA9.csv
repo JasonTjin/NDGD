@@ -1,5 +1,7 @@
 ﻿Node ID,Text,Option1,Option2,Option3,NextNode1,NextNode2,NextNode3,FinancialChange,TeamMoralChange,MoralityScore1,MoralityScore2,MoralityScore3,MoralityScore4,MoralityScore5,MoralityScore6
-1,What Employee 1 is doing is devaluing and belittling Employee 2 and Employee 2's efforts| what should I do?,Let it slide| its near the end of the day and I just want to go home.,Reprimand Employee 1| explain to them that direction is not the same as execution and to re-write the report.,Alert the higher ups| making it clear who was responsible for what.,2,3,4,0,0,0,0,0,0,0,0
-2,,,,,0,0,0,5,10,0,0,0,0,0,0
-3,,,,,0,0,0,10,15,6,0,6,0,0,0
-4,,,,,0,0,0,5,0,4,0,5,0,0,0
+1,How should I handle this?,Employee 1 is taking credit for Employee 2 and Employee 3's work| they need to be reprimanded,Employee 1 should fix the report to include proper credit for Employee 2 and Employee 3.,It's done now| I will pay more attention next time.,2,3,4,0,0,0,0,0,0,0,0
+2,How should Employee 1 be reprimanded?,Employee 1 should change the report so that they recieve the same credit that they were going to give Employee 2 and Employee 3.,Employee 1 should fix the report and promise not to do that again,Employee 1 should apologise to Employee 2 and Employee 3 and fix the report to include the correct credit.,5,3,6,0,0,0,0,0,0,0,0
+3,,,,,0,0,0,0,15,0,0,4,1,0,4
+4,,,,,0,0,0,0,0,0,0,0,0,0,0
+5,,,,,0,0,0,0,20,0,0,1,1,0,3
+6,,,,,0,0,0,0,25,0,0,4,1,0,4

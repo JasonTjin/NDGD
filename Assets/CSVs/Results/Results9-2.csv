@@ -1,8 +1,6 @@
-﻿Node Id,Speaker,Text,Next Node ID
-1,You,Frank. I know you had little to nothing to do with this project.,2
-2,Frank,Ho-How could you say that sir?,3
-3,You,Direction is not the same as execution| you have to credit Olivia and Wilson.,4
-4,Frank,What are you saying? That I should give all the credit to them?,5
-5,You,Not at all… I'm giving you a chance to re-write the report and do it fairly this time.,6
-6,Frank,Fine. But this is just how the industry is.,7
-7,You,This industry is also built upon integrity and respect| something you seem to still need to learn.,-1
+﻿Node ID,Speaker,Text,Next Node ID
+1,You,I'm not happy Frank| but it's late and the report is already done.,2
+2,You,So this time I'll let it slide| but next time I expect you to properly credit your coworkers.,3
+3,Frank,Oh sure|I will next time.,0
+,,,
+,,,
