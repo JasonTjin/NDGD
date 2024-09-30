@@ -25,6 +25,7 @@ TagManager:
   - FinalScore
   - EndManager
   - EndNextButtonText
+  - ScenarioTitle
   layers:
   - Default
   - TransparentFX

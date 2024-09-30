@@ -9,6 +9,7 @@ using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using System.Security.Cryptography;
+using TMPro;
 
 [Table("RESULTS")]
 public class Results : BaseModel
@@ -47,13 +48,15 @@ public class gameManagerScript : MonoBehaviour
     const string CONTEXT_FILE_PATH = "./assets/CSVs/Contexts/Context";
     const string CSV_EXTENSION = ".csv";
     const string TXT_EXTENSION = ".txt";
-    const int TYPING_DELAY = 10; //Controlls the delay between each letter showing up
+    const int TYPING_DELAY = 2; //Controlls the delay between each letter showing up
+    const int TARGET_FRAMERATE = 60;
     private ChoiceManager choiceManager;
     private DialogueManager2 dialogueManager;
     public GameObject thisObject; //Used to make this object not destroy on load
     private summaryScript summaryManager;
     private ContextManagerScript contextManager;
     private EndManagerScript endManager;
+    private TMP_Text sceneTransitionText;
     public bool narrativeIncluded = true;
     private int currentDialogue; //The number of the current dialogue file
     private int currentChoice; //The number of the current choice file
@@ -93,6 +96,8 @@ public class gameManagerScript : MonoBehaviour
     private string currentScene; //The name of the current scene
     private int[] Decisions = new int[11];
     private bool initialContextGiven = false;
+    private int transitionTimer;
+    private bool transitionDone = false;
     private Supabase.Client  supabase;
 
     async void Awake()
@@ -109,6 +114,7 @@ public class gameManagerScript : MonoBehaviour
 
         supabase = new Supabase.Client("https://okzgvpnnqwecacqrppgn.supabase.co", "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im9remd2cG5ucXdlY2FjcXJwcGduIiwicm9sZSI6ImFub24iLCJpYXQiOjE3MjU0Mzc1MzYsImV4cCI6MjA0MTAxMzUzNn0.gwTxDDZnFrdIOljsdaDbeKxx9xJqAtQGflZvhWD_syQ", options);
         await supabase.InitializeAsync();
+        Application.targetFrameRate = TARGET_FRAMERATE;
     }
 
     void Update(){ 
@@ -168,6 +174,22 @@ public class gameManagerScript : MonoBehaviour
                         }
                     }
                     catch{}
+                }
+                break;
+            case "ScenarioTransition":
+                if (!sceneTransitionText){
+                    try{
+                        sceneTransitionText = GameObject.FindGameObjectWithTag("ScenarioTitle").GetComponent<TMP_Text>();
+                        sceneTransitionText.text = "Scenario " + (currentChoice + 1).ToString();
+                        transitionTimer = 0;
+                    }
+                    catch{}
+                }
+                else{
+                    transitionTimer++;
+                    if (transitionTimer > 100){
+                        GoToDialogue();
+                    }
                 }
                 break;
             case "End":
@@ -262,13 +284,25 @@ public class gameManagerScript : MonoBehaviour
         }
     }
 
+    public void GoToTransition(){
+        SceneManager.LoadScene("Assets/Scenes/ScenarioTransition.unity");
+        currentScene = "ScenarioTransition";
+    }
+
     public void GoToDialogue(){
         if (currentChoice >= Decisions.Length){
             GoToEnd();
             return;
         }
+
         //Changes the scene, updates the dialogue
         if (narrativeIncluded){
+            if (currentDialogue >= 3 && !transitionDone){
+                GoToTransition();
+                transitionDone = true;
+                return;
+            }
+            transitionDone = false;
             currentDialogue ++;
             SceneManager.LoadScene("Assets/Scenes/Chapters/Dialogue"+ currentDialogue.ToString() + ".unity"); 
             currentScene = "Dialogue";
