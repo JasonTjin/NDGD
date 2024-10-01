@@ -46,6 +46,7 @@ public class gameManagerScript : MonoBehaviour
     const string CHOICES_FILE_PATH = "./assets/CSVs/Choices/Choices";
     const string RESULTS_FILE_PATH = "./assets/CSVs/Results/Results";
     const string CONTEXT_FILE_PATH = "./assets/CSVs/Contexts/Context";
+    const string CONCLUSION_FILE_PATH = "./assets/CSVs/Conclusions/Conclusion";
     const string CSV_EXTENSION = ".csv";
     const string TXT_EXTENSION = ".txt";
     const int TYPING_DELAY = 2; //Controlls the delay between each letter showing up
@@ -98,6 +99,8 @@ public class gameManagerScript : MonoBehaviour
     private bool initialContextGiven = false;
     private int transitionTimer;
     private bool transitionDone = false;
+    private int conclusionNumber;
+    private bool conclusionDone = false;
     private Supabase.Client  supabase;
 
     async void Awake()
@@ -190,6 +193,16 @@ public class gameManagerScript : MonoBehaviour
                     if (transitionTimer > 100){
                         GoToDialogue();
                     }
+                }
+                break;
+            case "Conclusion":
+                if (!dialogueManager){
+                    try{
+                        dialogueManager = GameObject.FindGameObjectWithTag("DialogueManager").GetComponent<DialogueManager2>();
+                        dialogueManager.SetUpDialogue(CONCLUSION_FILE_PATH + conclusionNumber.ToString() + CSV_EXTENSION, TYPING_DELAY);
+                        conclusionDone = true;
+                    }
+                    catch{}
                 }
                 break;
             case "End":
@@ -347,8 +360,18 @@ public class gameManagerScript : MonoBehaviour
 
     public void GoToEnd(){
         //Changes the scene to the end
+        if (narrativeIncluded && !conclusionDone){
+
+            GoToConclusion();
+            return;
+        }
         SceneManager.LoadScene("End");
         currentScene = "End";
+    }
+
+    public void GoToConclusion(){
+        SceneManager.LoadScene("Assets/Scenes/Conclusion" + conclusionNumber.ToString());
+        currentScene = "Conclusion";
     }
 
     public void goToMainMenu(){
@@ -357,6 +380,10 @@ public class gameManagerScript : MonoBehaviour
 
     public void GoToAcknowledgements () {
         SceneManager.LoadScene("Acknowledgements");
+    }
+
+    public void GoToSurveyDetails(){
+        
     }
 
     public async void submitResultsToSupabase()
