@@ -536,7 +536,7 @@ GameObject:
   - component: {fileID: 1257886994}
   - component: {fileID: 1257886996}
   m_Layer: 5
-  m_Name: Evan
+  m_Name: Frank
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -560,7 +560,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 0}
   m_AnchoredPosition: {x: 0, y: 143}
-  m_SizeDelta: {x: -289.7645, y: 510.2355}
+  m_SizeDelta: {x: -202.6254, y: 589.629}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1257886994
 MonoBehaviour:
@@ -582,7 +582,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 3a4d7ade7c069dd479c9ab5a16f78f18, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 2055da42e1793a446881b93638247b5e, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -610,7 +610,7 @@ Animator:
   m_GameObject: {fileID: 1257886992}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 06e02df4495481e42ad5b9204fd3d210, type: 2}
+  m_Controller: {fileID: 9100000, guid: 64453524edf4e004bb5ec87af7a4fd77, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
