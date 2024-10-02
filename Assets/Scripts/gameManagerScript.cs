@@ -193,7 +193,13 @@ public class gameManagerScript : MonoBehaviour
                 if (!sceneTransitionText){
                     try{
                         sceneTransitionText = GameObject.FindGameObjectWithTag("ScenarioTitle").GetComponent<TMP_Text>();
-                        sceneTransitionText.text = "Scenario " + (currentChoice + 1).ToString();
+                        if (currentChoice != 11){
+                            sceneTransitionText.text = "Scenario " + (currentChoice + 1).ToString();
+                        }
+                        else{
+                            sceneTransitionText.text = "The End";
+                        }
+                        
                         transitionTimer = 0;
                     }
                     catch{}
@@ -323,8 +329,15 @@ public class gameManagerScript : MonoBehaviour
 
     public void GoToDialogue(){
         if (currentChoice >= Decisions.Length){
-            GoToEnd();
-            return;
+            if (!transitionDone){
+                GoToTransition();
+                transitionDone = true;
+                return;
+            }
+            else{
+                GoToEnd();
+                return;
+            } 
         }
 
         //Changes the scene, updates the dialogue
@@ -399,7 +412,7 @@ public class gameManagerScript : MonoBehaviour
         else{
             conclusionNumber = 3;
         }
-        SceneManager.LoadScene("Assets/Scenes/Conclusion" + conclusionNumber.ToString());
+        SceneManager.LoadScene("Assets/Scenes/Conclusion" + conclusionNumber.ToString() + ".unity");
         currentScene = "Conclusion";
     }
 
