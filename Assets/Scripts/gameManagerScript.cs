@@ -404,13 +404,13 @@ public class gameManagerScript : MonoBehaviour
 
     public void GoToConclusion(){
         if (FinancialScore * 100 / FinancialScoreMax >= 70){
-            conclusionNumber = 1;
+            conclusionNumber = 3;
         }
         else if (TeamMoralScore * 100 / TeamMoralScoreMax >= 70){
             conclusionNumber = 2;
         }
         else{
-            conclusionNumber = 3;
+            conclusionNumber = 1;
         }
         SceneManager.LoadScene("Assets/Scenes/Conclusion" + conclusionNumber.ToString() + ".unity");
         currentScene = "Conclusion";
