@@ -14,6 +14,8 @@ using TMPro;
 [Table("RESULTS")]
 public class Results : BaseModel
 {
+    [PrimaryKey("id")]
+    public int Id { get; set; }
     public Results() { } // Parameterless constructor
     [Column("Decision1")]
     public int Decision1 { get; set; }
@@ -58,6 +60,7 @@ public class gameManagerScript : MonoBehaviour
     private ContextManagerScript contextManager;
     private EndManagerScript endManager;
     private TMP_Text sceneTransitionText;
+    private TMP_Text gameNumberText;
     public bool narrativeIncluded = true;
     private int currentDialogue; //The number of the current dialogue file
     private int currentChoice; //The number of the current choice file
@@ -101,6 +104,7 @@ public class gameManagerScript : MonoBehaviour
     private bool transitionDone = false;
     private int conclusionNumber;
     private bool conclusionDone = false;
+    private int gameNumber;
     private Supabase.Client  supabase;
 
     async void Awake()
@@ -118,8 +122,14 @@ public class gameManagerScript : MonoBehaviour
         supabase = new Supabase.Client("https://okzgvpnnqwecacqrppgn.supabase.co", "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im9remd2cG5ucXdlY2FjcXJwcGduIiwicm9sZSI6ImFub24iLCJpYXQiOjE3MjU0Mzc1MzYsImV4cCI6MjA0MTAxMzUzNn0.gwTxDDZnFrdIOljsdaDbeKxx9xJqAtQGflZvhWD_syQ", options);
         await supabase.InitializeAsync();
         Application.targetFrameRate = TARGET_FRAMERATE;
+        if (UnityEngine.Random.value >= 0.5){
+            narrativeIncluded = true;
+        }
+        else{
+            narrativeIncluded = false;
+        }
+        
     }
-
     void Update(){ 
         //This makes sure that the choice manager or dialogue manager are correctly stored, then sets them up for when a scene change happens
         switch (currentScene){
@@ -238,6 +248,14 @@ public class gameManagerScript : MonoBehaviour
                             narrativeIncluded);
                     }
                     catch {}
+                }
+                break;
+            case "SurveyDetails":
+                if (!gameNumberText){
+                    try{
+                        gameNumberText = GameObject.FindGameObjectWithTag("GameNumber").GetComponent<TMP_Text>();
+                    }
+                    catch{}
                 }
                 break;
             default:
@@ -367,6 +385,7 @@ public class gameManagerScript : MonoBehaviour
         }
         SceneManager.LoadScene("End");
         currentScene = "End";
+        submitResultsToSupabase();
     }
 
     public void GoToConclusion(){
@@ -383,7 +402,13 @@ public class gameManagerScript : MonoBehaviour
     }
 
     public void GoToSurveyDetails(){
-        
+        SceneManager.LoadScene("SurveyDetails");
+        currentScene = "SurveyDetails";
+    }
+
+    public async void GetGameNumber(){
+        var result = await supabase.From<Results>().Get();
+        gameNumber = result.Models[result.Models.Count - 1].Id;
     }
 
     public async void submitResultsToSupabase()
@@ -404,5 +429,6 @@ public class gameManagerScript : MonoBehaviour
             Narrative_Included = narrativeIncluded
         };
         await supabase.From<Results>().Insert(model);
+        GetGameNumber();
     }
 }

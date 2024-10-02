@@ -277,6 +277,9 @@ public class EndManagerScript : MonoBehaviour
                 nextButtonText.text = "Finish";
             }
         }
+        else{
+            gameManager.GoToSurveyDetails();
+        }
     }
 
     public void Back(){
