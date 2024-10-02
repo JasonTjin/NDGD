@@ -83,7 +83,7 @@ public class EndManagerScript : MonoBehaviour
             recomendations = "  Your adherance to " + ethicsName + " was very good and needs little improvemnt.";
         }
         else if (percentageScore >= 80){
-            recomendations = "  Your adherance to " + ethicsName + " was good, but you could probably touch up on your undestanding.";
+            recomendations = "  Your adherance to " + ethicsName + " was good, but you could probably touch up on your understanding.";
         }
         else if (percentageScore >= 70){
             recomendations = "  Your adherance to " + ethicsName + " was okay, however you can certainly improve your understanding.";
