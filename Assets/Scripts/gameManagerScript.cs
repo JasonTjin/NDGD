@@ -253,7 +253,8 @@ public class gameManagerScript : MonoBehaviour
             case "SurveyDetails":
                 if (!gameNumberText){
                     try{
-                        gameNumberText = GameObject.FindGameObjectWithTag("GameNumber").GetComponent<TMP_Text>();
+                        gameNumberText = GameObject.FindGameObjectWithTag("GameNumberScore").GetComponent<TMP_Text>();
+                        gameNumberText.text = gameNumber.ToString();
                     }
                     catch{}
                 }
@@ -389,6 +390,15 @@ public class gameManagerScript : MonoBehaviour
     }
 
     public void GoToConclusion(){
+        if (FinancialScore * 100 / FinancialScoreMax >= 70){
+            conclusionNumber = 1;
+        }
+        else if (FinancialScore * 100 / FinancialScoreMax >= 50){
+            conclusionNumber = 2;
+        }
+        else{
+            conclusionNumber = 3;
+        }
         SceneManager.LoadScene("Assets/Scenes/Conclusion" + conclusionNumber.ToString());
         currentScene = "Conclusion";
     }
