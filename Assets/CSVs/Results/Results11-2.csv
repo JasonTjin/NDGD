@@ -1,4 +1,4 @@
 ﻿Node ID,Speaker,Text,Next Node ID
-1,You,Ok what you heard is serios.,2
+1,You,Ok what you heard is serious.,2
 2,You,I think we take this to John Bossman and he can investigate.,3
-3,Wilson,Ok thank you for believing me.,0
+3,Wilson,Ok thank you for believing me.,-1

@@ -1,6 +1,4 @@
 ﻿Node ID,Speaker,Text,Next Node ID
 1,You,I'm not happy Frank| but it's late and the report is already done.,2
 2,You,So this time I'll let it slide| but next time I expect you to properly credit your coworkers.,3
-3,Frank,Oh sure|I will next time.,0
-,,,
-,,,
+3,Frank,Oh sure|I will next time.,-1
