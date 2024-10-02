@@ -393,7 +393,7 @@ public class gameManagerScript : MonoBehaviour
         if (FinancialScore * 100 / FinancialScoreMax >= 70){
             conclusionNumber = 1;
         }
-        else if (FinancialScore * 100 / FinancialScoreMax >= 50){
+        else if (TeamMoralScore * 100 / TeamMoralScoreMax >= 70){
             conclusionNumber = 2;
         }
         else{

@@ -6,7 +6,10 @@
 5,Phone,*Ring ring* *Ring ring*,6
 6,John Bossman,Hello| you've been here for plenty long and I have yet to see any major improvement.,7
 7,You,About that| I'm still wor-,8
-8,John Bossman,I don't need to hear it| I just want results.,9
-9,John Bossman,Seeing as how you haven't exactly failed the branch either| I'm willing to let you keep trying.,10
-10,John Bossman,Next time| I won't be so nice.,11
-11,You,Alright then| thanks for the opportunity.,-1
+8,John Bossman,I don't need to hear it.,9
+9,John Bossman,Look| I know sometimes I can be tough| but that's what this company needs to succeed.,10
+10,John Bossman,However| seeing the way the team likes you and respects you… I think that's worth something too…,11
+11,John Bossman,So I am willing to let you stay and I want you to keep up the good work.,12
+12,You,Awww thanks John.,13
+13,John Bossman,Easy now| I'm still your boss and you'd do well to remember that.,14
+14,John Bossman,Now get back to it.,-1
