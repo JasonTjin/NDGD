@@ -38,67 +38,70 @@ public class summaryScript : MonoBehaviour
 
     void Update()
     {
-        financeScore.text = financeScoreText;
-        teamMorale.text = teamMoraleText;
-        moralityScore.text = moralityScoreText;
+        try{
+            financeScore.text = financeScoreText;
+            teamMorale.text = teamMoraleText;
+            moralityScore.text = moralityScoreText;
 
-        Color darkGreen, green, yellow, red;
-        ColorUtility.TryParseHtmlString("#006124", out darkGreen);  
-        ColorUtility.TryParseHtmlString("#03E054", out green); 
-        ColorUtility.TryParseHtmlString("#DED700", out yellow);   
-        ColorUtility.TryParseHtmlString("#AE0800", out red);   
+            Color darkGreen, green, yellow, red;
+            ColorUtility.TryParseHtmlString("#006124", out darkGreen);  
+            ColorUtility.TryParseHtmlString("#03E054", out green); 
+            ColorUtility.TryParseHtmlString("#DED700", out yellow);   
+            ColorUtility.TryParseHtmlString("#AE0800", out red);   
 
-        // Change colour of score based on the score
-        if (financeScoreInt >= 90)
-        {
-            financeScore.color = darkGreen;
+            // Change colour of score based on the score
+            if (financeScoreInt >= 90)
+            {
+                financeScore.color = darkGreen;
+            }
+            else if (financeScoreInt >= 70)
+            {
+                financeScore.color = green;
+            }
+            else if (financeScoreInt >= 50)
+            {
+                financeScore.color = yellow;
+            }
+            else
+            {
+                financeScore.color = red;
+            }
+            // Update Morale Score Text Color
+            if (teamMoraleInt >= 90)
+            {
+                teamMorale.color = darkGreen;
+            }
+            else if (teamMoraleInt >= 70)
+            {
+                teamMorale.color = green;
+            }
+            else if (teamMoraleInt >= 50)
+            {
+                teamMorale.color = yellow;
+            }
+            else
+            {
+                teamMorale.color = red;
+            }
+            // Update Morality Score Text Color
+            if (moralityScoreInt >= 90)
+            {
+                moralityScore.color = darkGreen;
+            }
+            else if (moralityScoreInt >= 70)
+            {
+                moralityScore.color = green;
+            }
+            else if (moralityScoreInt >= 50)
+            {
+                moralityScore.color = yellow;
+            }
+            else
+            {
+                moralityScore.color = red;
+            }
         }
-        else if (financeScoreInt >= 70)
-        {
-            financeScore.color = green;
-        }
-        else if (financeScoreInt >= 50)
-        {
-            financeScore.color = yellow;
-        }
-        else
-        {
-            financeScore.color = red;
-        }
-        // Update Morale Score Text Color
-        if (teamMoraleInt >= 90)
-        {
-            teamMorale.color = darkGreen;
-        }
-        else if (teamMoraleInt >= 70)
-        {
-            teamMorale.color = green;
-        }
-        else if (teamMoraleInt >= 50)
-        {
-            teamMorale.color = yellow;
-        }
-        else
-        {
-            teamMorale.color = red;
-        }
-        // Update Morality Score Text Color
-        if (moralityScoreInt >= 90)
-        {
-            moralityScore.color = darkGreen;
-        }
-        else if (moralityScoreInt >= 70)
-        {
-            moralityScore.color = green;
-        }
-        else if (moralityScoreInt >= 50)
-        {
-            moralityScore.color = yellow;
-        }
-        else
-        {
-            moralityScore.color = red;
-        }
+        catch{}
     }
 
     public void Continue()
