@@ -119,6 +119,7 @@ public class EndManagerScript : MonoBehaviour
                 case 1:
                     title.text = "Finances";
                     score.text = (financialScore * 100 / financialScoreMax).ToString() + "%";
+                    score.color = scoreColor(financialScore * 100 / financialScoreMax);
                     bodyText += "Your biggest loss in finances was in scenario ";
                     bodyText += FinancialScoreBiggestLossDecisionIndex.ToString() ;
                     bodyText += " when you " ;
@@ -127,6 +128,7 @@ public class EndManagerScript : MonoBehaviour
                 case 2:
                     title.text = "Team Morale";
                     score.text = (teamMoralScore * 100 / teamMoralScoreMax).ToString() + "%";
+                    score.color = scoreColor(teamMoralScore * 100 / teamMoralScoreMax);
                     bodyText = (
                         "Your biggest loss in team morale was in scenario " 
                         +  TeamMoralScoreBiggestLossDecisionIndex.ToString() 
@@ -136,6 +138,7 @@ public class EndManagerScript : MonoBehaviour
                 case 3:
                     title.text = "The Primacy of the Public Interest";
                     score.text = (moralityScore1 * 100 / moralityScore1Max).ToString() + "%";
+                    score.color = scoreColor(moralityScore1 * 100 / moralityScore1Max);
                     if ((moralityScore1 * 100 / moralityScore1Max) == 100){
 
                     }
@@ -150,6 +153,7 @@ public class EndManagerScript : MonoBehaviour
                 case 4:
                     title.text = "The Enhancement of Quality of Life";
                     score.text = (moralityScore2 * 100 / moralityScore2Max).ToString() + "%";
+                    score.color = scoreColor(moralityScore2 * 100 / moralityScore2Max);
                     bodyText = (
                         "Your decision that least adheared to the enhancement of quality of life was in scenario " 
                         +  MoralityScore2BiggestLossDecisionIndex.ToString() 
@@ -160,6 +164,7 @@ public class EndManagerScript : MonoBehaviour
                 case 5:
                     title.text = "Honesty";
                     score.text = (moralityScore3 * 100 / moralityScore3Max).ToString() + "%";
+                    score.color = scoreColor(moralityScore3 * 100 / moralityScore3Max);
                     bodyText = (
                         "Your decision that least adheared to honesty was in scenario " 
                         +  MoralityScore3BiggestLossDecisionIndex.ToString() 
@@ -170,6 +175,7 @@ public class EndManagerScript : MonoBehaviour
                 case 6:
                     title.text = "Competence";
                     score.text = (moralityScore4 * 100 / moralityScore4Max).ToString() + "%";
+                    score.color = scoreColor(moralityScore4 * 100 / moralityScore4Max);
                     bodyText = (
                         "Your decision that least adheared to competence was in scenario " 
                         +  MoralityScore4BiggestLossDecisionIndex.ToString() 
@@ -180,6 +186,7 @@ public class EndManagerScript : MonoBehaviour
                 case 7:
                     title.text = "Professional Development";
                     score.text = (moralityScore5 * 100 / moralityScore5Max).ToString() + "%";
+                    score.color = scoreColor(moralityScore5 * 100 / moralityScore5Max);
                     bodyText = (
                         "Your decision that least adheared to professional development was in scenario " 
                         +  MoralityScore5BiggestLossDecisionIndex.ToString() 
@@ -190,6 +197,7 @@ public class EndManagerScript : MonoBehaviour
                 case 8:
                     title.text = "Professionalism";
                     score.text = (moralityScore6 * 100 / moralityScore6Max).ToString() + "%";
+                    score.color = scoreColor(moralityScore6 * 100 / moralityScore6Max);
                     bodyText = (
                         "Your decision that least adheared to professionalism was in scenario " 
                         +  MoralityScore6BiggestLossDecisionIndex.ToString() 
@@ -292,6 +300,30 @@ public class EndManagerScript : MonoBehaviour
             if (currentSlide == 1){
                 backButton.SetActive(false);
             }
+        }
+    }
+    public Color scoreColor(int score){
+        Color darkGreen, green, yellow, red;
+        UnityEngine.ColorUtility.TryParseHtmlString("#006124", out darkGreen);  
+        UnityEngine.ColorUtility.TryParseHtmlString("#03E054", out green); 
+        UnityEngine.ColorUtility.TryParseHtmlString("#DED700", out yellow);   
+        UnityEngine.ColorUtility.TryParseHtmlString("#AE0800", out red);  
+
+        if (score >= 90)
+        {
+            return darkGreen;
+        }
+        else if (score >= 70)
+        {
+            return green;
+        }
+        else if (score >= 50)
+        {
+            return yellow;
+        }
+        else
+        {
+            return red;
         }
     }
 }
