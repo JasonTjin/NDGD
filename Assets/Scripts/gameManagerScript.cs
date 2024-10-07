@@ -266,7 +266,6 @@ public class gameManagerScript : MonoBehaviour
                 }
                 break;
             default:
-                UnityEngine.Debug.Log("Default");
                 break;
         }
     }
