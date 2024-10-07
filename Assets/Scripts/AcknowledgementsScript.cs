@@ -6,9 +6,13 @@ public class AcknowledgementsScript : MonoBehaviour
 {
     private gameManagerScript gameManager;
    
-    void Start()
-    {
-        gameManager = GameObject.FindGameObjectWithTag("GameManager").GetComponent<gameManagerScript>();
+    void Update(){
+        if (!gameManager){
+            try{
+                gameManager = GameObject.FindGameObjectWithTag("GameManager").GetComponent<gameManagerScript>();
+            }
+            catch{}
+        }
     }
 
     public void goToMainMenu(){

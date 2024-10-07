@@ -28,16 +28,32 @@ public class summaryScript : MonoBehaviour
         moralityScoreInt = newMoralityScore;
     }
 
-    void Start()
-    {
-        financeScore = GameObject.FindGameObjectWithTag("FinanceScore").GetComponent<TMP_Text>();
-        teamMorale = GameObject.FindGameObjectWithTag("TeamMorale").GetComponent<TMP_Text>();
-        moralityScore = GameObject.FindGameObjectWithTag("MoralityScore").GetComponent<TMP_Text>();
-        gameManager = GameObject.FindGameObjectWithTag("GameManager").GetComponent<gameManagerScript>();
-    }
-
     void Update()
     {
+        if (!financeScore){
+            try{
+                financeScore = GameObject.FindGameObjectWithTag("FinanceScore").GetComponent<TMP_Text>();
+            }
+            catch{}
+        }
+        if (!teamMorale){
+            try{
+                teamMorale = GameObject.FindGameObjectWithTag("TeamMorale").GetComponent<TMP_Text>();
+            }
+            catch{}
+        }
+        if (!moralityScore){
+            try{
+                moralityScore = GameObject.FindGameObjectWithTag("MoralityScore").GetComponent<TMP_Text>();
+            }
+            catch{}
+        }
+        if (!gameManager){
+            try{
+                gameManager = GameObject.FindGameObjectWithTag("GameManager").GetComponent<gameManagerScript>();
+            }
+            catch{}
+        }
         try{
             financeScore.text = financeScoreText;
             teamMorale.text = teamMoraleText;

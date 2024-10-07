@@ -60,18 +60,44 @@ public class ChoiceManager : MonoBehaviour
     
     private void Start()
     {
-        //Updates all the text feilds and the manager
-        gameManager = GameObject.FindGameObjectWithTag("GameManager").GetComponent<gameManagerScript>();
-        choice1TextObject = GameObject.FindGameObjectWithTag("Choice1").GetComponent<TMP_Text>();
-        choice2TextObject = GameObject.FindGameObjectWithTag("Choice2").GetComponent<TMP_Text>();
-        choice3TextObject = GameObject.FindGameObjectWithTag("Choice3").GetComponent<TMP_Text>();
-        promptTextObject = GameObject.FindGameObjectWithTag("Prompt").GetComponent<TMP_Text>();
         initialUpdate = false;
         typingDelayCounter = 0;
         OpenUI();
     }
     private void Update()
     {
+        //Updates all the text feilds and the manager
+        if (!gameManager){
+            try{
+                gameManager = GameObject.FindGameObjectWithTag("GameManager").GetComponent<gameManagerScript>();
+            }
+            catch{}
+        }
+        if (!choice1TextObject){
+            try{
+                choice1TextObject = GameObject.FindGameObjectWithTag("Choice1").GetComponent<TMP_Text>();
+            }
+            catch{}
+        }
+        if (!choice2TextObject){
+            try{
+                choice2TextObject = GameObject.FindGameObjectWithTag("Choice2").GetComponent<TMP_Text>();
+            }
+            catch{}
+        }
+        if (!choice3TextObject){
+            try{
+                choice3TextObject = GameObject.FindGameObjectWithTag("Choice3").GetComponent<TMP_Text>();
+            }
+            catch{}
+        }
+        if (!promptTextObject){
+            try{
+                promptTextObject = GameObject.FindGameObjectWithTag("Prompt").GetComponent<TMP_Text>();
+            }
+            catch{}
+        }
+
         //Does an initial update when first loaded
         if (currentNode == 1 && prompts != null && !initialUpdate)
         {

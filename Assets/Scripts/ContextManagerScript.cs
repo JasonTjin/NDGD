@@ -13,18 +13,28 @@ public class ContextManagerScript : MonoBehaviour
     private string bodyText = "";
     private bool inInitialContext = false;
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        //Updates all the text feilds and the manager
-        gameManager = GameObject.FindGameObjectWithTag("GameManager").GetComponent<gameManagerScript>();
-        title = GameObject.FindGameObjectWithTag("Title").GetComponent<TMP_Text>();
-        body = GameObject.FindGameObjectWithTag("Body").GetComponent<TMP_Text>();
-    }
-
     // Update is called once per frame
     void Update()
     {
+        //Updates all the text feilds and the manager
+        if (!gameManager){
+            try{
+                gameManager = GameObject.FindGameObjectWithTag("GameManager").GetComponent<gameManagerScript>();
+            }
+            catch{}
+        }
+        if (!title){
+            try{
+                title = GameObject.FindGameObjectWithTag("Title").GetComponent<TMP_Text>();
+            }
+            catch{}
+        }
+        if (!body){
+            try{
+                body = GameObject.FindGameObjectWithTag("Body").GetComponent<TMP_Text>();
+            }
+            catch{}
+        }
         if (titleText != ""){
             title.text = titleText;
         }

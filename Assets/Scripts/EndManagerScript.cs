@@ -66,13 +66,12 @@ public class EndManagerScript : MonoBehaviour
     void Start()
     {
         currentSlide = 1;
-        gameManager = GameObject.FindGameObjectWithTag("GameManager").GetComponent<gameManagerScript>();
-        title = GameObject.FindGameObjectWithTag("Title").GetComponent<TMP_Text>();
-        body = GameObject.FindGameObjectWithTag("Body").GetComponent<TMP_Text>();
-        nextButton = GameObject.FindGameObjectWithTag("EndNextButton");
-        backButton = GameObject.FindGameObjectWithTag("EndBackButton");
-        nextButtonText = GameObject.FindGameObjectWithTag("EndNextButtonText").GetComponent<TMP_Text>();
-        score = GameObject.FindGameObjectWithTag("FinalScore").GetComponent<TMP_Text>();
+        
+        
+        
+        
+        
+        
         backButton.SetActive(false);
         updated = false;
     }
@@ -112,6 +111,48 @@ public class EndManagerScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (!gameManager){
+            try{
+                gameManager = GameObject.FindGameObjectWithTag("GameManager").GetComponent<gameManagerScript>();
+            }
+            catch{}
+        }
+        if (!title){
+            try{
+                title = GameObject.FindGameObjectWithTag("Title").GetComponent<TMP_Text>();
+            }
+            catch{}
+        }
+        if (!body){
+            try{
+                body = GameObject.FindGameObjectWithTag("Body").GetComponent<TMP_Text>();
+            }
+            catch{}
+        }
+        if (!nextButton){
+            try{
+                nextButton = GameObject.FindGameObjectWithTag("EndNextButton");
+            }
+            catch{}
+        }
+        if (!backButton){
+            try{
+                backButton = GameObject.FindGameObjectWithTag("EndBackButton");
+            }
+            catch{}
+        }
+        if (!nextButtonText){
+            try{
+                nextButtonText = GameObject.FindGameObjectWithTag("EndNextButtonText").GetComponent<TMP_Text>();
+            }
+            catch{}
+        }
+        if (!score){
+            try{
+                score = GameObject.FindGameObjectWithTag("FinalScore").GetComponent<TMP_Text>();
+            }
+            catch{}
+        }
         if (!updated){
             var bodyText = "";
             var success = true;

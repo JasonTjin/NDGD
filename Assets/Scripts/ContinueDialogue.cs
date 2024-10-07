@@ -4,8 +4,13 @@ public class ContinueDialogue : MonoBehaviour
 {
     public DialogueManager2 dialogueManager;
 
-    private void Start(){
-        dialogueManager = GameObject.FindGameObjectWithTag("DialogueManager").GetComponent<DialogueManager2>();
+    void Update(){
+        if (!dialogueManager){
+            try{
+                dialogueManager = GameObject.FindGameObjectWithTag("DialogueManager").GetComponent<DialogueManager2>();
+            }
+            catch{}
+        }
     }
     public void Continue (){
         dialogueManager.GoToNextDialogue();

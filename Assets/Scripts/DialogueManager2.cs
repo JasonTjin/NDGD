@@ -37,10 +37,6 @@ public class DialogueManager2 : MonoBehaviour
 
     private void Start()
     {
-        //Updates all the text feilds and the manager
-        gameManager = GameObject.FindGameObjectWithTag("GameManager").GetComponent<gameManagerScript>();
-        dialogueText = GameObject.FindGameObjectWithTag("Dialogue").GetComponent<TMP_Text>();
-        speakerText = GameObject.FindGameObjectWithTag("Speaker").GetComponent<TMP_Text>();
         typingSpeaker = false;
         initialUpdate = false;
         typingDelayCounter = 0;
@@ -49,6 +45,25 @@ public class DialogueManager2 : MonoBehaviour
 
     private void Update()
     {
+        //Updates all the text feilds and the manager
+        if (!gameManager){
+            try{
+                gameManager = GameObject.FindGameObjectWithTag("GameManager").GetComponent<gameManagerScript>();
+            }
+            catch{}
+        }
+        if (!dialogueText){
+            try{
+                dialogueText = GameObject.FindGameObjectWithTag("Dialogue").GetComponent<TMP_Text>();
+            }
+            catch{}
+        }
+        if (!speakerText){
+            try{
+                speakerText = GameObject.FindGameObjectWithTag("Speaker").GetComponent<TMP_Text>();
+            }
+            catch{}
+        }
         //Does an initial update when first loaded
         if (currentNode == 1 && prompts != null && !initialUpdate)
         {

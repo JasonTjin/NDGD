@@ -107,7 +107,7 @@ public class gameManagerScript : MonoBehaviour
     private int gameNumber;
     private Supabase.Client  supabase;
 
-    async void Awake()
+    async void Start()
     {
         currentDialogue = 0;
         currentChoice = 0;
@@ -266,6 +266,7 @@ public class gameManagerScript : MonoBehaviour
                 }
                 break;
             default:
+                UnityEngine.Debug.Log("Default");
                 break;
         }
     }
