@@ -2,10 +2,12 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Threading.Tasks;
 using System.Transactions;
 using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.Networking;
 using UnityEngine.UI;
 
 public class ChoiceManager : MonoBehaviour
@@ -182,16 +184,28 @@ public class ChoiceManager : MonoBehaviour
         }
     }
 
-    public void SetUpChoices(string csvFilePath, int setTypingDelay, bool narrativeIncluded)
+    public async void SetUpChoices(string csvFilePath, int setTypingDelay)
     {
+        string filePath = System.IO.Path.Combine(Application.streamingAssetsPath, csvFilePath);
+        UnityWebRequest request = UnityWebRequest.Get(filePath);
+        UnityWebRequestAsyncOperation operation = request.SendWebRequest();
+        while (!operation.isDone)
+        {
+            await Task.Yield();
+        }
+        if (request.result != UnityWebRequest.Result.Success)
+        {
+            Debug.LogError("Cannot load file at " + filePath);
+            return;
+        }
+
         //Takes in the data from the csv and puts them in the relevant arrays
         currentNode = 1;
         typingDelay = setTypingDelay;
-        var reader = new StreamReader(csvFilePath);
-        reader.ReadLine(); //skip the titles
-        while (!reader.EndOfStream)
+        var lines = request.downloadHandler.text.Split('\n');
+        for (var nodeNum = 1; nodeNum < lines.Length; nodeNum++)
         {
-            var values = reader.ReadLine().Split(",");
+            var values = lines[nodeNum].Split(",");
             nodes.Add(Convert.ToInt32(values[0]));
             prompts.Add(values[1].Replace('|', ','));
             choice1Text.Add(values[2].Replace('|', ','));

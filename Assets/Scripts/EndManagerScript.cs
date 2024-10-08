@@ -1,9 +1,11 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.IO;
+using System.Threading.Tasks;
 using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.Networking;
 
 public class EndManagerScript : MonoBehaviour
 {
@@ -46,12 +48,25 @@ public class EndManagerScript : MonoBehaviour
     private int MoralityScore6BiggestLossDecisionIndex;
     private List<List<string>> summaries;
 
-    private List<string> GetSummary(int summaryNumber){
-        var reader = new StreamReader(FILE_PATH + summaryNumber.ToString() + CSV_EXTENSION);
+
+    private async Task<List<string>> GetSummary(int summaryNumber){
         var output = new List<string>();
-        while (!reader.EndOfStream)
+        string filePath = System.IO.Path.Combine(Application.streamingAssetsPath, FILE_PATH + summaryNumber.ToString() + CSV_EXTENSION);
+        UnityWebRequest request = UnityWebRequest.Get(filePath);
+        UnityWebRequestAsyncOperation operation = request.SendWebRequest();
+        while (!operation.isDone)
         {
-            var values = reader.ReadLine().Split(",");
+            await Task.Yield();
+        }
+        if (request.result != UnityWebRequest.Result.Success)
+        {
+            Debug.LogError("Cannot load file at " + filePath);
+            return output;
+        }
+        
+        var lines = request.downloadHandler.text.Split('\n');
+        for(var nodeNum = 1; nodeNum < lines.Length; nodeNum++){
+            var values = lines[nodeNum].Split(",");
             if (narrativeIncluded){
                 output.Add(values[0].Replace('|', ','));
             }
@@ -66,12 +81,6 @@ public class EndManagerScript : MonoBehaviour
     void Start()
     {
         currentSlide = 1;
-        
-        
-        
-        
-        
-        
         backButton.SetActive(false);
         updated = false;
     }
@@ -257,7 +266,7 @@ public class EndManagerScript : MonoBehaviour
             
         }
     }
-    public void InitiateEndSequence(
+    public async void InitiateEndSequence(
         int financialScoreFinal, 
         int teamMoralScoreFinal, 
         int moralityScore1Final, 
@@ -313,7 +322,7 @@ public class EndManagerScript : MonoBehaviour
         narrativeIncluded = setNarrativeIncluded;
         summaries = new();
         for (var i = 1; i <= decisionsList.Length; i++){
-            summaries.Add(GetSummary(i));
+            summaries.Add(await GetSummary(i));
         }
     }
 

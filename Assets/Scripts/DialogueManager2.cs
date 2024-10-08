@@ -7,6 +7,9 @@ using TMPro;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 using System.Linq;
+using UnityEngine.Networking;
+using System.Threading.Tasks;
+using Unity.VisualScripting;
 
 public class DialogueManager2 : MonoBehaviour
 {
@@ -97,10 +100,28 @@ public class DialogueManager2 : MonoBehaviour
         {
             typingDelayCounter = 0;
         }
+        
     }
 
-    public void SetUpDialogue(string csvFilePath, int setTypingDelay)
+
+            
+
+
+    public async void SetUpDialogue(string csvFilePath, int setTypingDelay)
     {
+        string filePath = System.IO.Path.Combine(Application.streamingAssetsPath, csvFilePath);
+        UnityWebRequest request = UnityWebRequest.Get(filePath);
+        UnityWebRequestAsyncOperation operation = request.SendWebRequest();
+        while (!operation.isDone)
+        {
+            await Task.Yield();
+        }
+        if (request.result != UnityWebRequest.Result.Success)
+        {
+            Debug.LogError("Cannot load file at " + filePath);
+            return;
+        }
+
         //Takes in the data from the csv and puts them in the relevant arrays
         currentNode = 1;
         nodes = new();
@@ -108,11 +129,9 @@ public class DialogueManager2 : MonoBehaviour
         prompts = new();
         nextNodes = new();
         typingDelay = setTypingDelay;
-        var reader = new StreamReader(csvFilePath);
-        reader.ReadLine(); //skip the titles
-        while (!reader.EndOfStream)
-        {
-            var values = reader.ReadLine().Split(",");
+        var lines = request.downloadHandler.text.Split('\n');
+        for(var nodeNum = 1; nodeNum < lines.Length; nodeNum++){
+            var values = lines[nodeNum].Split(",");
             nodes.Add(Convert.ToInt32(values[0]));
             speakers.Add(values[1].Replace('|', ','));
             prompts.Add(values[2].Replace('|', ','));
