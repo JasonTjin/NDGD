@@ -9,7 +9,7 @@ using UnityEngine.Networking;
 
 public class EndManagerScript : MonoBehaviour
 {
-    const string FILE_PATH = "./assets/CSVs/ChoiceSummaries/ChoiceSummaries";
+    const string FILE_PATH = "CSVs/ChoiceSummaries/ChoiceSummaries";
     const string CSV_EXTENSION = ".csv";
     private int[] decisionsList;
     private GameObject nextButton;
