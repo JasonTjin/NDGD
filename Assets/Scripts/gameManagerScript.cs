@@ -399,6 +399,7 @@ public class gameManagerScript : MonoBehaviour
         }
         SceneManager.LoadScene("End");
         currentScene = "End";
+        SetGameNumber();
         //submitResultsToSupabase();
     }
 
@@ -429,7 +430,7 @@ public class gameManagerScript : MonoBehaviour
         currentScene = "SurveyDetails";
     }
 
-    public void GetGameNumber(){
+    public void SetGameNumber(){
         var temp = "";
         for(var i = 0; i<Decisions.Length; i++){
             temp += Decisions[i].ToString();
