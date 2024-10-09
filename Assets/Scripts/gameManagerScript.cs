@@ -399,7 +399,7 @@ public class gameManagerScript : MonoBehaviour
         }
         SceneManager.LoadScene("End");
         currentScene = "End";
-        submitResultsToSupabase();
+        //submitResultsToSupabase();
     }
 
     public void GoToConclusion(){
@@ -429,11 +429,26 @@ public class gameManagerScript : MonoBehaviour
         currentScene = "SurveyDetails";
     }
 
+    public void GetGameNumber(){
+        var temp = "";
+        for(var i = 0; i<Decisions.Length; i++){
+            temp += Decisions[i].ToString();
+        }   
+        if (narrativeIncluded){
+            temp += "1";
+        }
+        else{
+            temp += "0";
+        }
+        Int32.TryParse(temp, out gameNumber);
+    }
+    /*
     public async void GetGameNumber(){
         var result = await supabase.From<Results>().Get();
         gameNumber = result.Models[result.Models.Count - 1].Id;
     }
 
+    
     public async void submitResultsToSupabase()
     {
         var model = new Results
@@ -454,4 +469,5 @@ public class gameManagerScript : MonoBehaviour
         await supabase.From<Results>().Insert(model);
         GetGameNumber();
     }
+    */
 }
