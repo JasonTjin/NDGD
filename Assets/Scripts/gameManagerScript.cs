@@ -104,7 +104,7 @@ public class gameManagerScript : MonoBehaviour
     private bool transitionDone = false;
     private int conclusionNumber;
     private bool conclusionDone = false;
-    private int gameNumber;
+    private string gameNumber;
     private Supabase.Client  supabase;
 
     async void Start()
@@ -118,17 +118,18 @@ public class gameManagerScript : MonoBehaviour
         {
             AutoConnectRealtime = true
         };
-
-        supabase = new Supabase.Client("https://okzgvpnnqwecacqrppgn.supabase.co", "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im9remd2cG5ucXdlY2FjcXJwcGduIiwicm9sZSI6ImFub24iLCJpYXQiOjE3MjU0Mzc1MzYsImV4cCI6MjA0MTAxMzUzNn0.gwTxDDZnFrdIOljsdaDbeKxx9xJqAtQGflZvhWD_syQ", options);
-        await supabase.InitializeAsync();
         Application.targetFrameRate = TARGET_FRAMERATE;
-        if (UnityEngine.Random.value >= 0.5){
+        var temp = UnityEngine.Random.value;
+        if (temp >= 0.5){
             narrativeIncluded = true;
         }
         else{
             narrativeIncluded = false;
         }
-        
+        /*
+        supabase = new Supabase.Client("https://okzgvpnnqwecacqrppgn.supabase.co", "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im9remd2cG5ucXdlY2FjcXJwcGduIiwicm9sZSI6ImFub24iLCJpYXQiOjE3MjU0Mzc1MzYsImV4cCI6MjA0MTAxMzUzNn0.gwTxDDZnFrdIOljsdaDbeKxx9xJqAtQGflZvhWD_syQ", options);
+        await supabase.InitializeAsync();
+        */
     }
     void Update(){ 
         //This makes sure that the choice manager or dialogue manager are correctly stored, then sets them up for when a scene change happens
@@ -260,7 +261,7 @@ public class gameManagerScript : MonoBehaviour
                 if (!gameNumberText){
                     try{
                         gameNumberText = GameObject.FindGameObjectWithTag("GameNumberScore").GetComponent<TMP_Text>();
-                        gameNumberText.text = gameNumber.ToString();
+                        gameNumberText.text = gameNumber;
                     }
                     catch{}
                 }
@@ -431,17 +432,16 @@ public class gameManagerScript : MonoBehaviour
     }
 
     public void SetGameNumber(){
-        var temp = "";
+        gameNumber = "";
         for(var i = 0; i<Decisions.Length; i++){
-            temp += Decisions[i].ToString();
+            gameNumber += Decisions[i].ToString();
         }   
         if (narrativeIncluded){
-            temp += "1";
+            gameNumber += "1";
         }
         else{
-            temp += "0";
+            gameNumber += "0";
         }
-        Int32.TryParse(temp, out gameNumber);
     }
     /*
     public async void GetGameNumber(){
