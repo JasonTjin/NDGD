@@ -44,11 +44,11 @@ public class Results : BaseModel
 }
 public class gameManagerScript : MonoBehaviour
 {
-    const string DIALOGUE_FILE_PATH = "./assets/CSVs/Dialogues/Dialogue";
-    const string CHOICES_FILE_PATH = "./assets/CSVs/Choices/Choices";
-    const string RESULTS_FILE_PATH = "./assets/CSVs/Results/Results";
-    const string CONTEXT_FILE_PATH = "./assets/CSVs/Contexts/Context";
-    const string CONCLUSION_FILE_PATH = "./assets/CSVs/Conclusions/Conclusion";
+    const string DIALOGUE_FILE_PATH = "CSVs/Dialogues/Dialogue";
+    const string CHOICES_FILE_PATH = "CSVs/Choices/Choices";
+    const string RESULTS_FILE_PATH = "CSVs/Results/Results";
+    const string CONTEXT_FILE_PATH = "CSVs/Contexts/Context";
+    const string CONCLUSION_FILE_PATH = "CSVs/Conclusions/Conclusion";
     const string CSV_EXTENSION = ".csv";
     const string TXT_EXTENSION = ".txt";
     const int TYPING_DELAY = 2; //Controlls the delay between each letter showing up
@@ -61,7 +61,7 @@ public class gameManagerScript : MonoBehaviour
     private EndManagerScript endManager;
     private TMP_Text sceneTransitionText;
     private TMP_Text gameNumberText;
-    public bool narrativeIncluded = true;
+    private bool narrativeIncluded;
     private int currentDialogue; //The number of the current dialogue file
     private int currentChoice; //The number of the current choice file
     private int currentResult; //The number of the current result from the current choice
@@ -138,10 +138,10 @@ public class gameManagerScript : MonoBehaviour
                     try{
                         choiceManager = GameObject.FindGameObjectWithTag("ChoiceManager").GetComponent<ChoiceManager>();
                         if (narrativeIncluded){
-                            choiceManager.SetUpChoices(CHOICES_FILE_PATH + currentChoice.ToString() + CSV_EXTENSION, TYPING_DELAY, narrativeIncluded);
+                            choiceManager.SetUpChoices(CHOICES_FILE_PATH + currentChoice.ToString() + CSV_EXTENSION, TYPING_DELAY);
                         }
                         else{
-                            choiceManager.SetUpChoices(CHOICES_FILE_PATH + "A" + currentChoice.ToString() + CSV_EXTENSION, TYPING_DELAY, narrativeIncluded);
+                            choiceManager.SetUpChoices(CHOICES_FILE_PATH + "A" + currentChoice.ToString() + CSV_EXTENSION, TYPING_DELAY);
                         }
                     }
                     catch{}
@@ -266,7 +266,6 @@ public class gameManagerScript : MonoBehaviour
                 }
                 break;
             default:
-                UnityEngine.Debug.Log("Default");
                 break;
         }
     }

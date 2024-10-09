@@ -1,8 +1,10 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.IO;
+using System.Threading.Tasks;
 using TMPro;
 using UnityEngine;
+using UnityEngine.Networking;
 
 public class ContextManagerScript : MonoBehaviour
 {
@@ -43,12 +45,23 @@ public class ContextManagerScript : MonoBehaviour
         }
     }
 
-    public void SetUpContext(string txtFilePath, int choiceNumber)
+    public async void SetUpContext(string txtFilePath, int choiceNumber)
     {
         if (choiceNumber != 0){
             titleText = "Scenario " + choiceNumber.ToString();
-            var reader = new StreamReader(txtFilePath);
-            bodyText = reader.ReadLine();
+            string filePath = System.IO.Path.Combine(Application.streamingAssetsPath, txtFilePath);
+            UnityWebRequest request = UnityWebRequest.Get(filePath);
+            UnityWebRequestAsyncOperation operation = request.SendWebRequest();
+            while (!operation.isDone)
+            {
+                await Task.Yield();
+            }
+            if (request.result != UnityWebRequest.Result.Success)
+            {
+                Debug.LogError("Cannot load file at " + filePath);
+                return;
+            }
+            bodyText = request.downloadHandler.text;
         }
         else {
             inInitialContext = true;
