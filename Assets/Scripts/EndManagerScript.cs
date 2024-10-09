@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using System.Threading.Tasks;
 using TMPro;
 using Unity.VisualScripting;
@@ -65,7 +66,7 @@ public class EndManagerScript : MonoBehaviour
         }
         
         var lines = request.downloadHandler.text.Split('\n');
-        for(var nodeNum = 1; nodeNum < lines.Length; nodeNum++){
+        for(var nodeNum = 0; nodeNum < lines.Length; nodeNum++){
             var values = lines[nodeNum].Split(",");
             if (narrativeIncluded){
                 output.Add(values[0].Replace('|', ','));
@@ -162,109 +163,111 @@ public class EndManagerScript : MonoBehaviour
             }
             catch{}
         }
-        if (!updated){
-            var bodyText = "";
-            var success = true;
-            switch(currentSlide){
-                case 1:
-                    title.text = "Finances";
-                    score.text = (financialScore * 100 / financialScoreMax).ToString() + "%";
-                    score.color = scoreColor(financialScore * 100 / financialScoreMax);
-                    bodyText += "Your biggest loss in finances was in scenario ";
-                    bodyText += FinancialScoreBiggestLossDecisionIndex.ToString() ;
-                    bodyText += " when you " ;
-                    bodyText += summaries[FinancialScoreBiggestLossDecisionIndex][decisionsList[FinancialScoreBiggestLossDecisionIndex] - 1];
-                    break;
-                case 2:
-                    title.text = "Team Morale";
-                    score.text = (teamMoralScore * 100 / teamMoralScoreMax).ToString() + "%";
-                    score.color = scoreColor(teamMoralScore * 100 / teamMoralScoreMax);
-                    bodyText = (
-                        "Your biggest loss in team morale was in scenario " 
-                        +  TeamMoralScoreBiggestLossDecisionIndex.ToString() 
-                        + " when you " 
-                        + summaries[TeamMoralScoreBiggestLossDecisionIndex][decisionsList[TeamMoralScoreBiggestLossDecisionIndex] - 1]);
-                    break;
-                case 3:
-                    title.text = "The Primacy of the Public Interest";
-                    score.text = (moralityScore1 * 100 / moralityScore1Max).ToString() + "%";
-                    score.color = scoreColor(moralityScore1 * 100 / moralityScore1Max);
-                    if ((moralityScore1 * 100 / moralityScore1Max) == 100){
+        try{
+            if (!updated){
+                var bodyText = "";
+                var success = true;
+                switch(currentSlide){
+                    case 1:
+                        title.text = "Finances";
+                        score.text = (financialScore * 100 / financialScoreMax).ToString() + "%";
+                        score.color = scoreColor(financialScore * 100 / financialScoreMax);
+                        bodyText += "Your biggest loss in finances was in scenario ";
+                        bodyText += FinancialScoreBiggestLossDecisionIndex.ToString() ;
+                        bodyText += " when you " ;
+                        bodyText += summaries[FinancialScoreBiggestLossDecisionIndex][decisionsList[FinancialScoreBiggestLossDecisionIndex] - 1];
+                        break;
+                    case 2:
+                        title.text = "Team Morale";
+                        score.text = (teamMoralScore * 100 / teamMoralScoreMax).ToString() + "%";
+                        score.color = scoreColor(teamMoralScore * 100 / teamMoralScoreMax);
+                        bodyText = (
+                            "Your biggest loss in team morale was in scenario " 
+                            +  TeamMoralScoreBiggestLossDecisionIndex.ToString() 
+                            + " when you " 
+                            + summaries[TeamMoralScoreBiggestLossDecisionIndex][decisionsList[TeamMoralScoreBiggestLossDecisionIndex] - 1]);
+                        break;
+                    case 3:
+                        title.text = "The Primacy of the Public Interest";
+                        score.text = (moralityScore1 * 100 / moralityScore1Max).ToString() + "%";
+                        score.color = scoreColor(moralityScore1 * 100 / moralityScore1Max);
+                        if ((moralityScore1 * 100 / moralityScore1Max) == 100){
 
-                    }
-                    bodyText = (
-                        "Your decision that least adheared to the primacy of the public interest was in scenario " 
-                        +  MoralityScore1BiggestLossDecisionIndex.ToString() 
-                        + " when you " 
-                        + summaries[MoralityScore1BiggestLossDecisionIndex][decisionsList[MoralityScore1BiggestLossDecisionIndex] - 1]
-                        + GetRecomendations(moralityScore1 * 100 / moralityScore1Max, "the primacy of the public interest"));
-                    
-                    break;
-                case 4:
-                    title.text = "The Enhancement of Quality of Life";
-                    score.text = (moralityScore2 * 100 / moralityScore2Max).ToString() + "%";
-                    score.color = scoreColor(moralityScore2 * 100 / moralityScore2Max);
-                    bodyText = (
-                        "Your decision that least adheared to the enhancement of quality of life was in scenario " 
-                        +  MoralityScore2BiggestLossDecisionIndex.ToString() 
-                        + " when you " 
-                        + summaries[MoralityScore2BiggestLossDecisionIndex][decisionsList[MoralityScore2BiggestLossDecisionIndex] - 1]
-                        + GetRecomendations(moralityScore2 * 100 / moralityScore2Max, "the enhancement of quality of life"));
-                    break;
-                case 5:
-                    title.text = "Honesty";
-                    score.text = (moralityScore3 * 100 / moralityScore3Max).ToString() + "%";
-                    score.color = scoreColor(moralityScore3 * 100 / moralityScore3Max);
-                    bodyText = (
-                        "Your decision that least adheared to honesty was in scenario " 
-                        +  MoralityScore3BiggestLossDecisionIndex.ToString() 
-                        + " when you " 
-                        + summaries[MoralityScore3BiggestLossDecisionIndex][decisionsList[MoralityScore3BiggestLossDecisionIndex] - 1]
-                        + GetRecomendations(moralityScore3 * 100 / moralityScore3Max, "honesty"));
-                    break;
-                case 6:
-                    title.text = "Competence";
-                    score.text = (moralityScore4 * 100 / moralityScore4Max).ToString() + "%";
-                    score.color = scoreColor(moralityScore4 * 100 / moralityScore4Max);
-                    bodyText = (
-                        "Your decision that least adheared to competence was in scenario " 
-                        +  MoralityScore4BiggestLossDecisionIndex.ToString() 
-                        + " when you " 
-                        + summaries[MoralityScore4BiggestLossDecisionIndex][decisionsList[MoralityScore4BiggestLossDecisionIndex] - 1]
-                        + GetRecomendations(moralityScore4 * 100 / moralityScore4Max, "competence"));
-                    break;
-                case 7:
-                    title.text = "Professional Development";
-                    score.text = (moralityScore5 * 100 / moralityScore5Max).ToString() + "%";
-                    score.color = scoreColor(moralityScore5 * 100 / moralityScore5Max);
-                    bodyText = (
-                        "Your decision that least adheared to professional development was in scenario " 
-                        +  MoralityScore5BiggestLossDecisionIndex.ToString() 
-                        + " when you " 
-                        + summaries[MoralityScore5BiggestLossDecisionIndex][decisionsList[MoralityScore5BiggestLossDecisionIndex] - 1]
-                        + GetRecomendations(moralityScore5 * 100 / moralityScore5Max, "professional development"));
-                    break;
-                case 8:
-                    title.text = "Professionalism";
-                    score.text = (moralityScore6 * 100 / moralityScore6Max).ToString() + "%";
-                    score.color = scoreColor(moralityScore6 * 100 / moralityScore6Max);
-                    bodyText = (
-                        "Your decision that least adheared to professionalism was in scenario " 
-                        +  MoralityScore6BiggestLossDecisionIndex.ToString() 
-                        + " when you " 
-                        + summaries[MoralityScore6BiggestLossDecisionIndex][decisionsList[MoralityScore6BiggestLossDecisionIndex] - 1]
-                        + GetRecomendations(moralityScore6 * 100 / moralityScore6Max, "professionalism"));
-                    break;
-                default:
-                    success = false;
-                    break;
+                        }
+                        bodyText = (
+                            "Your decision that least adheared to the primacy of the public interest was in scenario " 
+                            +  MoralityScore1BiggestLossDecisionIndex.ToString() 
+                            + " when you " 
+                            + summaries[MoralityScore1BiggestLossDecisionIndex][decisionsList[MoralityScore1BiggestLossDecisionIndex] - 1]
+                            + GetRecomendations(moralityScore1 * 100 / moralityScore1Max, "the primacy of the public interest"));
+                        
+                        break;
+                    case 4:
+                        title.text = "The Enhancement of Quality of Life";
+                        score.text = (moralityScore2 * 100 / moralityScore2Max).ToString() + "%";
+                        score.color = scoreColor(moralityScore2 * 100 / moralityScore2Max);
+                        bodyText = (
+                            "Your decision that least adheared to the enhancement of quality of life was in scenario " 
+                            +  MoralityScore2BiggestLossDecisionIndex.ToString() 
+                            + " when you " 
+                            + summaries[MoralityScore2BiggestLossDecisionIndex][decisionsList[MoralityScore2BiggestLossDecisionIndex] - 1]
+                            + GetRecomendations(moralityScore2 * 100 / moralityScore2Max, "the enhancement of quality of life"));
+                        break;
+                    case 5:
+                        title.text = "Honesty";
+                        score.text = (moralityScore3 * 100 / moralityScore3Max).ToString() + "%";
+                        score.color = scoreColor(moralityScore3 * 100 / moralityScore3Max);
+                        bodyText = (
+                            "Your decision that least adheared to honesty was in scenario " 
+                            +  MoralityScore3BiggestLossDecisionIndex.ToString() 
+                            + " when you " 
+                            + summaries[MoralityScore3BiggestLossDecisionIndex][decisionsList[MoralityScore3BiggestLossDecisionIndex] - 1]
+                            + GetRecomendations(moralityScore3 * 100 / moralityScore3Max, "honesty"));
+                        break;
+                    case 6:
+                        title.text = "Competence";
+                        score.text = (moralityScore4 * 100 / moralityScore4Max).ToString() + "%";
+                        score.color = scoreColor(moralityScore4 * 100 / moralityScore4Max);
+                        bodyText = (
+                            "Your decision that least adheared to competence was in scenario " 
+                            +  MoralityScore4BiggestLossDecisionIndex.ToString() 
+                            + " when you " 
+                            + summaries[MoralityScore4BiggestLossDecisionIndex][decisionsList[MoralityScore4BiggestLossDecisionIndex] - 1]
+                            + GetRecomendations(moralityScore4 * 100 / moralityScore4Max, "competence"));
+                        break;
+                    case 7:
+                        title.text = "Professional Development";
+                        score.text = (moralityScore5 * 100 / moralityScore5Max).ToString() + "%";
+                        score.color = scoreColor(moralityScore5 * 100 / moralityScore5Max);
+                        bodyText = (
+                            "Your decision that least adheared to professional development was in scenario " 
+                            +  MoralityScore5BiggestLossDecisionIndex.ToString() 
+                            + " when you " 
+                            + summaries[MoralityScore5BiggestLossDecisionIndex][decisionsList[MoralityScore5BiggestLossDecisionIndex] - 1]
+                            + GetRecomendations(moralityScore5 * 100 / moralityScore5Max, "professional development"));
+                        break;
+                    case 8:
+                        title.text = "Professionalism";
+                        score.text = (moralityScore6 * 100 / moralityScore6Max).ToString() + "%";
+                        score.color = scoreColor(moralityScore6 * 100 / moralityScore6Max);
+                        bodyText = (
+                            "Your decision that least adheared to professionalism was in scenario " 
+                            +  MoralityScore6BiggestLossDecisionIndex.ToString() 
+                            + " when you " 
+                            + summaries[MoralityScore6BiggestLossDecisionIndex][decisionsList[MoralityScore6BiggestLossDecisionIndex] - 1]
+                            + GetRecomendations(moralityScore6 * 100 / moralityScore6Max, "professionalism"));
+                        break;
+                    default:
+                        success = false;
+                        break;  
+                }
+                if (success){
+                    body.text = bodyText;
+                    updated = true; 
+                }
             }
-            if (success){
-                body.text = bodyText;
-                updated = true; 
-            }
-            
         }
+        catch{}
     }
     public async void InitiateEndSequence(
         int financialScoreFinal, 
@@ -322,7 +325,8 @@ public class EndManagerScript : MonoBehaviour
         narrativeIncluded = setNarrativeIncluded;
         summaries = new();
         for (var i = 1; i <= decisionsList.Length; i++){
-            summaries.Add(await GetSummary(i));
+            var newSummary = await GetSummary(i);
+            summaries.Add(newSummary);
         }
     }
 
