@@ -82,7 +82,7 @@ public class EndManagerScript : MonoBehaviour
     void Start()
     {
         currentSlide = 1;
-        backButton.SetActive(false);
+        
         updated = false;
     }
 
@@ -148,6 +148,7 @@ public class EndManagerScript : MonoBehaviour
         if (!backButton){
             try{
                 backButton = GameObject.FindGameObjectWithTag("EndBackButton");
+                backButton.SetActive(currentSlide != 1);
             }
             catch{}
         }
