@@ -64,6 +64,8 @@ public class ContextManagerScript : MonoBehaviour
             bodyText = request.downloadHandler.text;
         }
         else {
+            titleText = "How To Play";
+            bodyText = "Each day you will be given a scenario in which various options will be presented on how the situation should be handled." + '\n' + '\n' + "Decisions made will affect your score in different ways, aim to make the 'best' choices in order to succeed!" + '\n' + '\n' + "You are the manager of an mid sized IT consulting company and the only person you report to is the CEO.";
             inInitialContext = true;
         }
     }
