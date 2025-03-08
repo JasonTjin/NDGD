@@ -1,8 +1,8 @@
-#Overview#
+# Overview
 
 This project explores the impact of narrative on the effectiveness of serious games in teaching content. Specifically, it investigates whether integrating a narrative into a serious game enhances engagement and learning outcomes. The game was developed in Unity using C#, focusing on the ACS Code of Ethics as its educational content.
 
-#Features#
+# Features
 
 Two game versions: Narrative and Non-Narrative
 
@@ -12,7 +12,7 @@ Data collection for analysis of narrative impact
 
 User-friendly interface and interactive decision-making elements
 
-#Technologies Used#
+# Technologies Used
 
 Unity (Game Engine)
 
@@ -22,7 +22,7 @@ Unity UI (User Interface)
 
 Data Collection Scripts (for research analysis)
 
-#Installation#
+# Installation
 
 Clone this repository:
 
@@ -32,7 +32,7 @@ Open the project in Unity.
 
 Build and run the game within the Unity editor or export it for deployment using Netlify.
 
-#How to Play#
+# How to Play
 
 Randomly chosen between the Narrative or Non-Narrative version.
 
